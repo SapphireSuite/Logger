@@ -7,6 +7,8 @@
 
 #include <cstdint>
 
+#include <string>
+
 /**
 *	\file LogLevel.hpp
 *
@@ -51,13 +53,22 @@ namespace Sa
 
 
 	/**
-	*	\brief \e Getter of Log level name.
+	*	\brief ToString implementation for LogLevel
 	*
-	*	\param[in] _lvl		Level to get the name.
+	*	\param[in] _lvl		Level to convert.
 	*
-	*	\return	Name of the enum.
+	*	\return	LogLevel as a string.
 	*/
-	const char* GetLogLevelName(LogLevel _lvl) noexcept;
+	std::string ToString(LogLevel _lvl) noexcept;
+
+	/**
+	*	\brief ToWString implementation for LogLevel
+	*
+	*	\param[in] _lvl		Level to convert.
+	*
+	*	\return	LogLevel as a wstring.
+	*/
+	std::wstring ToWString(LogLevel _lvl) noexcept;
 }
 
 /** \} */

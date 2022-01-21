@@ -6,9 +6,16 @@
 
 namespace Sa
 {
-	const char* GetLogLevelName(LogLevel _lvl) noexcept
+	std::string ToString(LogLevel _lvl) noexcept
 	{
 		static constexpr const char* const names[]{ "Unknown", "Normal", "Infos", "Warning", "Error", "AssertSuccess", "AssertFailed" };
+
+		return names[BitScanForward(static_cast<uint32_t>(_lvl)) + 1u];
+	}
+
+	std::wstring ToWString(LogLevel _lvl) noexcept
+	{
+		static constexpr const wchar_t* const names[]{ L"Unknown", L"Normal", L"Infos", L"Warning", L"Error", L"AssertSuccess", L"AssertFailed" };
 
 		return names[BitScanForward(static_cast<uint32_t>(_lvl)) + 1u];
 	}
