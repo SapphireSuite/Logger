@@ -6,6 +6,7 @@
 
 #include <SA/Logger/Logger.hpp>
 #include <SA/Logger/Streams/Console/ConsoleLogStream.hpp>
+#include <SA/Logger/Streams/File/FileLogStream.hpp>
 using namespace Sa;
 
 int main()
@@ -13,8 +14,10 @@ int main()
 	Logger logger;
 
 	ConsoleLogStream cslStream;
-
 	logger.Register(cslStream);
+
+	FileLogStream fileStream;
+	logger.Register(fileStream);
 
 	Log l{
 		L"MyFile",

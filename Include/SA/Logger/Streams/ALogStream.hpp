@@ -16,7 +16,7 @@ namespace Sa
 	*
 	*	Stream used by Logger.
 	*
-	*	\ingroup Logger
+	*	\ingroup Logger_Stream
 	*	\{
 	*/
 
