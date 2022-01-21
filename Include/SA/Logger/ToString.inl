@@ -15,7 +15,7 @@ namespace Sa
 	std::string ToString(const T& _elem)
 	{
 		if constexpr (std::is_arithmetic<T>::value)
-			return to_string(_elem);
+			return std::to_string(_elem);
 		else
 			return ToStringBinary(_elem);
 	}
@@ -79,7 +79,7 @@ namespace Sa
 	std::wstring ToWString(const T& _elem) noexcept
 	{
 		if constexpr (std::is_arithmetic<T>::value)
-			return to_wstring(_elem);
+			return std::to_wstring(_elem);
 		else
 			return std::wstring();
 	}
@@ -87,7 +87,7 @@ namespace Sa
 	template <typename T>
 	std::wstring ToWString(T* _ptr) noexcept
 	{
-		return "0x" + std::to_wstring(reinterpret_cast<uint64_t>(_ptr));
+		return L"0x" + std::to_wstring(reinterpret_cast<uint64_t>(_ptr));
 	}
 
 	template <typename T>
