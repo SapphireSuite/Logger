@@ -28,6 +28,9 @@ file(GLOB_RECURSE SA_LOGGER_SOURCES "Source/*")
 ## Static library.
 add_library(SA_Logger STATIC ${SA_LOGGER_SOURCES})
 
+## Link dependencies.
+target_link_libraries(SA_Logger PUBLIC SA_Support)
+
 ## Include directories
 
 target_include_directories(SA_Logger PUBLIC Include)
@@ -52,6 +55,8 @@ option(SA_LOGGER_BUILD_TESTS_OPT "Should build SA_Maths tests" OFF)
 
 
 # Entrypoints
+
+add_subdirectory(ThirdParty)
 
 if(SA_LOGGER_BUILD_TESTS_OPT)
 
