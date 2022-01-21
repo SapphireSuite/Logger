@@ -45,6 +45,19 @@ namespace Sa
 
 		Max = uint8_t(-1)
 	};
+
+	/// Shortcut alias.
+	using LogLvl = LogLevel;
+
+
+	/**
+	*	\brief \e Getter of Log level name.
+	*
+	*	\param[in] _lvl		Level to get the name.
+	*
+	*	\return	Name of the enum.
+	*/
+	const char* GetLogLevelName(LogLevel _lvl) noexcept;
 }
 
 /** \} */
