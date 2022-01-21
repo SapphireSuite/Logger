@@ -23,8 +23,8 @@ namespace Sa
 		msg{ std::move(_msg) },
 		level{_level },
 		chanName{ std::move(_chanName) },
-		details{ std::move(_details) }
-		//date{ Time::Date() }
+		details{ std::move(_details) },
+		date{ DateTime::Now() }
 	{
 	}
 
@@ -33,7 +33,9 @@ namespace Sa
 		std::wstring str;
 
 		// Output date.
-		//str += L'[' + Sa::ToWString(date.hour) + L':' + Sa::ToWString(date.minute) + L':' + Sa::ToWString(date.second) + L"] ";
+		str += L'[' + Sa::ToWString(_log.date.hour) +
+			L':' + Sa::ToWString(_log.date.minute) +
+			L':' + Sa::ToWString(_log.date.second) + L"] ";
 
 		// Output level and channel.
 		str += L'{' + Sa::ToWString(_log.level) + L" - " + _log.chanName + L'}';

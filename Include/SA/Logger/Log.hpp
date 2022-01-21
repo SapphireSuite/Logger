@@ -8,6 +8,8 @@
 #include <SA/Logger/LogLevel.hpp>
 #include <SA/Logger/ToString.hpp>
 
+#include <SA/Support/Algorithms/DateTime.hpp>
+
 /**
 *	\file Log.hpp
 *
@@ -44,8 +46,8 @@ namespace Sa
 		/// Additional details string.
 		std::wstring details;
 
-		///// Date time.
-		//DateTime date;
+		/// Date time.
+		DateTime date;
 
 		/**
 		*	\brief \e Value Move Constructor.
