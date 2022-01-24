@@ -4,14 +4,12 @@
 
 #define LOG(_str) std::cout << _str << std::endl;
 
-#include <SA/Logger/Macro.hpp>
-#include <SA/Logger/Streams/Console/ConsoleLogStream.hpp>
-#include <SA/Logger/Streams/File/FileLogStream.hpp>
+#include <SA/Collections/Debug>
 using namespace Sa;
 
 int main()
 {
-	Logger logger;
+	LoggerThread logger;
 	Sa::Debug::logger = &logger;
 
 	ConsoleLogStream cslStream;
@@ -20,7 +18,18 @@ int main()
 	FileLogStream fileStream;
 	logger.Register(fileStream);
 
-	SA_LOG("Hello, World!", Infos, Sa/TestChan, "Some Details!");
+	for(int i = 0; i < 10; ++i)
+		SA_LOG("Hello, World!", Infos, SA/TestChan, "Some Details!");
+
+	try
+	{
+		SA_ASSERT(OutOfRange, SA/OtherChan, 4u, 1u, 3u);
+	}
+	catch (Exception& _exc)
+	{
+		(void)_exc;
+		SA_LOG("CATCH");
+	}
 
 	return 0;
 }
