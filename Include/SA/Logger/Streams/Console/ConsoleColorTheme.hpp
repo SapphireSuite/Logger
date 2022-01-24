@@ -5,7 +5,7 @@
 #ifndef SAPPHIRE_LOGGER_CONSOLE_COLOR_THEME_GUARD
 #define SAPPHIRE_LOGGER_CONSOLE_COLOR_THEME_GUARD
 
-#include <SA/Logger/LogLevel.hpp>
+#include <SA/Logger/Log/LogLevel.hpp>
 #include <SA/Logger/Streams/Console/ConsoleColor.hpp>
 
 namespace Sa

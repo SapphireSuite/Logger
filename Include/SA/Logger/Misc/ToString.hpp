@@ -226,6 +226,6 @@ namespace Sa
 
 /** \} */
 
-#include <SA/Logger/ToString.inl>
+#include <SA/Logger/Misc/ToString.inl>
 
 #endif // GUARD

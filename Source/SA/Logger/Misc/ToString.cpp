@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/ToString.hpp>
+#include <SA/Logger/Misc/ToString.hpp>
 
 namespace Sa
 {

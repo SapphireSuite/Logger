@@ -5,7 +5,7 @@
 #ifndef SAPPHIRE_LOGGER_ALOG_STREAM_GUARD
 #define SAPPHIRE_LOGGER_ALOG_STREAM_GUARD
 
-#include <SA/Logger/Log.hpp>
+#include <SA/Logger/Log/Log.hpp>
 
 namespace Sa
 {

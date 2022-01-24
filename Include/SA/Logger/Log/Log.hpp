@@ -5,8 +5,8 @@
 #ifndef SAPPHIRE_LOGGER_LOG_GUARD
 #define SAPPHIRE_LOGGER_LOG_GUARD
 
-#include <SA/Logger/LogLevel.hpp>
-#include <SA/Logger/ToString.hpp>
+#include <SA/Logger/Log/LogLevel.hpp>
+#include <SA/Logger/Misc/ToString.hpp>
 
 #include <SA/Support/Algorithms/DateTime.hpp>
 
