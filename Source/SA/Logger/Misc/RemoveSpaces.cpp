@@ -2,6 +2,8 @@
 
 #include <SA/Logger/Misc/RemoveSpaces.hpp>
 
+#include <algorithm>
+
 namespace Sa::Intl
 {
 	std::wstring RemoveSpaces(std::wstring _str) noexcept

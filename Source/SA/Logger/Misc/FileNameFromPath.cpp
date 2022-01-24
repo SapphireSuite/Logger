@@ -2,14 +2,14 @@
 
 #include <SA/Logger/Misc/FileNameFromPath.hpp>
 
-#include <algorithm>
+#include <cwchar>
 
 namespace Sa::Intl
 {
 	const wchar_t* FileNameFromPath(const wchar_t* _filePath) noexcept
 	{
 		// Remove characters until last backslash.
-		const wchar_t* fileName = wcsrchr(_filePath, '\\');
+		const wchar_t* fileName = std::wcsrchr(_filePath, '\\');
 
 		if (!fileName) // No backslash found.
 			fileName = _filePath;
@@ -18,7 +18,7 @@ namespace Sa::Intl
 
 
 		// Remove characters until last slash.
-		if (const wchar_t* filePathNoSlash = wcsrchr(fileName, '/'))
+		if (const wchar_t* filePathNoSlash = std::wcsrchr(fileName, '/'))
 		{
 			// Remove last '/' found.
 			fileName = filePathNoSlash + 1;
