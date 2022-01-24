@@ -197,6 +197,12 @@ namespace Sa
 	
 	/// \cond Internal
 
+	/// ToWString spec for single char.
+	std::wstring ToWString(const char& _char);
+
+	/// ToWString spec for cstr char*.
+	std::wstring ToWString(const char* _cstr);
+
 	/// ToWString spec for single wchar.
 	std::wstring ToWString(const wchar_t& _char);
 

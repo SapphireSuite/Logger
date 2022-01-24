@@ -53,19 +53,32 @@ namespace Sa
 
 //{ ToWString
 
-	/// ToWString spec for single wchar.
+	std::wstring ToWString(const char& _char)
+	{
+		return std::wstring(1u, _char);
+	}
+
+	std::wstring ToWString(const char* _cstr)
+	{
+		const size_t length = strlen(_cstr);
+
+		std::wstring res(length, L' ');
+
+		std::mbstowcs(res.data(), _cstr, length);
+
+		return res;
+	}
+
 	std::wstring ToWString(const wchar_t& _char)
 	{
 		return std::wstring(1u, _char);
 	}
 
-	/// ToWString spec for cstr wchar*.
 	std::wstring ToWString(const wchar_t* _cstr)
 	{
 		return std::wstring(_cstr);
 	}
 
-	/// ToWString spec for c++ str.
 	std::wstring ToWString(const std::string& _str)
 	{
 		std::wstring res(_str.length(), L' ');
@@ -75,7 +88,6 @@ namespace Sa
 		return res;
 	}
 
-	/// ToWString spec for c++ wstr.
 	std::wstring ToWString(const std::wstring& _str) noexcept
 	{
 		return _str;

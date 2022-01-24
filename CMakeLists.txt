@@ -45,6 +45,15 @@ target_compile_features(SA_Logger PUBLIC cxx_std_20)
 ### SA_Logger module implementation preprocessor.
 target_compile_definitions(SA_Logger PUBLIC SA_LOGGER_IMPL)
 
+### Advanced MSVC preprocessor required for Core::Debug
+### https://docs.microsoft.com/en-us/cpp/preprocessor/preprocessor-experimental-overview
+if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
+	if(${MSVC_TOOLSET_VERSION} LESS 142)
+		target_compile_options(SA_Logger PUBLIC /experimental:preprocessor)
+	else()
+		target_compile_options(SA_Logger PUBLIC /Zc:preprocessor)
+	endif()
+endif()
 
 
 # Options

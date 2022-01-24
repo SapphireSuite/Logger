@@ -4,14 +4,15 @@
 
 #define LOG(_str) std::cout << _str << std::endl;
 
-#include <SA/Logger/LoggerThread.hpp>
+#include <SA/Logger/Macro.hpp>
 #include <SA/Logger/Streams/Console/ConsoleLogStream.hpp>
 #include <SA/Logger/Streams/File/FileLogStream.hpp>
 using namespace Sa;
 
 int main()
 {
-	LoggerThread logger;
+	Logger logger;
+	Sa::Debug::logger = &logger;
 
 	ConsoleLogStream cslStream;
 	logger.Register(cslStream);
@@ -19,23 +20,7 @@ int main()
 	FileLogStream fileStream;
 	logger.Register(fileStream);
 
-	Log l{
-		L"MyFile",
-		16,
-		"MyFunc",
-		L"My Message!",
-		LogLevel::Infos,
-		L"MyChannel",
-		L"My Details"
-	};
-
-	std::cout << "Start Push" << std::endl;
-
-
-	for (int i = 0; i < 100; ++i)
-		logger.Push(std::move(*new Log{ l }));
-
-	logger.Flush();
+	SA_LOG("Hello, World!", Infos, Sa/TestChan, "Some Details!");
 
 	return 0;
 }
