@@ -9,8 +9,23 @@
 
 #include <SA/Logger/Streams/ALogStream.hpp>
 
+/**
+*	\file Logger.hpp
+*
+*	\brief <b>Logger</b> class implementation.
+*
+*	\ingroup Logger
+*	\{
+*/
+
+
 namespace Sa
 {
+	/**
+	*	\brief Basic Logger class implementation.
+	* 
+	*	Non-thread-safe logging.
+	*/
 	class Logger
 	{
 	protected:
@@ -21,6 +36,11 @@ namespace Sa
 		std::vector<ALogStream*> mStreams;
 
 
+		/**
+		*	\brief Child-implementation constructor.
+		* 
+		*	\param[in] _bDuplicateLogs	bDuplicateLogs value.
+		*/
 		Logger(bool _bDuplicateLogs) noexcept;
 
 		/**
@@ -93,5 +113,8 @@ namespace Sa
 }
 
 #include <SA/Logger/Logger.inl>
+
+
+/** \} */
 
 #endif // GUARD

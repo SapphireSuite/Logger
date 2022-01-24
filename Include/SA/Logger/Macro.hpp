@@ -29,6 +29,7 @@
 
 namespace Sa
 {
+	/// Global Debug namespace
 	namespace Debug
 	{
 		/// Logger instance.
@@ -89,7 +90,7 @@ namespace Sa
 
 	/// \endcond
 
-#if SA_DEBUG || SA_LOG_RELEASE_OPT || defined(DOXYGEN)
+#if defined(DOXYGEN)
 
 	/**
 	*	\def SA_LOG(_str, _lvl, _chan, _dets)
@@ -103,7 +104,7 @@ namespace Sa
 	*	\param[in] _chan	Channel of the log (optional).
 	*	\param[in] _dets	Additional details string of the log (optional).
 	*/
-	#define SA_LOG(...) __SA_SELECT_LOG_MACRO(__VA_ARGS__, __SA_LOG4, __SA_LOG3, __SA_LOG2, __SA_LOG1)(__VA_ARGS__)
+	#define SA_LOG(_str, _lvl, _chan, _dets)
 
 	/**
 	*	\def SA_WARN(_pred, _chan, _dets)
@@ -116,7 +117,7 @@ namespace Sa
 	*	\param[in] _chan	Channel of the log.
 	*	\param[in] _dets	Additional details string of the log (optional).
 	*/
-	#define SA_WARN(_pred, ...) __SA_COND_LOG(_pred, Warning, ##__VA_ARGS__)
+	#define SA_WARN(_pred, _chan, _dets)
 
 	/**
 	*	\def SA_ERROR(_pred, _chan, _dets)
@@ -129,6 +130,14 @@ namespace Sa
 	*	\param[in] _chan	Channel of the log.
 	*	\param[in] _dets	Additional details string of the log (optional).
 	*/
+	#define SA_ERROR(_pred, _chan, _dets)
+
+#elif SA_DEBUG || SA_LOG_RELEASE_OPT
+
+	#define SA_LOG(...) __SA_SELECT_LOG_MACRO(__VA_ARGS__, __SA_LOG4, __SA_LOG3, __SA_LOG2, __SA_LOG1)(__VA_ARGS__)
+
+	#define SA_WARN(_pred, ...) __SA_COND_LOG(_pred, Warning, ##__VA_ARGS__)
+
 	#define SA_ERROR(_pred, ...) __SA_COND_LOG(_pred, Error, ##__VA_ARGS__)
 
 #else

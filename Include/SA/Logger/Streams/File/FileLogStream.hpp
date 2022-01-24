@@ -9,8 +9,19 @@
 
 #include <SA/Logger/Streams/ALogStream.hpp>
 
+/**
+*	\file FileLogStream.hpp
+*
+*	\brief Log <b>file stream</b> type implementation.
+*
+*	\ingroup Logger_File
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Log file stream type.
 	class FileLogStream : public ALogStream
 	{
 	protected:
@@ -43,5 +54,8 @@ namespace Sa
 		ALogStream& Output(const Log& _log) override final;
 	};
 }
+
+
+/** \} */
 
 #endif // GUARD

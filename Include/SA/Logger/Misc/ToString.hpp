@@ -16,7 +16,7 @@
 *
 *	\brief \b Definition of Sapphire \b ToString methods.
 *
-*	\ingroup Logger
+*	\ingroup Logger_Misc
 *	\{
 */
 
@@ -229,9 +229,9 @@ namespace Sa
 //}
 }
 
+#include <SA/Logger/Misc/ToString.inl>
+
 
 /** \} */
-
-#include <SA/Logger/Misc/ToString.inl>
 
 #endif // GUARD

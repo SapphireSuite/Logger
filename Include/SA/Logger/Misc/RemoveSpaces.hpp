@@ -7,6 +7,16 @@
 
 #include <string>
 
+/**
+*	\file RemoveSpaces.hpp
+*
+*	\brief Remove spaces in string algorithm implementation.
+*
+*	\ingroup Logger_Misc
+*	\{
+*/
+
+
 namespace Sa
 {
 	/// \cond Internal
@@ -25,5 +35,8 @@ namespace Sa
 
 	/// \endcond
 }
+
+
+/** \} */
 
 #endif // GUARD

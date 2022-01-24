@@ -101,7 +101,7 @@ namespace Sa
 	/**
 	*	\brief \e Crossplatform implementation of set color in console.
 	*
-	*	\param[in] _cslColorMask	Console color mask.
+	*	\param[in] _cslColor	Console color mask.
 	*/
 	void SetConsoleColor(ConsoleColor _cslColor);
 }

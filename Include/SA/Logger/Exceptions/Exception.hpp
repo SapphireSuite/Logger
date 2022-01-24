@@ -58,11 +58,17 @@ namespace Sa
 	/// Default type of exception.
 	using Exception_Default = Exception;
 
+
+	/// \cond Internal
+
+	/// Define Default Exception creation method.
 	#define __SA_CREATE_EXCEPTION_Default(_baseInfos, _pred, ...) Sa::Exception_Default(\
 		_baseInfos,\
 		_pred,\
 		##__VA_ARGS__\
 	)
+
+	/// \endcond
 }
 
 

@@ -41,12 +41,19 @@ namespace Sa
 		) noexcept;
 	};
 
+
+
+	/// \cond Internal
+
+	/// Define Nullptr Exception creation method.
 	#define __SA_CREATE_EXCEPTION_Nullptr(_baseInfos, _pred, ...) Sa::Exception_Nullptr(\
 		_baseInfos,\
 		_pred,\
 		SA_WSTR(_pred),\
 		##__VA_ARGS__\
 	)
+
+	/// \endcond
 }
 
 

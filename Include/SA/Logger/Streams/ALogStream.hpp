@@ -7,19 +7,21 @@
 
 #include <SA/Logger/Log/Log.hpp>
 
+/**
+*	\file ALogStream.hpp
+*
+*	\brief Log <b>base stream</b> implementation.
+*
+*	Stream used by Logger.
+*
+*	\ingroup Logger_Stream
+*	\{
+*/
+
+
 namespace Sa
 {
-	/**
-	*	\file ALogStream.hpp
-	*
-	*	\brief Log <b>base stream</b> implementation.
-	*
-	*	Stream used by Logger.
-	*
-	*	\ingroup Logger_Stream
-	*	\{
-	*/
-
+	/// Abstract log stream class.
 	class ALogStream
 	{
 	public:
@@ -33,7 +35,7 @@ namespace Sa
 		virtual ALogStream& Output(const Log& _log) = 0;
 
 		/**
-		*	\brief Force a steam to flush.
+		*	\brief Force the stream to flush.
 		*/
 		virtual void Flush();
 
@@ -46,8 +48,9 @@ namespace Sa
 		*/
 		ALogStream& operator<<(const Log& _log);
 	};
-
-	/** \} */
 }
+
+
+/** \} */
 
 #endif // GUARD

@@ -8,11 +8,23 @@
 #include <SA/Logger/Streams/ALogStream.hpp>
 #include <SA/Logger/Streams/Console/ConsoleColorTheme.hpp>
 
+/**
+*	\file ConsoleLogStream.hpp
+*
+*	\brief Log <b>console stream</b> type implementation.
+*
+*	\ingroup Logger_Console
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Console log stream implementation.
 	class ConsoleLogStream : public ALogStream
 	{
 	public:
+		/// Color theme.
 		ConsoleColorTheme theme;
 
 
@@ -21,5 +33,8 @@ namespace Sa
 		ALogStream& Output(const Log& _log) override final;
 	};
 }
+
+
+/** \} */
 
 #endif // GUARD

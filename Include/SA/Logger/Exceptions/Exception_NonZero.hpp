@@ -39,12 +39,18 @@ namespace Sa
 		) noexcept;
 	};
 
+
+	/// \cond Internal
+
+	/// Define NonZero Exception creation method.
 	#define __SA_CREATE_EXCEPTION_NonZero(_baseInfos, _pred, ...) Sa::Exception_NonZero(\
 		_baseInfos,\
 		_pred,\
 		SA_WSTR(_pred),\
 		##__VA_ARGS__\
 	)
+
+	/// \endcond
 }
 
 

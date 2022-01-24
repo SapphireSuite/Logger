@@ -8,6 +8,15 @@
 #include <SA/Logger/Log/LogLevel.hpp>
 #include <SA/Logger/Streams/Console/ConsoleColor.hpp>
 
+/**
+*	\file ConsoleColorTheme.hpp
+* 
+*	\brief Define color theme by LogLevel.
+* 
+*	\ingroup Logger_Console
+*	\{
+*/
+
 namespace Sa
 {
 	/**
@@ -49,5 +58,8 @@ namespace Sa
 		void SetConsoleColorFromLevel(LogLevel _lvl) const;
 	};
 }
+
+
+/** \} */
 
 #endif // GUARD

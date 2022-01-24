@@ -53,7 +53,11 @@ namespace Sa
 			std::wstring&& _details = L""
 		) noexcept;
 	};
+	
 
+	/// \cond Internal
+
+	/// Define OutOfRange Exception creation method.
 	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfos, _currIndex, _minBound, _maxBound, ...) Sa::Exception_OutOfRange(\
 		_baseInfos,\
 		_currIndex,\
@@ -61,6 +65,8 @@ namespace Sa
 		_maxBound,\
 		##__VA_ARGS__\
 	)
+
+	/// \endcond
 }
 
 

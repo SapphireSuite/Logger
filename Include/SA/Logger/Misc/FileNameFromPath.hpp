@@ -5,6 +5,15 @@
 #ifndef SAPPHIRE_LOGGER_FILE_NAME_FROM_PATH_GUARD
 #define SAPPHIRE_LOGGER_FILE_NAME_FROM_PATH_GUARD
 
+/**
+*	\file FileNameFromPath.hpp
+* 
+*	\brief Retreive file name from full path algorithm implementation.
+* 
+*	\ingroup Logger_Misc
+*	\{
+*/
+
 namespace Sa
 {
 	/// \cond Internal
@@ -23,5 +32,8 @@ namespace Sa
 
 	/// \endcond
 }
+
+
+/** \} */
 
 #endif // GUARD

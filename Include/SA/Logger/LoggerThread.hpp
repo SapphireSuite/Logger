@@ -13,8 +13,24 @@
 #include <thread>
 #include <condition_variable>
 
+/**
+*	\file LoggerThread.hpp
+*
+*	\brief \e Multithread <b>Logger</b> class implementation.
+*
+*	\ingroup Logger
+*	\{
+*/
+
+
 namespace Sa
 {
+	/**
+	*	\brief Multithread logger class.
+	* 
+	*	Create one thread for log output.
+	*	Push logs in thread-safe queue.
+	*/
 	class LoggerThread : public Logger
 	{
 		/// Output stream mutex operations.
@@ -46,10 +62,15 @@ namespace Sa
 		/// Default Constructor.
 		LoggerThread() noexcept;
 
+		/**
+		*	Thread-safe destructor.
+		*	Flush all remaining logs in streams before join.
+		*/
 		~LoggerThread();
 
 
 		using Logger::Push;
+		using Logger::Assert;
 
 		void Register(ALogStream& _stream) override final;
 		bool Unregister(ALogStream& _stream) override final;
@@ -57,5 +78,8 @@ namespace Sa
 		void Flush() override final;
 	};
 }
+
+
+/** \}*/
 
 #endif // GUARD
