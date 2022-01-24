@@ -70,6 +70,7 @@ namespace Sa
 			std::wstring&& _details = L""
 		) noexcept;
 
+		virtual ~Log() = default;
 	};
 
 	/**
