@@ -7,6 +7,7 @@
 
 #include <iostream>
 
+#include <SA/Support/Debug.hpp>
 #include <SA/Support/Compilers.hpp>
 #include <SA/Support/Stringify.hpp>
 
@@ -88,6 +89,8 @@ namespace Sa
 
 	/// \endcond
 
+#if SA_DEBUG || SA_LOG_RELEASE_OPT || defined(DOXYGEN)
+
 	/**
 	*	\def SA_LOG(_str, _lvl, _chan, _dets)
 	*
@@ -128,6 +131,16 @@ namespace Sa
 	*/
 	#define SA_ERROR(_pred, ...) __SA_COND_LOG(_pred, Error, ##__VA_ARGS__)
 
+#else
+
+	#define SA_LOG(...) {}
+
+	#define SA_WARN(...) {}
+
+	#define SA_ERROR(...) {}
+
+#endif
+
 //}
 
 
@@ -147,6 +160,8 @@ namespace Sa
 
 	/// \endcond
 
+#if SA_DEBUG || SA_LOG_RELEASE_OPT || defined(DOXYGEN)
+
 	/**
 	*	\def SA_ASSERT(_type, _chan, ...)
 	*
@@ -159,6 +174,29 @@ namespace Sa
 	*	\param[in] ...			Additionnal args for exception (depends on _type).
 	*/
 	#define SA_ASSERT(_type, _chan, ...) { __SA_LOGGER->Assert(__SA_CREATE_EXCEPTION(_type, _chan, ##__VA_ARGS__)); }
+
+	/**
+	*	\def SA_ASSERT_EXEC(_type, _chan, _exec, ...)
+	*
+	*	\brief Sapphire Assertion execution macro.
+	*	_exec will still be executed in non-debug but no debug infos will be generated.
+	*
+	*	Helper macro to use Debug::Assert.
+	*
+	*	\param[in] _type		type of the exception.
+	*	\param[in] _chan		Channel of the assert.
+	*	\param[in] _exec		Method to execute (even in non-debug).
+	*	\param[in] ...			Additionnal args for exception (depends on _type).
+	*/
+	#define SA_ASSERT_EXEC(_type, _chan, _exec, ...) SA_ASSERT(_type, _chan, _exec, ##__VA_ARGS__)
+
+#else
+
+	#define SA_ASSERT(...) {}
+
+	#define SA_ASSERT_EXEC(_type, _chan, _exec, ...) { _exec; }
+
+#endif
 
 //}
 

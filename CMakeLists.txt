@@ -62,6 +62,14 @@ endif()
 option(SA_LOGGER_BUILD_TESTS_OPT "Should build SA_Maths tests" OFF)
 
 
+## SA_Logger should log even in release.
+option(SA_LOG_RELEASE_OPT "Should log in release" ON)
+
+if(SA_LOG_RELEASE_OPT)
+	target_compile_definitions(SA_Logger PUBLIC SA_LOG_RELEASE_OPT)
+endif()
+
+
 
 # Entrypoints
 
