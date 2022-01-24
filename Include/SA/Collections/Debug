@@ -1,0 +1,16 @@
+// Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
+
+#pragma once
+
+#ifndef SAPPHIRE_COLLECTIONS_DEBUG_GUARD
+#define SAPPHIRE_COLLECTIONS_DEBUG_GUARD
+
+#include <SA/Logger/Macro.hpp>
+
+#include <SA/Logger/Logger.hpp>
+#include <SA/Logger/LoggerThread.hpp>
+
+#include <SA/Collections/Exceptions>
+#include <SA/Collections/LogStreams>
+
+#endif // GUARD
