@@ -11,7 +11,6 @@
 #include <SA/Support/Stringify.hpp>
 
 #include <SA/Logger/Logger.hpp>
-#include <SA/Logger/Log/Log.hpp>
 
 #include <SA/Logger/Misc/RemoveSpaces.hpp>
 #include <SA/Logger/Misc/FileNameFromPath.hpp>
@@ -128,6 +127,38 @@ namespace Sa
 	*	\param[in] _dets	Additional details string of the log (optional).
 	*/
 	#define SA_ERROR(_pred, ...) __SA_COND_LOG(_pred, Error, ##__VA_ARGS__)
+
+//}
+
+
+//{ Assert
+
+	/// \cond Internal
+
+	#define __SA_CREATE_EXCEPTION(_type, _chan, ...) __SA_CREATE_EXCEPTION_##_type(\
+		(Sa::Exception::BaseInfos{\
+			__SA_FILE_NAME,\
+			__LINE__,\
+			__SA_FUNC_NAME,\
+			__SA_CHAN_NAME(_chan)\
+		}),\
+		##__VA_ARGS__\
+	)
+
+	/// \endcond
+
+	/**
+	*	\def SA_ASSERT(_type, _chan, ...)
+	*
+	*	\brief Sapphire Assertion macro.
+	*
+	*	Helper macro to use Debug::Assert.
+	*
+	*	\param[in] _type		type of the exception.
+	*	\param[in] _chan		Channel of the assert.
+	*	\param[in] ...			Additionnal args for exception (depends on _type).
+	*/
+	#define SA_ASSERT(_type, _chan, ...) { __SA_LOGGER->Assert(__SA_CREATE_EXCEPTION(_type, _chan, ##__VA_ARGS__)); }
 
 //}
 

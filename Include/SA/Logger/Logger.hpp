@@ -77,6 +77,18 @@ namespace Sa
 		*/
 		template <typename LogT>
 		void Push(LogT&& _log);
+
+		/**
+		*	\brief Process exception.
+		*
+		*	Log assertion on success, otherwise throw exception.
+		*	Use SA_ASSERT as helper call.
+		*
+		*	\tparam ExcepT		Exception type.
+		*	\param[in] _exc		exception to process.
+		*/
+		template <typename ExcepT>
+		void Assert(ExcepT&& _exc);
 	};
 }
 

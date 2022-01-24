@@ -9,4 +9,20 @@ namespace Sa
 
 		Push_Internal(log);
 	}
+
+	template <typename ExcepT>
+	void Logger::Assert(ExcepT&& _exc)
+	{
+		if (_exc.level == LogLevel::AssertSuccess)
+			Push(std::forward<ExcepT>(_exc)); // Simple log.
+		else
+		{
+			Flush();
+
+			// Force instant output (ignore process).
+			Output(_exc);
+
+			throw std::forward<ExcepT>(_exc);
+		}
+	}
 }
