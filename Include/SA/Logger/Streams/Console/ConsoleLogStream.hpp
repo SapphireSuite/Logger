@@ -15,6 +15,9 @@ namespace Sa
 	public:
 		ConsoleColorTheme theme;
 
+
+		void Flush() override final;
+
 		ALogStream& Output(const Log& _log) override final;
 	};
 }

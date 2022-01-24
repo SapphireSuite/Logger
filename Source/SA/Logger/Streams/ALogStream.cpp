@@ -4,6 +4,10 @@
 
 namespace Sa
 {
+	void ALogStream::Flush()
+	{
+	}
+
 	ALogStream& ALogStream::operator<<(const Log& _log)
 	{
 		return Output(_log);

@@ -33,6 +33,11 @@ namespace Sa
 		virtual ALogStream& Output(const Log& _log) = 0;
 
 		/**
+		*	\brief Force a steam to flush.
+		*/
+		virtual void Flush();
+
+		/**
 		*	\brief Output log operator.
 		*
 		*	\param[in] _log		Log to output.

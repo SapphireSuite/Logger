@@ -13,6 +13,9 @@ namespace Sa
 {
 	class Logger
 	{
+	protected:
+
+		/// Registered output streams.
 		std::vector<ALogStream*> mStreams;
 
 	public:
@@ -38,6 +41,7 @@ namespace Sa
 		*	\param[in] _log		Log to output.
 		*/
 		void Output(const Log& _log);
+		virtual void Flush();
 	};
 }
 

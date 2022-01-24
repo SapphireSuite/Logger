@@ -59,6 +59,11 @@ namespace Sa
 	}
 
 
+	void FileLogStream::Flush()
+	{
+		mHandle.flush();
+	}
+
 	ALogStream& FileLogStream::Output(const Log& _log)
 	{
 		mHandle << ToWString(_log) << std::endl;

@@ -6,6 +6,11 @@
 
 namespace Sa
 {
+	void ConsoleLogStream::Flush()
+	{
+		std::wcout.flush();
+	}
+
 	ALogStream& ConsoleLogStream::Output(const Log& _log)
 	{
 		theme.SetConsoleColorFromLevel(_log.level);

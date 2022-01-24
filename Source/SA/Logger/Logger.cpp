@@ -23,6 +23,12 @@ namespace Sa
 		return false;
 	}
 
+	void Logger::Flush()
+	{
+		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
+			(*it)->Flush();
+	}
+
 	void Logger::Output(const Log& _log)
 	{
 		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
