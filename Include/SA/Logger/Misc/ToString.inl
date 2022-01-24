@@ -93,13 +93,13 @@ namespace Sa
 	template <typename T>
 	std::wstring ToWString(const T* _elems, uint64_t _size)
 	{
-		std::string res = "{ ";
+		std::wstring res = L"{ ";
 
 		for (uint32_t i = 0; i < _size; ++i)
-			res += ToWString(_elems[i]) + ", ";
+			res += ToWString(_elems[i]) + L", ";
 
-		res[res.size() - 2] = ' ';
-		res[res.size() - 1] = '}';
+		res[res.size() - 2] = L' ';
+		res[res.size() - 1] = L'}';
 
 		return res;
 	}
