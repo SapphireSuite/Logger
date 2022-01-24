@@ -45,6 +45,11 @@ target_compile_features(SA_Logger PUBLIC cxx_std_20)
 ### SA_Logger module implementation preprocessor.
 target_compile_definitions(SA_Logger PUBLIC SA_LOGGER_IMPL)
 
+### Thread
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+target_link_libraries(SA_Logger PUBLIC Threads::Threads)
+
 ### Advanced MSVC preprocessor required for Core::Debug
 ### https://docs.microsoft.com/en-us/cpp/preprocessor/preprocessor-experimental-overview
 if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
