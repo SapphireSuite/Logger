@@ -14,17 +14,46 @@ namespace Sa
 	class Logger
 	{
 	protected:
+		/// Should duplicate logs on push.
+		const bool bDuplicateLogs = false;
 
 		/// Registered output streams.
 		std::vector<ALogStream*> mStreams;
 
+
+		Logger(bool _bDuplicateLogs) noexcept;
+
+		/**
+		*	\brief Push a new \b abstract log in logger.
+		* 
+		*	\param[in] _log		Log to push.
+		*/
+		virtual void Push_Internal(const Log* _log);
+
+		/**
+		*	\brief Process log to output.
+		* 
+		*	\param[in] _log		Log to process.
+		*/
+		void ProcessLog(const Log* _log);
+
+		/**
+		*	\brief Output a log into registered streams.
+		*
+		*	\param[in] _log		Log to output.
+		*/
+		virtual void Output(const Log& _log);
+
 	public:
+		/// Default constructor.
+		Logger() = default;
+
 		/**
 		*	\brief Register a stream to output.
 		* 
 		*	\param[in] _stream	Stream to register.
 		*/
-		void Register(ALogStream& _stream);
+		virtual void Register(ALogStream& _stream);
 
 		/**
 		*	\brief Unregister a stream from output.
@@ -33,16 +62,24 @@ namespace Sa
 		*
 		*	\return true on success.
 		*/
-		bool Unregister(ALogStream& _stream);
+		virtual bool Unregister(ALogStream& _stream);
 
 		/**
-		*	\brief Output a log into registered streams.
-		*
-		*	\param[in] _log		Log to output.
+		*	\brief Force logger to flush all streams.
 		*/
-		void Output(const Log& _log);
 		virtual void Flush();
+
+		/**
+		*	\brief Push a new \b typped log in logger.
+		* 
+		*	\tparam LogT		Log type.
+		*	\param[in] _log		Log to push.
+		*/
+		template <typename LogT>
+		void Push(LogT&& _log);
 	};
 }
+
+#include <SA/Logger/Logger.inl>
 
 #endif // GUARD

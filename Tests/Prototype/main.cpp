@@ -4,14 +4,14 @@
 
 #define LOG(_str) std::cout << _str << std::endl;
 
-#include <SA/Logger/Logger.hpp>
+#include <SA/Logger/LoggerThread.hpp>
 #include <SA/Logger/Streams/Console/ConsoleLogStream.hpp>
 #include <SA/Logger/Streams/File/FileLogStream.hpp>
 using namespace Sa;
 
 int main()
 {
-	Logger logger;
+	LoggerThread logger;
 
 	ConsoleLogStream cslStream;
 	logger.Register(cslStream);
@@ -29,7 +29,13 @@ int main()
 		L"My Details"
 	};
 
-	logger.Output(l);
+	std::cout << "Start Push" << std::endl;
+
+
+	for (int i = 0; i < 100; ++i)
+		logger.Push(std::move(*new Log{ l }));
+
+	logger.Flush();
 
 	return 0;
 }
