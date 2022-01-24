@@ -2,6 +2,8 @@
 
 #include <SA/Logger/Misc/ToString.hpp>
 
+#include <cstring>
+
 namespace Sa
 {
 //{ ToString
