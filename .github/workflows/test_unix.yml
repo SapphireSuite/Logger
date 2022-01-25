@@ -24,7 +24,7 @@ defaults:
 # Variables common to all jobs.
 env:
   CMAKE_V: '3.17.0'
-  CMAKE_OPTIONS: '-DSA_CI=1 -DSA_LOGGER_BUILD_TESTS_OPT=ON'
+  CMAKE_OPTIONS: '-DSA_CI=1 -DSA_LOGGER_BUILD_TESTS_OPT=ON -DSA_LOGGER_SANITIZER_OPT=ON'
 
 
 # Job matrix
