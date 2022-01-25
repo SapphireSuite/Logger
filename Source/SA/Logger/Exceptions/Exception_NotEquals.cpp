@@ -10,9 +10,9 @@ namespace Sa
 		msg.replace(msg.find(L"=="), 2, L"!=");
 
 		// Reverse predicate.
-		if (level == LogLevel::AssertFailed)
+		if (level == LogLevel::AssertFailure)
 			level = LogLevel::AssertSuccess;
 		else if (level == LogLevel::AssertSuccess)
-			level = LogLevel::AssertFailed;
+			level = LogLevel::AssertFailure;
 	}
 }

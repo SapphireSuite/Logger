@@ -15,7 +15,7 @@ namespace Sa
 			_infos.line,
 			std::move(_infos.function),
 			std::move(_msg),
-			_pred ? LogLevel::AssertSuccess : LogLevel::AssertFailed,
+			_pred ? LogLevel::AssertSuccess : LogLevel::AssertFailure,
 			std::move(_infos.chanName),
 			std::move(_details))
 	{
