@@ -6,8 +6,17 @@ namespace Sa
 {
 	void ALogStream::ProcessLog(const Log& _log, bool _bForce)
 	{
-		(void)_bForce;
-		Output(_log);
+		if (_bForce)
+		{
+			Output(_log);
+			return;
+		}
+
+		const bool bLevelEnabled = levelFlags & _log.level;
+		//const bool bChannelEnabled = channelFilter.IsEnabled(_log.chanName);
+
+		if (bLevelEnabled/* && bChannelEnabled*/)
+			Output(_log);
 	}
 
 	void ALogStream::Flush()

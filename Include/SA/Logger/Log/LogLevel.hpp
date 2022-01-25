@@ -5,9 +5,9 @@
 #ifndef SAPPHIRE_LOGGER_LOG_LEVEL_GUARD
 #define SAPPHIRE_LOGGER_LOG_LEVEL_GUARD
 
-#include <cstdint>
-
 #include <string>
+
+#include <SA/Support/Variadics/Flags.hpp>
 
 /**
 *	\file LogLevel.hpp
@@ -50,6 +50,8 @@ namespace Sa
 
 	/// Shortcut alias.
 	using LogLvl = LogLevel;
+
+	SA_DEFINE_ENUM_FLAGS(LogLevel)
 
 
 	/**

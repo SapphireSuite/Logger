@@ -33,6 +33,9 @@ namespace Sa
 		virtual void Output(const Log& _log) = 0;
 
 	public:
+		//ChannelFilter channelFilter;
+		Flags<LogLevel> levelFlags = LogLevel::Default;
+
 		/**
 		*	\brief Process a log to output in stream.
 		*
