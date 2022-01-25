@@ -18,9 +18,8 @@ if(MSVC)
 
 else()
 
-	# TODO: Fix CI integration
 	# Thread sanitizer.
-	#target_compile_options(SA_Logger PUBLIC -fsanitize=thread)
+	target_compile_options(SA_Logger PUBLIC -fsanitize=thread)
 
 	# Max warning level.
 	target_compile_options(SA_Logger PUBLIC -Wall -Wextra)
