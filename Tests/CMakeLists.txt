@@ -18,7 +18,8 @@ if(MSVC)
 
 else()
 
-	# Thread sanitizer.
+	# Thread sanitizer: compile and link.
+	target_link_options(SA_Logger PUBLIC -fsanitize=thread)
 	target_compile_options(SA_Logger PUBLIC -fsanitize=thread)
 
 	# Max warning level.
