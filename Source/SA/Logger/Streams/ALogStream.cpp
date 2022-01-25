@@ -13,14 +13,15 @@ namespace Sa
 		}
 
 		const bool bLevelEnabled = levelFlags & _log.level;
-		//const bool bChannelEnabled = channelFilter.IsEnabled(_log.chanName);
+		const bool bChannelEnabled = channelFilter.IsChannelEnabled(_log.chanName);
 
-		if (bLevelEnabled/* && bChannelEnabled*/)
+		if (bLevelEnabled && bChannelEnabled)
 			Output(_log);
 	}
 
 	void ALogStream::Flush()
 	{
+		/* Implementation in children */
 	}
 
 

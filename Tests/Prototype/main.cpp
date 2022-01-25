@@ -30,13 +30,13 @@ int main()
 
 	cslStream.levelFlags.Remove(LogLevel::Warning);
 
-	SA_LOG("This log level is NOT enabled in console!", Warning, SA / TestChan);
+	SA_LOG("This log level is NOT enabled in console!", Warning, SA/TestChan);
 
 	logger.Flush();
 
 	cslStream.levelFlags.Add(LogLevel::Warning);
 
-	SA_LOG("This log level is enabled AGAIN in console!", Warning, SA / TestChan);
+	SA_LOG("This log level is enabled AGAIN in console!", Warning, SA/TestChan);
 
 //}
 

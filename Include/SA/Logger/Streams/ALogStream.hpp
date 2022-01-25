@@ -6,6 +6,7 @@
 #define SAPPHIRE_LOGGER_ALOG_STREAM_GUARD
 
 #include <SA/Logger/Log/Log.hpp>
+#include <SA/Logger/Log/LogChannelFilter.hpp>
 
 /**
 *	\file ALogStream.hpp
@@ -33,7 +34,7 @@ namespace Sa
 		virtual void Output(const Log& _log) = 0;
 
 	public:
-		//ChannelFilter channelFilter;
+		LogChannelFilter channelFilter;
 		Flags<LogLevel> levelFlags = LogLevel::Default;
 
 		/**
