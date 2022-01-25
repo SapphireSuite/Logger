@@ -64,7 +64,7 @@ endif()
 # Options
 
 ## Add SA_Logger's tests to build tree.
-option(SA_LOGGER_BUILD_TESTS_OPT "Should build SA_Maths tests" OFF)
+option(SA_LOGGER_BUILD_TESTS_OPT "Should build SA_Logger tests" OFF)
 
 
 ## SA_Logger should log even in release.
