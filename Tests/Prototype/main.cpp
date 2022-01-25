@@ -31,5 +31,7 @@ int main()
 		SA_LOG("CATCH");
 	}
 
+	logger.Flush();
+
 	return 0;
 }
