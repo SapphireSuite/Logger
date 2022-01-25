@@ -4,6 +4,12 @@
 
 namespace Sa
 {
+	namespace Debug
+	{
+		Logger* logger = nullptr;
+	}
+
+
 	Logger::Logger(bool _bDuplicateLogs) noexcept :
 		bDuplicateLogs{ _bDuplicateLogs }
 	{

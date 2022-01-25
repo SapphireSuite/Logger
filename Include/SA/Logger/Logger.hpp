@@ -110,6 +110,13 @@ namespace Sa
 		template <typename ExcepT>
 		void Assert(ExcepT&& _exc);
 	};
+
+	/// Global Debug namespace
+	namespace Debug
+	{
+		/// Logger instance.
+		extern Logger* logger;
+	}
 }
 
 #include <SA/Logger/Logger.inl>

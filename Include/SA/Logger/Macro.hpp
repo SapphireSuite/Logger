@@ -29,13 +29,6 @@
 
 namespace Sa
 {
-	/// Global Debug namespace
-	namespace Debug
-	{
-		/// Logger instance.
-		extern Logger* logger = nullptr;
-	}
-
 	/// \cond Internal
 
 //{ Function Name
