@@ -35,6 +35,9 @@ namespace Sa
 		*/
 		void CreateLogFile(const std::string& _fileFullPath);
 
+
+		void Output(const Log& _log) override final;
+
 	public:
 		/**
 		*	\e Value Constructor
@@ -50,8 +53,6 @@ namespace Sa
 
 
 		void Flush() override final;
-
-		ALogStream& Output(const Log& _log) override final;
 	};
 }
 

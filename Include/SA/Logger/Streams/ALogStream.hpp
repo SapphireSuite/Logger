@@ -24,15 +24,22 @@ namespace Sa
 	/// Abstract log stream class.
 	class ALogStream
 	{
-	public:
+	protected:
 		/**
-		*	\brief Output a log.
+		*	\brief Output a log in stream.
 		*
 		*	\param[in] _log		Log to output.
-		*
-		*	\return this.
 		*/
-		virtual ALogStream& Output(const Log& _log) = 0;
+		virtual void Output(const Log& _log) = 0;
+
+	public:
+		/**
+		*	\brief Process a log to output in stream.
+		*
+		*	\param[in] _log		Log to process.
+		*	\param[in] _bForce	Should force log process. Default is false.
+		*/
+		void ProcessLog(const Log& _log, bool _bForce = false);
 
 		/**
 		*	\brief Force the stream to flush.

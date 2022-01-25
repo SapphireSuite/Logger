@@ -59,7 +59,7 @@ namespace Sa
 
 		void Push_Internal(const Log* _log) override final;
 
-		void Output(const Log& _log) override final;
+		void ProcessLog(const Log* _log, bool _bForce = false) override final;
 
 		void ThreadLoop();
 

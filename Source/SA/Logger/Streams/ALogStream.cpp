@@ -4,12 +4,21 @@
 
 namespace Sa
 {
+	void ALogStream::ProcessLog(const Log& _log, bool _bForce)
+	{
+		(void)_bForce;
+		Output(_log);
+	}
+
 	void ALogStream::Flush()
 	{
 	}
 
+
 	ALogStream& ALogStream::operator<<(const Log& _log)
 	{
-		return Output(_log);
+		ProcessLog(_log);
+
+		return *this;
 	}
 }

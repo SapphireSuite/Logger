@@ -54,15 +54,9 @@ namespace Sa
 		*	\brief Process log to output.
 		* 
 		*	\param[in] _log		Log to process.
+		*	\param[in] _bForce	Should force log process. Default is false.
 		*/
-		void ProcessLog(const Log* _log);
-
-		/**
-		*	\brief Output a log into registered streams.
-		*
-		*	\param[in] _log		Log to output.
-		*/
-		virtual void Output(const Log& _log);
+		virtual void ProcessLog(const Log* _log, bool _bForce = false);
 
 	public:
 		/// Default constructor.

@@ -23,14 +23,14 @@ namespace Sa
 	/// Console log stream implementation.
 	class ConsoleLogStream : public ALogStream
 	{
+		void Output(const Log& _log) override final;
+
 	public:
 		/// Color theme.
 		ConsoleColorTheme theme;
 
 
 		void Flush() override final;
-
-		ALogStream& Output(const Log& _log) override final;
 	};
 }
 

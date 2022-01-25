@@ -11,14 +11,12 @@ namespace Sa
 		std::wcout.flush();
 	}
 
-	ALogStream& ConsoleLogStream::Output(const Log& _log)
+	void ConsoleLogStream::Output(const Log& _log)
 	{
 		theme.SetConsoleColorFromLevel(_log.level);
 
 		std::wcout << ToWString(_log) << std::endl;
 
 		Sa::SetConsoleColor(CslColor::Reset);
-
-		return *this;
 	}
 }

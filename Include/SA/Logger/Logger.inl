@@ -19,8 +19,8 @@ namespace Sa
 		{
 			Flush();
 
-			// Force instant output (ignore process).
-			Output(_exc);
+			// Force instant process.
+			ProcessLog(&_exc, true);
 
 			throw std::forward<ExcepT>(_exc);
 		}

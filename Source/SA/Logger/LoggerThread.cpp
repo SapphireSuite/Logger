@@ -33,11 +33,11 @@ namespace Sa
 		mLogConditionVar.notify_one();
 	}
 
-	void LoggerThread::Output(const Log& _log)
+	void LoggerThread::ProcessLog(const Log* _log, bool _bForce)
 	{
 		std::lock_guard lk(mStreamMutex);
 
-		Logger::Output(_log);
+		Logger::ProcessLog(_log, _bForce);
 	}
 
 	void LoggerThread::ThreadLoop()
