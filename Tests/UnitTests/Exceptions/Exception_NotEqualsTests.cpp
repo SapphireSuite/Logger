@@ -19,6 +19,7 @@ namespace Sa::UT::Exc_NEq
 		}
 		catch (Exception_NotEquals& _exc)
 		{
+			(void)_exc;
 		}
 	}
 }

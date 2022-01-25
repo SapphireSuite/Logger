@@ -19,9 +19,9 @@ namespace Sa::UT::Exc_OOR
 		}
 		catch (Exception_OutOfRange& _exc)
 		{
-			EXPECT_EQ(_exc.currIndex, 10);
-			EXPECT_EQ(_exc.minBound, 0);
-			EXPECT_EQ(_exc.maxBound, 6);
+			EXPECT_EQ(_exc.currIndex, 10u);
+			EXPECT_EQ(_exc.minBound, 0u);
+			EXPECT_EQ(_exc.maxBound, 6u);
 		}
 
 		try
@@ -30,9 +30,9 @@ namespace Sa::UT::Exc_OOR
 		}
 		catch (Exception_OutOfRange& _exc)
 		{
-			EXPECT_EQ(_exc.currIndex, 6);
-			EXPECT_EQ(_exc.minBound, 0);
-			EXPECT_EQ(_exc.maxBound, 6);
+			EXPECT_EQ(_exc.currIndex, 6u);
+			EXPECT_EQ(_exc.minBound, 0u);
+			EXPECT_EQ(_exc.maxBound, 6u);
 		}
 	}
 }

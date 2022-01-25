@@ -20,6 +20,7 @@ namespace Sa::UT::Exc_Nullptr
 		}
 		catch (Exception_Nullptr& _exc)
 		{
+			(void)_exc;
 		}
 	}
 }

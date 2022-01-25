@@ -19,6 +19,7 @@ namespace Sa::UT::Exc_Eq
 		}
 		catch (Exception_Equals1& _exc)
 		{
+			(void)_exc;
 		}
 	}
 
@@ -30,6 +31,7 @@ namespace Sa::UT::Exc_Eq
 		}
 		catch (Exception_Equals& _exc) // try catching any equals exception.
 		{
+			(void)_exc;
 		}
 	}
 

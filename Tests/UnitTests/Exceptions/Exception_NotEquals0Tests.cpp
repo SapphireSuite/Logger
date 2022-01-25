@@ -19,6 +19,7 @@ namespace Sa::UT::Exc_NEq
 		}
 		catch (Exception_NotEquals0& _exc)
 		{
+			(void)_exc;
 		}
 	}
 
@@ -30,6 +31,7 @@ namespace Sa::UT::Exc_NEq
 		}
 		catch (Exception_NotEquals& _exc) // try catching any not equals exception.
 		{
+			(void)_exc;
 		}
 	}
 
@@ -41,6 +43,7 @@ namespace Sa::UT::Exc_NEq
 		}
 		catch (Exception_NotEquals0& _exc)
 		{
+			(void)_exc;
 		}
 	}
 
@@ -52,6 +55,7 @@ namespace Sa::UT::Exc_NEq
 		}
 		catch (Exception_NotEquals0& _exc)
 		{
+			(void)_exc;
 		}
 	}
 }

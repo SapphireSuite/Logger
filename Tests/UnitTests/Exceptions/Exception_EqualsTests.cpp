@@ -19,6 +19,7 @@ namespace Sa::UT::Exc_Eq
 		}
 		catch (Exception_Equals& _exc)
 		{
+			(void)_exc;
 		}
 	}
 }
