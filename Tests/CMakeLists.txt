@@ -20,7 +20,7 @@ else()
 
 	# Thread sanitizer: compile and link.
 	target_link_options(SA_Logger PUBLIC -fsanitize=thread)
-	target_compile_options(SA_Logger PUBLIC -fsanitize=thread)
+	target_compile_options(SA_Logger PUBLIC -fsanitize=thread -fno-omit-frame-pointer)
 
 	# Max warning level.
 	target_compile_options(SA_Logger PUBLIC -Wall -Wextra)
