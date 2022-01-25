@@ -28,6 +28,8 @@ namespace Sa
 		std::lock_guard lk(mLogQueueMutex);
 
 		mLogQueue.push(_log);
+		++mQueueSize;
+
 		mLogConditionVar.notify_one();
 	}
 
@@ -65,6 +67,9 @@ namespace Sa
 			}
 
 			ProcessLog(log);
+
+			// Decrease queue size after process: ensure correct flush.
+			--mQueueSize;
 		}
 	}
 
@@ -85,16 +90,11 @@ namespace Sa
 
 	void LoggerThread::Flush()
 	{
-		while (true)
-		{
+		// Wait for empty queue.
+		while(mQueueSize)
 			std::this_thread::yield();
 
-			std::lock_guard lkQueue(mLogQueueMutex);
-
-			if (mLogQueue.empty())
-				break;
-		}
-
+		// Flush all.
 		std::lock_guard lkStreams(mStreamMutex);
 
 		Logger::Flush();

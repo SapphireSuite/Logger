@@ -40,7 +40,9 @@ namespace Sa
 		/// Logger thread.
 		std::thread mThread;
 
+		/// Current running state.
 		std::atomic<bool> mIsRunning = true;
+
 
 		/// Log queue mutex operations.
 		std::mutex mLogQueueMutex;
@@ -50,6 +52,9 @@ namespace Sa
 
 		/// Log saved queue.
 		std::queue<const Log*> mLogQueue;
+
+		/// Atomic queue size.
+		std::atomic<size_t> mQueueSize = 0;
 
 
 		void Push_Internal(const Log* _log) override final;
