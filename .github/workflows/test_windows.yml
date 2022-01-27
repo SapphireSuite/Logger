@@ -104,7 +104,9 @@ jobs:
         # Install Visual Studio.
         - name: "[Command] Install Visual Studio"
           if: ${{ matrix.gen == 'VS' }}
-          run: echo "GEN=\"${{ matrix.gen_v }}\" -A x64" >> $GITHUB_ENV
+          run: |
+            echo "GEN="${{ matrix.gen_v }}" -A x64" >> $GITHUB_ENV
+            echo ${GEN}
 
 #}
 
@@ -133,6 +135,7 @@ jobs:
               echo "CC=clang-cl" >> $GITHUB_ENV
               echo "CXX=clang-cl" >> $GITHUB_ENV
               echo "GEN=${GEN} -T ClangCl" >> $GITHUB_ENV
+              echo ${GEN}
 
 #}
 
