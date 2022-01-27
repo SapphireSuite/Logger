@@ -47,14 +47,18 @@ jobs:
           - Debug
           - Release
 
+        gen:
+          - Ninja
+
         compiler:
           - GNU
           - Clang
 
-        compiler_v: [9, 10, 11]
-
-        gen:
-          - Ninja
+        include:
+          - compiler: GNU
+            compiler_v: [8, 9, 10, 11]
+          - compiler: Clang
+            compiler_v: [10, 11, 12, 13]
 
 
     # Steps execution.
