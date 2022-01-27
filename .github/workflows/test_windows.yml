@@ -70,6 +70,14 @@ jobs:
             cmake-version: ${{ env.CMAKE_V }}
 
 
+        # Install Clang.
+        - name: "[Package] Install LLVM and Clang"
+          if: ${{ matrix.compiler == 'Clang' }}
+          run: |
+              echo "CC=C:/Program Files/LLVM/bin/clang" >> $GITHUB_ENV
+              echo "CXX=C:/Program Files/LLVM/bin/clang++" >> $GITHUB_ENV
+
+
         # Install Ninja.
         - name: "[Action] Install Ninja 1/2"
           if: ${{ matrix.gen == 'Ninja' }}
@@ -144,7 +152,7 @@ jobs:
             cmake-version: ${{ env.CMAKE_V }}
 
 
-        # Install VS2019.
+        # Install Visual Studio.
         - name: "[Command] Install Visual Studio"
           run: echo "GEN=${{ matrix.gen }}" >> $GITHUB_ENV
 
@@ -154,15 +162,15 @@ jobs:
         # Visual Studio only
         - name: Generate Project - Visual Studio
           if: ${{ matrix.compiler != 'Clang' }}
-          run: cmake -B Build/VS2019/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G "${GEN}" -A x64
+          run: cmake -B Build/VS/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G "${GEN}" -A x64
 
         # Visual Studio with ClangCl
         - name: Generate Project - ClangCl
           if: ${{ matrix.compiler == 'ClangCl' }}
-          run: cmake -B Build/VS2019/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G "${GEN}" -A x64 -T "ClangCl"
+          run: cmake -B Build/VS/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G "${GEN}" -A x64 -T "ClangCl"
 
         - name: Build Project
-          run: cmake --build Build/VS2019/${{ matrix.config }} --config ${{ matrix.config }} --verbose
+          run: cmake --build Build/VS/${{ matrix.config }} --config ${{ matrix.config }} --verbose
 
         - name: Run CTests
-          run: cd Build/VS2019/${{ matrix.config }} && ctest -C ${{ matrix.config }} -V
+          run: cd Build/VS/${{ matrix.config }} && ctest -C ${{ matrix.config }} -V
