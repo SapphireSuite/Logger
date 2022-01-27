@@ -23,133 +23,98 @@ defaults:
 
 # Variables common to all jobs.
 env:
-  CMAKE_V: '3.17.0'
   CMAKE_OPTIONS: '-DSA_CI=1 -DSA_LOGGER_BUILD_TESTS_OPT=ON'
 
 
 # Job matrix
 jobs:
 
-  ctests_win:
-    name: ${{ matrix.config }} ${{ matrix.gen }} ${{ matrix.gen_v }} ${{ matrix.compiler }}
-
-    # Setup environment.
-    runs-on: windows-latest
-
+  MSVC_2017:
+    runs-on: windows-2016
     strategy:
-
-      # Don't cancel jobs on failure.
-      fail-fast: false
-
       matrix:
+        config: [Debug, Release]
 
-        config:
-          - Debug
-          - Release
-
-        gen:
-          - Ninja
-          - VS
-
-        compiler:
-          #- GNU
-          - Clang
-          - MSVC
-
-        include:
-          #- gen: VS
-          #  gen_v: Visual Studio 15 2017
-          - gen: VS
-            gen_v: Visual Studio 16 2019
-          #- gen: VS
-          #  gen_v: Visual Studio 17 2022
-
-        exclude:
-          - gen: Ninja
-            compiler: MSVC
-          - gen: VS
-            compiler: GNU
-
-
-
-    # Steps execution.
     steps:
-
-        - name: "[Action] Checkout repository"
-          uses: actions/checkout@v2
-          with:
-            submodules: recursive
-
-
-        # Install CMake.
-        - name: "[Action] Install CMake"
-          uses: jwlawson/actions-setup-cmake@v1.8
-          with:
-            cmake-version: ${{ env.CMAKE_V }}
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Generate Project
+        run: cmake -B Build ${{ env.CMAKE_OPTIONS }} -G "Visual Studio 15 2017" -A x64
+      - name: Build Project
+        run: cmake --build Build --config ${{ matrix.config }} --verbose
+      - name: Run CTests
+        run: cd Build && ctest -C ${{ matrix.config }} -V
 
 
-#{ Generators
+  MSVC_2019:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        config: [Debug, Release]
 
-        # Install Ninja.
-        - name: "[Action] Install Ninja 1/2"
-          if: ${{ matrix.gen == 'Ninja' }}
-          uses: seanmiddleditch/gha-setup-ninja@master
-
-        # Set env variables.
-        - name: "[Command] Install Ninja 2/2"
-          if: ${{ matrix.gen == 'Ninja' }}
-          run: echo "GEN=Ninja" >> $GITHUB_ENV
-
-
-        # Install Visual Studio.
-        - name: "[Command] Install Visual Studio"
-          if: ${{ matrix.gen == 'VS' }}
-          run: |
-            echo "GEN="${{ matrix.gen_v }}" -A x64" >> $GITHUB_ENV
-            echo ${GEN}
-
-#}
-
-#{ Compilers
-
-        # Install GNU.
-        - name: "[Package] Install GNU"
-          if: ${{ matrix.compiler == 'GNU' }}
-          run: |
-              echo "CC=gcc" >> $GITHUB_ENV
-              echo "CXX=g++" >> $GITHUB_ENV
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Generate Project
+        run: cmake -B Build ${{ env.CMAKE_OPTIONS }} -G "Visual Studio 16 2019" -A x64
+      - name: Build Project
+        run: cmake --build Build --config ${{ matrix.config }} --verbose
+      - name: Run CTests
+        run: cd Build && ctest -C ${{ matrix.config }} -V
 
 
-        # Install Clang.
-        - name: "[Package] Install LLVM and Clang"
-          if: ${{ matrix.compiler == 'Clang' && matrix.gen != 'VS' }}
-          run: |
-              echo "CC=C:/Program Files/LLVM/bin/clang" >> $GITHUB_ENV
-              echo "CXX=C:/Program Files/LLVM/bin/clang++" >> $GITHUB_ENV
+  MSVC_2022:
+    runs-on: windows-2022
+    strategy:
+      matrix:
+        config: [Debug, Release]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Generate Project
+        run: cmake -B Build ${{ env.CMAKE_OPTIONS }} -G "Visual Studio 17 2022" -A x64
+      - name: Build Project
+        run: cmake --build Build --config ${{ matrix.config }} --verbose
+      - name: Run CTests
+        run: cd Build && ctest -C ${{ matrix.config }} -V
 
 
-        # Install ClangCl.
-        - name: "[Package] Install ClangCl"
-          if: ${{ matrix.compiler == 'Clang' && matrix.gen == 'VS' }}
-          run: |
-              echo "CC=clang-cl" >> $GITHUB_ENV
-              echo "CXX=clang-cl" >> $GITHUB_ENV
-              echo "GEN=${GEN} -T ClangCl" >> $GITHUB_ENV
-              echo ${GEN}
+  ClangCL:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        config: [Debug, Release]
 
-#}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - name: Generate Project
+        run: cmake -B Build ${{ env.CMAKE_OPTIONS }} -G "Visual Studio 16 2029" -A x64 -T ClangCL
+      - name: Build Project
+        run: cmake --build Build --config ${{ matrix.config }} --verbose
+      - name: Run CTests
+        run: cd Build && ctest -C ${{ matrix.config }} -V
 
 
-#{ Build & Test
+  Clang:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        config: [Debug, Release]
 
-        # Deploy & Build & Test
-        - name: Generate Project
-          run: cmake -B Build/${{ matrix.gen }}/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G ${GEN}
-
-        - name: Build Project
-          run: cmake --build Build/${{ matrix.gen }}/${{ matrix.config }} --config ${{ matrix.config }} --verbose
-
-        - name: Run CTests
-          run: cd Build/${{ matrix.gen }}/${{ matrix.config }} && ctest -C ${{ matrix.config }} -V
-
-#}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: recursive
+      - uses: seanmiddleditch/gha-setup-ninja@master # Install Ninja.
+      - name: Generate Project
+        run: cmake -B Build -DCMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang++.exe" ${{ env.CMAKE_OPTIONS }} -G Ninja
+      - name: Build Project
+        run: cmake --build Build --config ${{ matrix.config }} --verbose
+      - name: Run CTests
+        run: cd Build && ctest -C ${{ matrix.config }} -V
