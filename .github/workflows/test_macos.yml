@@ -29,61 +29,8 @@ env:
 # Job matrix
 jobs:
 
-  ctests_Xcode:
-    name: ${{ matrix.config }} Xcode ${{ matrix.xcode_v }}
-
-    # Setup environment.
-    runs-on: macos-latest
-
-    strategy:
-
-      # Don't cancel jobs on failure.
-      fail-fast: false
-
-      matrix:
-
-        config:
-          - Debug
-          - Release
-
-        xcode_v: [11.7, 12.5, latest-stable]
-
-    # Steps execution.
-    steps:
-
-        - name: "[Action] Checkout repository"
-          uses: actions/checkout@v2
-          with:
-            submodules: recursive
-
-
-        # Install Xcode.
-        - name: "[Action] Install Xcode"
-          uses: maxim-lobanov/setup-xcode@v1
-          with:
-            xcode-version: ${{ matrix.xcode_v }}
-
-
-        # Install CMake.
-        - name: "[Action] Install CMake"
-          uses: jwlawson/actions-setup-cmake@v1.8
-          with:
-            cmake-version: ${{ env.CMAKE_V }}
-
-
-        # Deploy & Build & Test
-        - name: Generate Project
-          run: cmake -B Build/${{ matrix.gen }}/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }}
-
-        - name: Build Project
-          run: cmake --build Build/${{ matrix.gen }}/${{ matrix.config }} --config ${{ matrix.config }} --verbose
-
-        - name: Run CTests
-          run: cd Build/${{ matrix.gen }}/${{ matrix.config }} && ctest -C ${{ matrix.config }} -V
-
-
   ctests_macos:
-    name: ${{ matrix.config }} ${{ matrix.compiler }} ${{ matrix.compiler_v }}
+    name: ${{ matrix.config }} ${{ matrix.gen }} ${{ matrix.compiler }} ${{ matrix.compiler_v }}
 
     # Setup environment.
     runs-on: macos-latest
@@ -98,14 +45,22 @@ jobs:
         config:
           - Debug
           - Release
-
-        compiler:
-          - GNU
-
-        compiler_v: [9, 10, 11]
 
         gen:
+          - Xcode
           - Ninja
+
+        include:
+          - gen: Xcode
+            compiler_v: 11.7
+          - gen: Xcode
+            compiler_v: 12.5
+          - gen: Xcode
+            compiler_v: latest-stable
+
+          - gen: Ninja
+            compiler: GNU
+            compiler_v: 11
 
 
     # Steps execution.
@@ -117,21 +72,14 @@ jobs:
             submodules: recursive
 
 
-        # Install GCC.
-        - name: "[Package] Install GCC"
-          if: ${{ matrix.compiler == 'GNU' }}
-          run: |
-              brew install gcc@${{ matrix.compiler_v }}
-              echo "CC=gcc-${{ matrix.compiler_v }}" >> $GITHUB_ENV
-              echo "CXX=g++-${{ matrix.compiler_v }}" >> $GITHUB_ENV
-
-
         # Install CMake.
         - name: "[Action] Install CMake"
           uses: jwlawson/actions-setup-cmake@v1.8
           with:
             cmake-version: ${{ env.CMAKE_V }}
 
+
+#{ Generators
 
         # Install Ninja.
         - name: "[Action] Install Ninja 1/2"
@@ -144,12 +92,43 @@ jobs:
           run: echo "GEN=Ninja" >> $GITHUB_ENV
 
 
+        # Install Xcode.
+        - name: "[Action] Install Xcode 1/2"
+          if: ${{ matrix.gen == 'Xcode' }}
+          uses: maxim-lobanov/setup-xcode@v1
+          with:
+            xcode-version: ${{ matrix.compiler_v }}
+
+        # Set env variables.
+        - name: "[Command] Install Xcode 2/2"
+          if: ${{ matrix.gen == 'Xcode' }}
+          run: echo "GEN=Xcode" >> $GITHUB_ENV
+#}
+
+
+#{ Compilers
+
+        # Install GCC.
+        - name: "[Package] Install GCC"
+          if: ${{ matrix.compiler == 'GNU' }}
+          run: |
+              brew install gcc@${{ matrix.compiler_v }}
+              echo "CC=gcc-${{ matrix.compiler_v }}" >> $GITHUB_ENV
+              echo "CXX=g++-${{ matrix.compiler_v }}" >> $GITHUB_ENV
+
+#}
+
+
+#{ Build & Test
+
         # Deploy & Build & Test
         - name: Generate Project
-          run: cmake -B Build/${{ matrix.gen }}/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G "${GEN}"
+          run: cmake -B Build/${{ matrix.gen }}/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G ${GEN}
 
         - name: Build Project
           run: cmake --build Build/${{ matrix.gen }}/${{ matrix.config }} --config ${{ matrix.config }} --verbose
 
         - name: Run CTests
           run: cd Build/${{ matrix.gen }}/${{ matrix.config }} && ctest -C ${{ matrix.config }} -V
+
+#}

@@ -31,7 +31,7 @@ env:
 jobs:
 
   ctests_unix:
-    name: ${{ matrix.config }} ${{ matrix.compiler }} ${{ matrix.compiler_v }}
+    name: ${{ matrix.config }} ${{ matrix.gen }} ${{ matrix.compiler }} ${{ matrix.compiler_v }}
 
     # Setup environment.
     runs-on: ubuntu-latest
@@ -54,11 +54,11 @@ jobs:
           - GNU
           - Clang
 
-        include:
+        compiler_v: [9, 10, 11, 12]
+
+        exclude:
           - compiler: GNU
-            compiler_v: [8, 9, 10, 11]
-          - compiler: Clang
-            compiler_v: [10, 11, 12, 13]
+            compiler_v: 12
 
 
     # Steps execution.
@@ -69,6 +69,29 @@ jobs:
           with:
             submodules: recursive
 
+
+        # Install CMake.
+        - name: "[Action] Install CMake"
+          uses: jwlawson/actions-setup-cmake@v1.8
+          with:
+            cmake-version: ${{ env.CMAKE_V }}
+
+
+#{ Generators
+
+        # Install Ninja.
+        - name: "[Action] Install Ninja 1/2"
+          if: ${{ matrix.gen == 'Ninja' }}
+          uses: seanmiddleditch/gha-setup-ninja@master
+
+        # Set env variables.
+        - name: "[Command] Install Ninja 2/2"
+          if: ${{ matrix.gen == 'Ninja' }}
+          run: echo "GEN=Ninja" >> $GITHUB_ENV
+#}
+
+
+#{ Compilers
 
          # Install GCC.
         - name: "[Package] Install GCC"
@@ -87,31 +110,19 @@ jobs:
               echo "CC=clang-${{ matrix.compiler_v }}" >> $GITHUB_ENV
               echo "CXX=clang++-${{ matrix.compiler_v }}" >> $GITHUB_ENV
 
-
-        # Install CMake.
-        - name: "[Action] Install CMake"
-          uses: jwlawson/actions-setup-cmake@v1.8
-          with:
-            cmake-version: ${{ env.CMAKE_V }}
+#}
 
 
-        # Install Ninja.
-        - name: "[Action] Install Ninja 1/2"
-          if: ${{ matrix.gen == 'Ninja' }}
-          uses: seanmiddleditch/gha-setup-ninja@master
-
-        # Set env variables.
-        - name: "[Command] Install Ninja 2/2"
-          if: ${{ matrix.gen == 'Ninja' }}
-          run: echo "GEN=Ninja" >> $GITHUB_ENV
-
+#{ Build & Test
 
         # Deploy & Build & Test
         - name: Generate Project
-          run: cmake -B Build/${{ matrix.gen }}/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G "${GEN}"
+          run: cmake -B Build/${{ matrix.gen }}/${{ matrix.config }} -DCMAKE_BUILD_TYPE=${{ matrix.config }} ${{ env.CMAKE_OPTIONS }} -G ${GEN}
 
         - name: Build Project
           run: cmake --build Build/${{ matrix.gen }}/${{ matrix.config }} --config ${{ matrix.config }} --verbose
 
         - name: Run CTests
           run: cd Build/${{ matrix.gen }}/${{ matrix.config }} && ctest -C ${{ matrix.config }} -V
+
+#}
