@@ -7,11 +7,27 @@
 
 #include <SA/Logger/Exceptions/Exception_Equals.hpp>
 
+/**
+*	\file Exception_NotEquals.hpp
+*
+*	\brief <b>Not Equals</b> Exception base type implementation.
+*
+*	\ingroup Logger_Exception
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Not Equals exception base type.
 	class Exception_NotEquals : public Exception
 	{
 	public:
+		/**
+		*	\e Value move Constructor.
+		*
+		*	\param[in] _exc		Equals exception to be reversed.
+		*/
 		Exception_NotEquals(Exception_Equals&& _exc) noexcept;
 	};
 
@@ -24,5 +40,8 @@ namespace Sa
 
 	/// \endcond
 }
+
+
+/** \} */
 
 #endif // GUARD

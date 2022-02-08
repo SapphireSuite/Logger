@@ -8,11 +8,27 @@
 #include <SA/Logger/Exceptions/Exception_NotEquals.hpp>
 #include <SA/Logger/Exceptions/Exception_Equals1.hpp>
 
+/**
+*	\file Exception_NotEquals1.hpp
+*
+*	\brief <b>Not Equals 1</b> Exception type implementation.
+*
+*	\ingroup Logger_Exception
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Not Equals 1 exception implementation.
 	class Exception_NotEquals1 : public Exception_NotEquals
 	{
 	public:
+		/**
+		*	\e Value move Constructor.
+		*
+		*	\param[in] _exc		Equals 1 exception to be reversed.
+		*/
 		Exception_NotEquals1(Exception_Equals1&& _exc) noexcept :
 			Exception_NotEquals(std::move(_exc))
 		{
@@ -28,5 +44,8 @@ namespace Sa
 
 	/// \endcond
 }
+
+
+/** \} */
 
 #endif // GUARD

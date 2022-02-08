@@ -34,7 +34,10 @@ namespace Sa
 		virtual void Output(const Log& _log) = 0;
 
 	public:
+		/// Channel filter used for log in stream.
 		LogChannelFilter channelFilter;
+
+		/// Level filter used for log in stream.
 		Flags<LogLevel> levelFlags = LogLevel::Default;
 
 		/**

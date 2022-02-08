@@ -9,8 +9,19 @@
 
 #include <SA/Support/Stringify.hpp>
 
+/**
+*	\file Exception_Equals.hpp
+*
+*	\brief \b Equals Exception base type implementation.
+*
+*	\ingroup Logger_Exception
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Equals exception base type.
 	class Exception_Equals : public Exception
 	{
 	public:
@@ -84,5 +95,8 @@ namespace Sa
 }
 
 #include <SA/Logger/Exceptions/Exception_Equals.inl>
+
+
+/** \} */
 
 #endif // GUARD

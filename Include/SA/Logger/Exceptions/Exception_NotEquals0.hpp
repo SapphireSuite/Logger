@@ -8,11 +8,27 @@
 #include <SA/Logger/Exceptions/Exception_NotEquals.hpp>
 #include <SA/Logger/Exceptions/Exception_Equals0.hpp>
 
+/**
+*	\file Exception_NotEquals0.hpp
+*
+*	\brief <b>Not Equals 0</b> Exception type implementation.
+*
+*	\ingroup Logger_Exception
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Not Equals 0 exception implementation.
 	class Exception_NotEquals0 : public Exception_NotEquals
 	{
 	public:
+		/**
+		*	\e Value move Constructor.
+		*
+		*	\param[in] _exc		Equals 0 exception to be reversed.
+		*/
 		Exception_NotEquals0(Exception_Equals0&& _exc) noexcept :
 			Exception_NotEquals(std::move(_exc))
 		{
@@ -28,5 +44,8 @@ namespace Sa
 
 	/// \endcond
 }
+
+
+/** \} */
 
 #endif // GUARD

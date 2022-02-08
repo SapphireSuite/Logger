@@ -7,11 +7,31 @@
 
 #include <SA/Logger/Exceptions/Exception_Equals.hpp>
 
+/**
+*	\file Exception_Equals1.hpp
+*
+*	\brief <b>Equals 1</b> Exception type implementation.
+*
+*	\ingroup Logger_Exception
+*	\{
+*/
+
+
 namespace Sa
 {
+	/// Equals 1 exception implementation.
 	class Exception_Equals1 : public Exception_Equals
 	{
 	public:
+		/**
+		*	\e Template value move Constructor.
+		*
+		*	\tparam T				Operands type.
+		* 
+		*	\param[in] _infos		Base create infos.
+		*	\param[in] _lhs			Left hand side operand to compare to T(1).
+		*	\param[in] _predStr		Predicate as a string.
+		*/
 		template <typename T>
 		Exception_Equals1(
 			BaseInfos&& _infos,
@@ -34,5 +54,8 @@ namespace Sa
 
 	/// \endcond
 }
+
+
+/** \} */
 
 #endif // GUARD
