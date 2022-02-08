@@ -56,6 +56,11 @@ namespace Sa
 	/// \endcond
 }
 
+/**
+*	\example Exception_NullptrTests.cpp
+*	Examples and Unitary Tests for Exception_Nullptr.
+*/
+
 
 /** \} */
 

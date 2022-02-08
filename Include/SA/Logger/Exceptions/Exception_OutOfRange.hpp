@@ -69,6 +69,11 @@ namespace Sa
 	/// \endcond
 }
 
+/**
+*	\example Exception_OutOfRangeTests.cpp
+*	Examples and Unitary Tests for Exception_OutOfRange.
+*/
+
 
 /** \} */
 

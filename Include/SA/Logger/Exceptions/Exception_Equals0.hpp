@@ -55,6 +55,11 @@ namespace Sa
 	/// \endcond
 }
 
+/**
+*	\example Exception_Equals0Tests.cpp
+*	Examples and Unitary Tests for Exception_Equals0.
+*/
+
 
 /** \} */
 

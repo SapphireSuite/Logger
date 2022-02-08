@@ -96,6 +96,11 @@ namespace Sa
 
 #include <SA/Logger/Exceptions/Exception_Equals.inl>
 
+/**
+*	\example Exception_EqualsTests.cpp
+*	Examples and Unitary Tests for Exception_Equals.
+*/
+
 
 /** \} */
 

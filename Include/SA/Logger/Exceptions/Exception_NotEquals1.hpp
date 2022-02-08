@@ -45,6 +45,11 @@ namespace Sa
 	/// \endcond
 }
 
+/**
+*	\example Exception_NotEquals1Tests.cpp
+*	Examples and Unitary Tests for Exception_NotEquals1.
+*/
+
 
 /** \} */
 
