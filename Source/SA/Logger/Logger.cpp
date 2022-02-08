@@ -4,6 +4,12 @@
 
 namespace Sa
 {
+	namespace Debug
+	{
+		Logger* logger = nullptr;
+	}
+
+
 	Logger::Logger(bool _bDuplicateLogs) noexcept :
 		bDuplicateLogs{ _bDuplicateLogs }
 	{
@@ -15,18 +21,13 @@ namespace Sa
 		ProcessLog(_log);
 	}
 
-	void Logger::ProcessLog(const Log* _log)
-	{
-		Output(*_log);
-
-		if (bDuplicateLogs)
-			delete _log;
-	}
-
-	void Logger::Output(const Log& _log)
+	void Logger::ProcessLog(const Log* _log, bool _bForce)
 	{
 		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
-			(*it)->Output(_log);
+			(*it)->ProcessLog(*_log, _bForce);
+
+		if (bDuplicateLogs && !_bForce) // Forced logs are instant: no allocation.
+			delete _log;
 	}
 
 

@@ -5,9 +5,9 @@
 #ifndef SAPPHIRE_LOGGER_LOG_LEVEL_GUARD
 #define SAPPHIRE_LOGGER_LOG_LEVEL_GUARD
 
-#include <cstdint>
-
 #include <string>
+
+#include <SA/Support/Variadics/Flags.hpp>
 
 /**
 *	\file LogLevel.hpp
@@ -36,20 +36,22 @@ namespace Sa
 		/// Error level
 		Error = (1 << 3),
 
-		/// Assert Success level
+		/// Assertion Success level
 		AssertSuccess = (1 << 4),
 
-		/// Assert  Failed level
-		AssertFailed = (1 << 5),
+		/// Assertion Failure level
+		AssertFailure = (1 << 5),
 
 		/// Default log level (no assert success).
-		Default = Normal | Infos | Warning | Error | AssertFailed,
+		Default = Normal | Infos | Warning | Error | AssertFailure,
 
 		Max = uint8_t(-1)
 	};
 
 	/// Shortcut alias.
 	using LogLvl = LogLevel;
+
+	SA_DEFINE_ENUM_FLAGS(LogLevel)
 
 
 	/**
