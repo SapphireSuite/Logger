@@ -7,6 +7,8 @@
 
 #include <SA/Logger/Exceptions/Exception_Equals.hpp>
 
+#include <SA/Logger/Misc/ClassName.hpp>
+
 /**
 *	\file Exception_Equals1.hpp
 *
@@ -31,14 +33,16 @@ namespace Sa
 		*	\param[in] _infos		Base create infos.
 		*	\param[in] _lhs			Left hand side operand to compare to T(1).
 		*	\param[in] _predStr		Predicate as a string.
+		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		template <typename T>
 		Exception_Equals1(
 			BaseInfos&& _infos,
 			const T& _lhs,
-			std::wstring&& _predStr = L"pred"
+			std::wstring&& _predStr = L"pred",
+			std::wstring&& _details = L""
 		) noexcept :
-			Exception_Equals(std::move(_infos), _lhs, T(1), std::move(_predStr))
+			Exception_Equals(std::move(_infos), _lhs, T(1), std::move(_predStr), std::move(_details))
 		{
 		}
 	};
@@ -46,10 +50,11 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define Equals1 Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfos, _lhs) Sa::Exception_Equals1(\
+	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfos, _lhs, ...) Sa::Exception_Equals1(\
 		_baseInfos,\
 		_lhs,\
-		SA_WSTR(_lhs) L" == 1"\
+		SA_WSTR(_lhs) L" == " << Sa::Intl::GetClassName(_lhs) << L"{ 1 }",\
+		##__VA_ARGS__\
 	)
 
 	/// \endcond

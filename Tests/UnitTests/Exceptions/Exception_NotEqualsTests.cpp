@@ -15,7 +15,7 @@ namespace Sa::UT::Exc_NEq
 	{
 		try
 		{
-			SA_ASSERT(NotEquals, UnitTests, 4, 4);
+			SA_ASSERT(NotEquals, UnitTests, 4, 4, L"Some details!");
 		}
 		catch (Exception_NotEquals& _exc)
 		{
