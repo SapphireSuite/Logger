@@ -9,6 +9,7 @@
 #include <typeinfo>
 
 #include <SA/Support/Compilers.hpp>
+#include <SA/Support/Platforms.hpp>
 
 namespace Sa
 {
@@ -23,7 +24,7 @@ namespace Sa
 
 			std::string result;
 
-		#if SA_GCC || SA_CLANG
+		#if SA_UNIX && (SA_GCC || SA_CLANG)
 
 			// Query more precise name than typeid.
 
