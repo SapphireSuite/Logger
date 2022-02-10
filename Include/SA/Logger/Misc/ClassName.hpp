@@ -11,6 +11,12 @@
 #include <SA/Support/Compilers.hpp>
 #include <SA/Support/Platforms.hpp>
 
+#if SA_UNIX && (SA_GNU || SA_CLANG)
+
+	#include <cxxabi.h>
+
+#endif
+
 namespace Sa
 {
 	/// \cond Internal
