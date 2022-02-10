@@ -7,7 +7,17 @@ namespace Sa
 	Exception_NotEquals::Exception_NotEquals(Exception_Equals&& _exc) noexcept :
 		Exception(std::move(_exc))
 	{
-		msg.replace(msg.find(L"=="), 2, L"!=");
+		// Replace "==" into "!="
+		{
+			size_t index = msg.find(L"==");
+
+			while (index != std::wstring::npos)
+			{
+				msg.replace(msg.find(L"=="), 2, L"!=");
+				index = msg.find(L"==");
+			}
+		}
+
 
 		// Reverse predicate.
 		if (level == LogLevel::AssertFailure)

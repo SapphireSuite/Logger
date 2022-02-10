@@ -15,7 +15,7 @@ namespace Sa::UT::Exc_Eq
 	{
 		try
 		{
-			SA_ASSERT(Equals0, UnitTests, 1);
+			SA_ASSERT(Equals0, UnitTests, 1, L"Some details!");
 		}
 		catch (Exception_Equals0& _exc)
 		{

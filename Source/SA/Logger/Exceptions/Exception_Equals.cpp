@@ -10,12 +10,13 @@ namespace Sa
 		BaseInfos&& _infos,
 		float _lhs,
 		float _rhs,
-		std::wstring&& _predStr
+		std::wstring&& _predStr,
+		std::wstring&& _details
 	) noexcept :
 		Exception(std::move(_infos),
 			Intl::NearlyEquals(_lhs, _rhs),
-			std::move(_predStr),
-			std::wstring() << _lhs << L"f == " << _rhs << L'f')
+			std::move(_predStr) << L"\t{ " << _lhs << L"f == " << _rhs << L"f }",
+			std::move(_details))
 	{
 	}
 
@@ -23,12 +24,13 @@ namespace Sa
 		BaseInfos&& _infos,
 		double _lhs,
 		double _rhs,
-		std::wstring&& _predStr
+		std::wstring&& _predStr,
+		std::wstring&& _details
 	) noexcept :
 		Exception(std::move(_infos),
 			Intl::NearlyEquals(_lhs, _rhs),
-			std::move(_predStr),
-			std::wstring() << _lhs << L" == " << _rhs)
+			std::move(_predStr) << L"\t{ " << _lhs << L" == " << _rhs << L" }",
+			std::move(_details))
 	{
 	}
 }
