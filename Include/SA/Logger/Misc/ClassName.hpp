@@ -24,13 +24,13 @@ namespace Sa
 
 			std::string result;
 
-		#if SA_UNIX && (SA_GCC || SA_CLANG)
+		#if SA_UNIX && (SA_GNU || SA_CLANG)
 
 			// Query more precise name than typeid.
 
 			int status;
 
-			char* demangled = abi::__cxa_demangle(typeid(T).name(), 0, 0, &status);
+			char* demangled = abi::__cxa_demangle(typeid(U).name(), 0, 0, &status);
 
 			if (status == 0)
 			{
