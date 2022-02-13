@@ -22,7 +22,7 @@ namespace Sa
 	/**
 	*	\brief OutOfRange Exception type
 	* 
-	*	Exception will be thrown if curr in out of [min;max[
+	*	Exception will be thrown if curr in out of [min;max]
 	*/
 	class Exception_OutOfRange : public Exception
 	{
@@ -33,7 +33,7 @@ namespace Sa
 		/// Minimum bound included.
 		uint32_t minBound = 0u;
 
-		/// Maximum bound excluded.
+		/// Maximum bound included.
 		uint32_t maxBound = 1u;
 
 		/**
