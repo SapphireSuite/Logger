@@ -15,7 +15,7 @@ namespace Sa
 	) noexcept :
 		Exception(std::move(_infos),
 			Intl::NearlyEquals(_lhs, _rhs),
-			std::move(_predStr) << L"\t{ " << _lhs << L"f == " << _rhs << L"f }",
+			std::move(_predStr) + L"\t{ " + ToWString(_lhs) + L"f == " + ToWString(_rhs) + L"f }",
 			std::move(_details))
 	{
 	}
@@ -29,7 +29,7 @@ namespace Sa
 	) noexcept :
 		Exception(std::move(_infos),
 			Intl::NearlyEquals(_lhs, _rhs),
-			std::move(_predStr) << L"\t{ " << _lhs << L" == " << _rhs << L" }",
+			std::move(_predStr) + L"\t{ " + ToWString(_lhs) + L" == " + ToWString(_rhs) + L" }",
 			std::move(_details))
 	{
 	}

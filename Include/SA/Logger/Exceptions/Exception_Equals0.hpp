@@ -53,7 +53,7 @@ namespace Sa
 	#define __SA_CREATE_EXCEPTION_Equals0(_baseInfos, _lhs, ...) Sa::Exception_Equals0(\
 		_baseInfos,\
 		_lhs,\
-		SA_WSTR(_lhs) L" == " << Sa::Intl::GetClassName(_lhs) << L"{ 0 }",\
+		SA_WSTR(_lhs) L" == " + Sa::ToWString(Sa::Intl::GetClassName(_lhs)) + L"{ 0 }",\
 		##__VA_ARGS__\
 	)
 

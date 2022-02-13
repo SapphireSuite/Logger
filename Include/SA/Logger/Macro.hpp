@@ -13,6 +13,7 @@
 
 #include <SA/Logger/Logger.hpp>
 
+#include <SA/Logger/Misc/StringStream.hpp>
 #include <SA/Logger/Misc/RemoveSpaces.hpp>
 #include <SA/Logger/Misc/FileNameFromPath.hpp>
 
@@ -66,10 +67,10 @@ namespace Sa
 		__SA_FILE_NAME,\
 		__LINE__,\
 		__SA_FUNC_NAME,\
-		(std::wstring() << _str),\
+		(WStringStream() << _str),\
 		Sa::LogLevel::_lvl,\
 		__SA_CHAN_NAME(_chan),\
-		(std::wstring() << _dets)\
+		(WStringStream() << _dets)\
 	)
 
 	#define __SA_SELECT_LOG_MACRO(_1, _2, _3, _4, _name, ...) _name

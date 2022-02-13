@@ -13,7 +13,7 @@ namespace Sa
 	) noexcept :
 		Exception(std::move(_infos),
 			_minBound <= _currIndex && _currIndex <= _maxBound,
-			std::wstring() << L"Index [" << _currIndex << L"] is out of range [" << _minBound << L',' << _maxBound << L']',
+			L"Index [" + ToWString(_currIndex) + L"] is out of range [" + ToWString(_minBound) + L',' + ToWString(_maxBound) + L']',
 			std::move(_details)),
 		currIndex{ _currIndex },
 		minBound{ _minBound },

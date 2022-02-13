@@ -12,7 +12,7 @@ namespace Sa
 	) noexcept :
 		Exception(std::move(_infos),
 			_lhs == _rhs,
-			std::move(_predStr) << L"\t{ " << _lhs << L" == " << _rhs << L" }",
+			std::move(_predStr) + L"\t{ " + ToWString(_lhs) + L" == " + ToWString(_rhs) + L" }",
 			std::move(_details))
 	{
 	}

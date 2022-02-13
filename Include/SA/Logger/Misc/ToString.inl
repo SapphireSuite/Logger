@@ -95,36 +95,3 @@ namespace Sa
 
 //}
 }
-
-//{ Operators
-
-/// \cond Internal
-
-template <typename T>
-std::string& operator<<(std::string& _lhs, const T& _rhs) noexcept
-{
-	return _lhs += Sa::ToString(_rhs);
-}
-
-template <typename T>
-std::string&& operator<<(std::string&& _lhs, const T& _rhs) noexcept
-{
-	return std::move(_lhs += Sa::ToString(_rhs));
-}
-
-
-template <typename T>
-std::wstring& operator<<(std::wstring& _lhs, const T& _rhs) noexcept
-{
-	return _lhs += Sa::ToWString(_rhs);
-}
-
-template <typename T>
-std::wstring&& operator<<(std::wstring&& _lhs, const T& _rhs) noexcept
-{
-	return std::move(_lhs += Sa::ToWString(_rhs));
-}
-
-/// \endcond
-
-//}

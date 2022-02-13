@@ -215,35 +215,6 @@ namespace Sa
 //}
 }
 
-//{ Operators
-
-	// Should be outside of any namespace.
-
-	/// \cond Internal
-
-
-	/// ToString stream operator for string.
-	template <typename T>
-	std::string&& operator<<(std::string&& _lhs, const T& _rhs) noexcept;
-
-	/// ToString stream operator for string.
-	template <typename T>
-	std::string& operator<<(std::string& _lhs, const T& _rhs) noexcept;
-
-
-	/// ToWString stream operator for wstring.
-	template <typename T>
-	std::wstring&& operator<<(std::wstring&& _lhs, const T& _rhs) noexcept;
-
-	/// ToWString stream operator for wstring.
-	template <typename T>
-	std::wstring& operator<<(std::wstring& _lhs, const T& _rhs) noexcept;
-
-
-	/// \endcond
-
-//}
-
 
 #include <SA/Logger/Misc/ToString.inl>
 
