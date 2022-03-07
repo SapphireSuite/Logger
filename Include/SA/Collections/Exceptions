@@ -18,5 +18,6 @@
 #include <SA/Logger/Exceptions/Exception_Nullptr.hpp>
 
 #include <SA/Logger/Exceptions/Exception_OutOfRange.hpp>
+#include <SA/Logger/Exceptions/Exception_OutOfArrayRange.hpp>
 
 #endif // GUARD

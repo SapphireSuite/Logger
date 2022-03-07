@@ -22,7 +22,7 @@ namespace Sa
 	/**
 	*	\brief OutOfRange Exception type
 	* 
-	*	Exception will be thrown if curr in out of [min;max]
+	*	Exception will be thrown if curr is out of [min;max] range.
 	*/
 	class Exception_OutOfRange : public Exception
 	{
