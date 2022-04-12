@@ -1,3 +1,3 @@
-[submodule "ThirdParty/Support"]
-	path = ThirdParty/Support
+[submodule "ThirdParty/SA/Support"]
+	path = ThirdParty/SA/Support
 	url = https://github.com/SapphireSuite/Support.git
