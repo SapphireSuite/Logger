@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Streams/Console/ConsoleColorTheme.hpp>
+#include <Streams/Console/ConsoleColorTheme.hpp>
 
 #include <SA/Support/Algorithms/BitScanForward.hpp>
 

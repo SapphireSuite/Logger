@@ -1,8 +1,8 @@
 // Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Exceptions/Exception_Equals.hpp>
+#include <Exceptions/Exception_Equals.hpp>
 
-#include <SA/Logger/Misc/NearlyEquals.hpp>
+#include <Misc/NearlyEquals.hpp>
 
 namespace Sa
 {

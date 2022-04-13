@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Streams/ALogStream.hpp>
+#include <Streams/ALogStream.hpp>
 
 namespace Sa
 {

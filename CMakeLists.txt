@@ -21,21 +21,26 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)		# .dll / .so
 
 
 
-# Library
+# Input
 
-## Input.
 file(GLOB_RECURSE SA_LOGGER_SOURCES "Source/*")
+
+
+
+# Library
 
 ## Static library.
 add_library(SA_Logger STATIC ${SA_LOGGER_SOURCES})
 
+
 ## Link dependencies.
 target_link_libraries(SA_Logger PUBLIC SA_Support)
 
-## Include directories
 
+## Include directories
 target_include_directories(SA_Logger PUBLIC Include)
-target_include_directories(SA_Logger PRIVATE Include/SA)
+target_include_directories(SA_Logger PRIVATE Include/SA/Logger)
+
 
 ## Compile features
 
@@ -60,6 +65,7 @@ if("${CMAKE_CXX_COMPILER_ID}" MATCHES "MSVC")
 		target_compile_options(SA_Logger PUBLIC /Zc:preprocessor)
 	endif()
 endif()
+
 
 
 # Options

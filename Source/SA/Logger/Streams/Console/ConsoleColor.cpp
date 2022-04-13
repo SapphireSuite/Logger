@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include <SA/Logger/Streams/Console/ConsoleColor.hpp>
+#include <Streams/Console/ConsoleColor.hpp>
 
 #include <SA/Support/API/Windows.hpp>
 

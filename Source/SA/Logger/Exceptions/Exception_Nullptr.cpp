@@ -1,6 +1,6 @@
 // Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <Logger/Exceptions/Exception_Nullptr.hpp>
+#include <Exceptions/Exception_Nullptr.hpp>
 
 namespace Sa
 {

@@ -1,6 +1,6 @@
 // Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Exceptions/Exception_NotEquals.hpp>
+#include <Exceptions/Exception_NotEquals.hpp>
 
 namespace Sa
 {

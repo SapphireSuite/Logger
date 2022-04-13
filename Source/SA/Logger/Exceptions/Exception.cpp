@@ -1,6 +1,6 @@
 // Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <Logger/Exceptions/Exception.hpp>
+#include <Exceptions/Exception.hpp>
 
 namespace Sa
 {

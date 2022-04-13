@@ -1,6 +1,6 @@
 // Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/LoggerThread.hpp>
+#include <LoggerThread.hpp>
 
 namespace Sa
 {

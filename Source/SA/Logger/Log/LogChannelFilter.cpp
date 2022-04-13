@@ -1,6 +1,6 @@
 // Copyright(c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Log/LogChannelFilter.hpp>
+#include <Log/LogChannelFilter.hpp>
 
 namespace Sa
 {

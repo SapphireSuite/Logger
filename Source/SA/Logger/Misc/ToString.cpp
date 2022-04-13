@@ -1,8 +1,8 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Misc/ToString.hpp>
-
 #include <cstring>
+
+#include <Misc/ToString.hpp>
 
 namespace Sa
 {

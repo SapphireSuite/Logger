@@ -1,8 +1,8 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Misc/RemoveSpaces.hpp>
-
 #include <algorithm>
+
+#include <Misc/RemoveSpaces.hpp>
 
 namespace Sa::Intl
 {

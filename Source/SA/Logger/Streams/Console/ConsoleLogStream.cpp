@@ -1,8 +1,8 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Streams/Console/ConsoleLogStream.hpp>
-
 #include <iostream>
+
+#include <Streams/Console/ConsoleLogStream.hpp>
 
 namespace Sa
 {

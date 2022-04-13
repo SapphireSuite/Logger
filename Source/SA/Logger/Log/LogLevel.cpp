@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-#include <SA/Logger/Log/LogLevel.hpp>
+#include <Log/LogLevel.hpp>
 
 #include <SA/Support/Algorithms/BitScanForward.hpp>
 
