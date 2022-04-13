@@ -67,10 +67,10 @@ namespace Sa
 		__SA_FILE_NAME,\
 		__LINE__,\
 		__SA_FUNC_NAME,\
-		(WStringStream() << _str),\
+		(Sa::WStringStream() << _str),\
 		Sa::LogLevel::_lvl,\
 		__SA_CHAN_NAME(_chan),\
-		(WStringStream() << _dets)\
+		(Sa::WStringStream() << _dets)\
 	)
 
 	#define __SA_SELECT_LOG_MACRO(_1, _2, _3, _4, _name, ...) _name

@@ -2,7 +2,7 @@
 
 # Options
 
-## Add SA_Logger's tests to build tree.
+## Add SA_Logger's debug sanitizer option.
 option(SA_LOGGER_SANITIZER_OPT "Should add sanitizer for testing" OFF)
 
 
