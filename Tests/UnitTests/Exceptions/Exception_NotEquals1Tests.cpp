@@ -8,54 +8,30 @@ namespace Sa::UT::Exc_NEq
 {
 	TEST(Exception, NotEquals1_Success)
 	{
-		SA_ASSERT(NotEquals1, UnitTests, 2);
+		EXPECT_NO_THROW(SA_ASSERT(NotEquals1, SA/UnitTests/Exception, 2));
 	}
 
 	TEST(Exception, NotEquals1_Failure)
 	{
-		try
-		{
-			SA_ASSERT(NotEquals1, UnitTests, 1, L"Some details!");
-		}
-		catch (Exception_NotEquals1& _exc)
-		{
-			(void)_exc;
-		}
+		EXPECT_THROW(SA_ASSERT(NotEquals1, SA/UnitTests/Exception, 1, L"Some details!"), Exception_NotEquals1);
 	}
 
 	TEST(Exception, NotEquals1_CatchAny)
 	{
-		try
-		{
-			SA_ASSERT(NotEquals1, UnitTests, 1);
-		}
-		catch (Exception_NotEquals& _exc) // try catching any not equals exception.
-		{
-			(void)_exc;
-		}
+		// try catching any not equals exception.
+
+		EXPECT_THROW(SA_ASSERT(NotEquals1, SA/UnitTests/Exception, 1), Exception_NotEquals);
 	}
 
 	TEST(Exception, NotEquals1Float)
 	{
-		try
-		{
-			SA_ASSERT(NotEquals1, UnitTests, 1.0f + std::numeric_limits<float>::epsilon());
-		}
-		catch (Exception_NotEquals1& _exc)
-		{
-			(void)_exc;
-		}
+		EXPECT_THROW(SA_ASSERT(NotEquals1, SA/UnitTests/Exception,
+			1.0f + std::numeric_limits<float>::epsilon()), Exception_NotEquals1);
 	}
 
 	TEST(Exception, NotEquals1Double)
 	{
-		try
-		{
-			SA_ASSERT(NotEquals1, UnitTests, 1.0 + std::numeric_limits<double>::epsilon());
-		}
-		catch (Exception_NotEquals1& _exc)
-		{
-			(void)_exc;
-		}
+		EXPECT_THROW(SA_ASSERT(NotEquals1, SA/UnitTests/Exception,
+			1.0 + std::numeric_limits<double>::epsilon()), Exception_NotEquals1);
 	}
 }

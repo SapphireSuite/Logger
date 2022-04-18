@@ -9,18 +9,11 @@ namespace Sa::UT::Exc_Nullptr
 	TEST(Exception, Nullptr_Success)
 	{
 		int i = 5;
-		SA_ASSERT(Nullptr, UnitTests, &i);
+		EXPECT_NO_THROW(SA_ASSERT(Nullptr, SA/UnitTests/Exception, &i));
 	}
 
 	TEST(Exception, Nullptr_Failure)
 	{
-		try
-		{
-			SA_ASSERT(Nullptr, UnitTests, (int*)nullptr);
-		}
-		catch (Exception_Nullptr& _exc)
-		{
-			(void)_exc;
-		}
+		EXPECT_THROW(SA_ASSERT(Nullptr, SA/UnitTests/Exception, (int*)nullptr), Exception_Nullptr);
 	}
 }

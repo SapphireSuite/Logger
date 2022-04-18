@@ -8,40 +8,28 @@ namespace Sa::UT::Exc_Eq
 {
 	TEST(Exception, Equals0_Success)
 	{
-		SA_ASSERT(Equals0, UnitTests, 0);
+		EXPECT_NO_THROW(SA_ASSERT(Equals0, SA/UnitTests/Exception, 0));
 	}
 
 	TEST(Exception, Equals0_Failure)
 	{
-		try
-		{
-			SA_ASSERT(Equals0, UnitTests, 1, L"Some details!");
-		}
-		catch (Exception_Equals0& _exc)
-		{
-			(void)_exc;
-		}
+		EXPECT_THROW(SA_ASSERT(Equals0, SA/UnitTests/Exception, 1, L"Some details!"), Exception_Equals0);
 	}
 
 	TEST(Exception, Equals0_CatchAny)
 	{
-		try
-		{
-			SA_ASSERT(Equals0, UnitTests, 1);
-		}
-		catch (Exception_Equals& _exc) // try catching any equals exception.
-		{
-			(void)_exc;
-		}
+		// try catching any equals exception.
+
+		EXPECT_THROW(SA_ASSERT(Equals0, SA/UnitTests/Exception, 1), Exception_Equals);
 	}
 
 	TEST(Exception, Equals0Float)
 	{
-		SA_ASSERT(Equals0, UnitTests, std::numeric_limits<float>::epsilon());
+		EXPECT_NO_THROW(SA_ASSERT(Equals0, SA/UnitTests/Exception, std::numeric_limits<float>::epsilon()));
 	}
 
 	TEST(Exception, Equals0Double)
 	{
-		SA_ASSERT(Equals0, UnitTests, std::numeric_limits<double>::epsilon());
+		EXPECT_NO_THROW(SA_ASSERT(Equals0, SA/UnitTests/Exception, std::numeric_limits<double>::epsilon()));
 	}
 }

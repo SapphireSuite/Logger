@@ -8,18 +8,11 @@ namespace Sa::UT::Exc_NEq
 {
 	TEST(Exception, NotEquals_Success)
 	{
-		SA_ASSERT(NotEquals, UnitTests, 4, 6);
+		EXPECT_NO_THROW(SA_ASSERT(NotEquals, SA/UnitTests/Exception, 4, 6));
 	}
 
 	TEST(Exception, NotEquals_Failure)
 	{
-		try
-		{
-			SA_ASSERT(NotEquals, UnitTests, 4, 4, L"Some details!");
-		}
-		catch (Exception_NotEquals& _exc)
-		{
-			(void)_exc;
-		}
+		EXPECT_THROW(SA_ASSERT(NotEquals, SA/UnitTests/Exception, 4, 4, L"Some details!"), Exception_NotEquals);
 	}
 }

@@ -8,15 +8,17 @@ namespace Sa::UT::Exc_OOR
 {
 	TEST(Exception, OutOfRange_Success)
 	{
-		SA_ASSERT(OutOfRange, UnitTests, 4, 0, 6);
-		SA_ASSERT(OutOfRange, UnitTests, 6, 0, 6);
+		EXPECT_NO_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 4, 0, 6));
+		EXPECT_NO_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 6, 0, 6));
 	}
 
 	TEST(Exception, OutOfRange_Failure)
 	{
+		EXPECT_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 2, 4, 6), Exception_OutOfRange);
+
 		try
 		{
-			SA_ASSERT(OutOfRange, UnitTests, 2, 4, 6);
+			SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 2, 4, 6);
 		}
 		catch (Exception_OutOfRange& _exc)
 		{
@@ -25,9 +27,12 @@ namespace Sa::UT::Exc_OOR
 			EXPECT_EQ(_exc.maxBound, 6u);
 		}
 
+
+		EXPECT_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 10, 0, 6), Exception_OutOfRange);
+
 		try
 		{
-			SA_ASSERT(OutOfRange, UnitTests, 10, 0, 6);
+			SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 10, 0, 6);
 		}
 		catch (Exception_OutOfRange& _exc)
 		{
