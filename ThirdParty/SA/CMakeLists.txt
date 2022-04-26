@@ -5,3 +5,4 @@
 # Entrypoints
 
 add_subdirectory(Support)
+add_subdirectory(Flags)

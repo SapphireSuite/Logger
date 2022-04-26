@@ -7,7 +7,7 @@
 
 #include <string>
 
-#include <SA/Support/Variadics/Flags.hpp>
+#include <SA/Flags/Flags.hpp>
 
 /**
 *	\file LogLevel.hpp

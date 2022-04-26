@@ -34,7 +34,7 @@ add_library(SA_Logger STATIC ${SA_LOGGER_SOURCES})
 
 
 ## Link dependencies.
-target_link_libraries(SA_Logger PUBLIC SA_Support)
+target_link_libraries(SA_Logger PUBLIC SA_Support SA_Flags)
 
 
 ## Include directories
