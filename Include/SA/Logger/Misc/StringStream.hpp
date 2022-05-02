@@ -25,6 +25,11 @@ namespace Sa
 		inline operator const std::string& () const { return str; };
 	};
 
+	inline StringStream operator""_L(const char* _str, std::size_t _size)
+	{
+		return StringStream() << std::string(_str, _size);
+	}
+
 //}
 
 
@@ -43,6 +48,11 @@ namespace Sa
 		inline operator std::wstring&& () { return std::move(str); };
 		inline operator const std::wstring& () const { return str; };
 	};
+
+	inline WStringStream operator""_L(const wchar_t* _wstr, std::size_t _size)
+	{
+		return WStringStream() << std::wstring(_wstr, _size);
+	}
 
 //}
 }
