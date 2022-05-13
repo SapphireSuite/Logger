@@ -4,7 +4,7 @@
 
 #include <SA/Support/Algorithms/BitScanForward.hpp>
 
-namespace Sa
+namespace SA
 {
 	std::string ToString(LogLevel _lvl) noexcept
 	{

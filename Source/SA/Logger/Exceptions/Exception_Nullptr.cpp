@@ -2,7 +2,7 @@
 
 #include <Exceptions/Exception_Nullptr.hpp>
 
-namespace Sa
+namespace SA
 {
 	Exception_Nullptr::Exception_Nullptr(
 		BaseInfos&& _infos,

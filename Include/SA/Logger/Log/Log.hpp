@@ -19,7 +19,7 @@
 *	\{
 */
 
-namespace Sa
+namespace SA
 {
 	/// Log type implementation.
 	class Log

@@ -2,7 +2,7 @@
 
 #include <LoggerThread.hpp>
 
-namespace Sa
+namespace SA
 {
 	LoggerThread::LoggerThread() noexcept : Logger(true)
 	{

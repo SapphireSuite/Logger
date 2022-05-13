@@ -19,7 +19,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	\brief Basic Logger class implementation.

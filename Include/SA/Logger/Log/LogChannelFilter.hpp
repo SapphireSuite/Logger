@@ -18,7 +18,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	Log Channel filter class implementation.

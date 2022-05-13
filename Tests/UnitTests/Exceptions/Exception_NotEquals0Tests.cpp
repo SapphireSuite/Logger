@@ -4,7 +4,7 @@
 
 #include <SA/Collections/Debug>
 
-namespace Sa::UT::Exc_NEq
+namespace SA::UT::Exc_NEq
 {
 	TEST(Exception, NotEquals0_Success)
 	{

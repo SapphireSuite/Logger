@@ -4,7 +4,7 @@
 
 #include <SA/Collections/Debug>
 
-namespace Sa::UT::Exc_OOR
+namespace SA::UT::Exc_OOR
 {
 	TEST(Exception, OutOfRange_Success)
 	{

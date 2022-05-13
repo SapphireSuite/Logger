@@ -8,7 +8,7 @@
 #include <vector>
 #include <list>
 
-namespace Sa::UT::Exc_OOAR
+namespace SA::UT::Exc_OOAR
 {
 	TEST(Exception, OutOfArrayRange_Success)
 	{

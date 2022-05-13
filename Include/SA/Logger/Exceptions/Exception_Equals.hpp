@@ -19,7 +19,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Equals exception base type.
 	class Exception_Equals : public Exception
@@ -90,7 +90,7 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define Equals Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Equals(_baseInfos, _lhs, _rhs, ...) Sa::Exception_Equals(\
+	#define __SA_CREATE_EXCEPTION_Equals(_baseInfos, _lhs, _rhs, ...) SA::Exception_Equals(\
 		_baseInfos,\
 		_lhs,\
 		_rhs,\

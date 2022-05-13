@@ -4,7 +4,7 @@
 
 #include <Misc/NearlyEquals.hpp>
 
-namespace Sa
+namespace SA
 {
 	Exception_Equals::Exception_Equals(
 		BaseInfos&& _infos,

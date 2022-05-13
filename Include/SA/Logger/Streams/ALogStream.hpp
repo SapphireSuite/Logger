@@ -20,7 +20,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Abstract log stream class.
 	class ALogStream

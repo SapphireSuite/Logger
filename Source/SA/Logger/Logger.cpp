@@ -2,7 +2,7 @@
 
 #include <Logger.hpp>
 
-namespace Sa
+namespace SA
 {
 	namespace Debug
 	{

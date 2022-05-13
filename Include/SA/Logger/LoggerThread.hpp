@@ -23,7 +23,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	\brief Multithread logger class.

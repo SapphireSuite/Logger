@@ -18,7 +18,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Not Equals 1 exception implementation.
 	class Exception_NotEquals1 : public Exception_NotEquals
@@ -38,7 +38,7 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define NotEquals1 Exception creation method.
-	#define __SA_CREATE_EXCEPTION_NotEquals1(_baseInfos, _lhs, ...) Sa::Exception_NotEquals1(\
+	#define __SA_CREATE_EXCEPTION_NotEquals1(_baseInfos, _lhs, ...) SA::Exception_NotEquals1(\
 		__SA_CREATE_EXCEPTION_Equals1(_baseInfos, _lhs, ##__VA_ARGS__)\
 	)
 

@@ -4,7 +4,7 @@
 
 #include <Misc/FileNameFromPath.hpp>
 
-namespace Sa::Intl
+namespace SA::Intl
 {
 	const wchar_t* FileNameFromPath(const wchar_t* _filePath) noexcept
 	{

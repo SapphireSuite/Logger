@@ -4,7 +4,7 @@
 
 #include <SA/Collections/Debug>
 
-namespace Sa::UT::Exc_Eq
+namespace SA::UT::Exc_Eq
 {
 	TEST(Exception, Equals_Success)
 	{

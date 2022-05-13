@@ -18,7 +18,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Console log stream implementation.
 	class ConsoleLogStream : public ALogStream

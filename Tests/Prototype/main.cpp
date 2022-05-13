@@ -1,14 +1,14 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
 #include <SA/Collections/Debug>
-using namespace Sa;
+using namespace SA;
 
 int main()
 {
 //{ Init
 
 	LoggerThread logger;
-	Sa::Debug::logger = &logger;
+	SA::Debug::logger = &logger;
 
 	ConsoleLogStream cslStream;
 	logger.Register(cslStream);

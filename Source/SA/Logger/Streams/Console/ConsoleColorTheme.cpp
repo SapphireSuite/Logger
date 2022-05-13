@@ -4,7 +4,7 @@
 
 #include <SA/Support/Algorithms/BitScanForward.hpp>
 
-namespace Sa
+namespace SA
 {
 	const uint8_t* ConsoleColorTheme::Data() const
 	{
@@ -19,6 +19,6 @@ namespace Sa
 
 		const CslColor color = static_cast<CslColor>(data[levelBit]);
 
-		Sa::SetConsoleColor(color);
+		SA::SetConsoleColor(color);
 	}
 }

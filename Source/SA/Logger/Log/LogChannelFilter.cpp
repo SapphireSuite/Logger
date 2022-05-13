@@ -2,7 +2,7 @@
 
 #include <Log/LogChannelFilter.hpp>
 
-namespace Sa
+namespace SA
 {
 	static const std::wstring separators = L"./_-\\|";
 

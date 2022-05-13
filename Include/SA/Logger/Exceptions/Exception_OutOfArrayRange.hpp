@@ -17,7 +17,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	\brief OutOfArrayRange Exception type
@@ -49,7 +49,7 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define OutOfRange Exception creation method.
-	#define __SA_CREATE_EXCEPTION_OutOfArrayRange(_baseInfos, _currIndex, _array, ...) Sa::Exception_OutOfArrayRange(\
+	#define __SA_CREATE_EXCEPTION_OutOfArrayRange(_baseInfos, _currIndex, _array, ...) SA::Exception_OutOfArrayRange(\
 		_baseInfos,\
 		_currIndex,\
 		_array,\

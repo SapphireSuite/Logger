@@ -7,7 +7,7 @@
 
 #include <SA/Logger/Misc/ToString.hpp>
 
-namespace Sa
+namespace SA
 {
 //{ StringStream
 

@@ -17,7 +17,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	\brief OutOfRange Exception type
@@ -58,7 +58,7 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define OutOfRange Exception creation method.
-	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfos, _currIndex, _minBound, _maxBound, ...) Sa::Exception_OutOfRange(\
+	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfos, _currIndex, _minBound, _maxBound, ...) SA::Exception_OutOfRange(\
 		_baseInfos,\
 		_currIndex,\
 		_minBound,\

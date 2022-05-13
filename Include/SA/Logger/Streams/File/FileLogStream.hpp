@@ -19,7 +19,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Log file stream type.
 	class FileLogStream : public ALogStream

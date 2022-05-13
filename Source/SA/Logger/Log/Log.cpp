@@ -2,7 +2,7 @@
 
 #include <Log/Log.hpp>
 
-namespace Sa
+namespace SA
 {
 	Log::Log(
 		std::wstring&& _file,
@@ -29,15 +29,15 @@ namespace Sa
 		std::wstring str;
 
 		// Output date.
-		str += L'[' + Sa::ToWString(_log.date.hour) +
-			L':' + Sa::ToWString(_log.date.minute) +
-			L':' + Sa::ToWString(_log.date.second) + L"] ";
+		str += L'[' + SA::ToWString(_log.date.hour) +
+			L':' + SA::ToWString(_log.date.minute) +
+			L':' + SA::ToWString(_log.date.second) + L"] ";
 
 		// Output level and channel.
-		str += L'{' + Sa::ToWString(_log.level) + L" - " + _log.chanName + L'}';
+		str += L'{' + SA::ToWString(_log.level) + L" - " + _log.chanName + L'}';
 
 		// Output location.
-		str += L'\t' + _log.file + L':' + Sa::ToWString(_log.line) + L" - " + Sa::ToWString(_log.function) + L'\n';
+		str += L'\t' + _log.file + L':' + SA::ToWString(_log.line) + L" - " + SA::ToWString(_log.function) + L'\n';
 
 		// Output message.
 		str += L"Msg:\t" + _log.msg + L'\n';

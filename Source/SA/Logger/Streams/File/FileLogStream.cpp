@@ -4,7 +4,7 @@
 
 #include <Streams/File/FileLogStream.hpp>
 
-namespace Sa
+namespace SA
 {
 	FileLogStream::FileLogStream(const std::string& _fileFullPath) noexcept
 	{

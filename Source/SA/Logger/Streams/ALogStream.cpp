@@ -2,7 +2,7 @@
 
 #include <Streams/ALogStream.hpp>
 
-namespace Sa
+namespace SA
 {
 	void ALogStream::ProcessLog(const Log& _log, bool _bForce)
 	{

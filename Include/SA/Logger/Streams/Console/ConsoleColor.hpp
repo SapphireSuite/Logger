@@ -16,7 +16,7 @@
 *	\{
 */
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	\brief Console Color enum.

@@ -17,7 +17,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// \cond Internal
 

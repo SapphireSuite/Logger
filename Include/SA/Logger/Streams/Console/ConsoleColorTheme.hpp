@@ -17,7 +17,7 @@
 *	\{
 */
 
-namespace Sa
+namespace SA
 {
 	/**
 	*	Console color theme by LogLevel.

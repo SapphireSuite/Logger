@@ -19,7 +19,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Equals 1 exception implementation.
 	class Exception_Equals1 : public Exception_Equals
@@ -50,10 +50,10 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define Equals1 Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfos, _lhs, ...) Sa::Exception_Equals1(\
+	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfos, _lhs, ...) SA::Exception_Equals1(\
 		_baseInfos,\
 		_lhs,\
-		SA_WSTR(_lhs) L" == " + Sa::ToWString(Sa::Intl::GetClassName(_lhs)) + L"{ 1 }",\
+		SA_WSTR(_lhs) L" == " + SA::ToWString(SA::Intl::GetClassName(_lhs)) + L"{ 1 }",\
 		##__VA_ARGS__\
 	)
 

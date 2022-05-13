@@ -17,7 +17,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// Default (base) Exception type.
 	class Exception : public Log
@@ -62,7 +62,7 @@ namespace Sa
 	/// \cond Internal
 
 	/// Define Default Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Default(_baseInfos, _pred, ...) Sa::Exception_Default(\
+	#define __SA_CREATE_EXCEPTION_Default(_baseInfos, _pred, ...) SA::Exception_Default(\
 		_baseInfos,\
 		_pred,\
 		##__VA_ARGS__\

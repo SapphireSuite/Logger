@@ -6,7 +6,7 @@
 
 #include <SA/Support/API/Windows.hpp>
 
-namespace Sa
+namespace SA
 {
 #if SA_WIN
 

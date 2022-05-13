@@ -2,7 +2,7 @@
 
 #include <Exceptions/Exception_OutOfRange.hpp>
 
-namespace Sa
+namespace SA
 {
 	Exception_OutOfRange::Exception_OutOfRange(
 		BaseInfos&& _infos,

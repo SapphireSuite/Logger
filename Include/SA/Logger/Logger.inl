@@ -1,6 +1,6 @@
 // Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
 
-namespace Sa
+namespace SA
 {
 	template <typename LogT>
 	void Logger::Push(LogT&& _log)

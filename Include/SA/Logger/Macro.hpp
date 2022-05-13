@@ -28,7 +28,7 @@
 *	\{
 */
 
-namespace Sa
+namespace SA
 {
 	/// \cond Internal
 
@@ -51,9 +51,9 @@ namespace Sa
 //}
 
 
-	#define __SA_FILE_NAME Sa::Intl::FileNameFromPath(SA_WIDE(__FILE__))
+	#define __SA_FILE_NAME SA::Intl::FileNameFromPath(SA_WIDE(__FILE__))
 
-	#define __SA_CHAN_NAME(_chan) Sa::Intl::RemoveSpaces(SA_WSTR(_chan))
+	#define __SA_CHAN_NAME(_chan) SA::Intl::RemoveSpaces(SA_WSTR(_chan))
 
 	/// \endcond
 
@@ -61,16 +61,16 @@ namespace Sa
 
 	/// \cond Internal
 
-	#define __SA_LOGGER if(!Sa::Debug::logger) std::cerr << "Try logging with invalid logger instance! Initialize Sa::Debug::logger." << std::endl; else Sa::Debug::logger
+	#define __SA_LOGGER if(!SA::Debug::logger) std::cerr << "Try logging with invalid logger instance! Initialize SA::Debug::logger." << std::endl; else SA::Debug::logger
 
-	#define __SA_CREATE_LOG(_str, _lvl, _chan, _dets) Sa::Log(\
+	#define __SA_CREATE_LOG(_str, _lvl, _chan, _dets) SA::Log(\
 		__SA_FILE_NAME,\
 		__LINE__,\
 		__SA_FUNC_NAME,\
-		(Sa::WStringStream() << _str),\
-		Sa::LogLevel::_lvl,\
+		(SA::WStringStream() << _str),\
+		SA::LogLevel::_lvl,\
 		__SA_CHAN_NAME(_chan),\
-		(Sa::WStringStream() << _dets)\
+		(SA::WStringStream() << _dets)\
 	)
 
 	#define __SA_SELECT_LOG_MACRO(_1, _2, _3, _4, _name, ...) _name
@@ -152,7 +152,7 @@ namespace Sa
 	/// \cond Internal
 
 	#define __SA_CREATE_EXCEPTION(_type, _chan, ...) __SA_CREATE_EXCEPTION_##_type(\
-		(Sa::Exception::BaseInfos{\
+		(SA::Exception::BaseInfos{\
 			__SA_FILE_NAME,\
 			__LINE__,\
 			__SA_FUNC_NAME,\

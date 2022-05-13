@@ -19,7 +19,7 @@
 */
 
 
-namespace Sa
+namespace SA
 {
 	/// \brief All levels of logging.
 	enum class LogLevel : uint8_t

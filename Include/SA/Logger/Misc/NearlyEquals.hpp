@@ -7,7 +7,7 @@
 
 #include <limits>
 
-namespace Sa
+namespace SA
 {
 	/// \cond Internal
 

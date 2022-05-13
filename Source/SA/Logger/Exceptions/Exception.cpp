@@ -2,7 +2,7 @@
 
 #include <Exceptions/Exception.hpp>
 
-namespace Sa
+namespace SA
 {
 	Exception::Exception(
 		BaseInfos&& _infos,

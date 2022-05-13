@@ -4,7 +4,7 @@
 
 #include <Misc/RemoveSpaces.hpp>
 
-namespace Sa::Intl
+namespace SA::Intl
 {
 	std::wstring RemoveSpaces(std::wstring _str) noexcept
 	{

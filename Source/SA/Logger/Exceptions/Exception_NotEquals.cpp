@@ -2,7 +2,7 @@
 
 #include <Exceptions/Exception_NotEquals.hpp>
 
-namespace Sa
+namespace SA
 {
 	Exception_NotEquals::Exception_NotEquals(Exception_Equals&& _exc) noexcept :
 		Exception(std::move(_exc))

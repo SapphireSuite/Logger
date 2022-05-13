@@ -4,7 +4,7 @@
 
 #include <Misc/ToString.hpp>
 
-namespace Sa
+namespace SA
 {
 //{ ToString
 

@@ -8,7 +8,7 @@
 #include <string>
 #include <typeinfo>
 
-namespace Sa
+namespace SA
 {
 	/// \cond Internal
 

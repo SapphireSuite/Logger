@@ -4,7 +4,7 @@
 [![Windows](https://github.com/SapphireSuite/Logger/actions/workflows/test_windows.yml/badge.svg)](https://github.com/SapphireSuite/Logger/actions/workflows/test_windows.yml)
 [![MacOS](https://github.com/SapphireSuite/Logger/actions/workflows/test_macos.yml/badge.svg)](https://github.com/SapphireSuite/Logger/actions/workflows/test_macos.yml)
 
-Sapphire Suite's C++ Logger
+Sapphire Suite's C++ Logger.
 
 
 ## Documentations

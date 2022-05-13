@@ -4,7 +4,7 @@
 
 #include <SA/Collections/Debug>
 
-namespace Sa::UT::Exc_Nullptr
+namespace SA::UT::Exc_Nullptr
 {
 	TEST(Exception, Nullptr_Success)
 	{

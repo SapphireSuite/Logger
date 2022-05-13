@@ -4,7 +4,7 @@
 
 #include <Streams/Console/ConsoleLogStream.hpp>
 
-namespace Sa
+namespace SA
 {
 	void ConsoleLogStream::Flush()
 	{
@@ -17,6 +17,6 @@ namespace Sa
 
 		std::wcout << ToWString(_log) << std::endl;
 
-		Sa::SetConsoleColor(CslColor::Reset);
+		SA::SetConsoleColor(CslColor::Reset);
 	}
 }
