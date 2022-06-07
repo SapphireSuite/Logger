@@ -73,12 +73,13 @@ namespace SA
 		(SA::WStringStream() << _dets)\
 	)
 
-	#define __SA_SELECT_LOG_MACRO(_1, _2, _3, _4, _name, ...) _name
+	#define __SA_SELECT_LOG_MACRO(_1, _2, _3, _4, _5, _name, ...) _name
 
-	#define __SA_LOG4(_str, _lvl, _chan, _dets)	{ __SA_LOGGER->Push(__SA_CREATE_LOG(_str, _lvl, _chan, _dets)); }
-	#define __SA_LOG3(_str, _lvl, _chan)	__SA_LOG4(_str, _lvl, _chan, L"")
-	#define __SA_LOG2(_str, _lvl)			__SA_LOG3(_str, _lvl, Default)
-	#define __SA_LOG1(_str)					__SA_LOG2(_str, Normal)
+	#define __SA_LOG4(_str, _lvl, _chan, _dets)				{ __SA_LOGGER->Push(__SA_CREATE_LOG(_str, _lvl, _chan, _dets)); }
+	#define __SA_LOG5(_str, _lvl, _chan, _dets, _postCmd)	{ __SA_LOG4(_str, _lvl, _chan, L"") _postCmd;}
+	#define __SA_LOG3(_str, _lvl, _chan)					__SA_LOG4(_str, _lvl, _chan, L"")
+	#define __SA_LOG2(_str, _lvl)							__SA_LOG3(_str, _lvl, Default)
+	#define __SA_LOG1(_str)									__SA_LOG2(_str, Normal)
 
 	#define __SA_COND_LOG(_pred, _lvl, ...)		{ if(!(_pred)) SA_LOG(SA_WSTR(_pred), _lvl, ##__VA_ARGS__) }
 
@@ -97,8 +98,9 @@ namespace SA
 	*	\param[in] _lvl		Level of the log (optional).
 	*	\param[in] _chan	Channel of the log (optional).
 	*	\param[in] _dets	Additional details string of the log (optional).
+	*	\param[in] _postCmd	Additional post-log command (optional), usually for return value.
 	*/
-	#define SA_LOG(_str, _lvl, _chan, _dets)
+	#define SA_LOG(_str, _lvl, _chan, _dets, _postCmd)
 
 	/**
 	*	\def SA_WARN(_pred, _chan, _dets)
@@ -110,8 +112,9 @@ namespace SA
 	*	\param[in] _pred	predicate of the Log. Output warnings on false.
 	*	\param[in] _chan	Channel of the log.
 	*	\param[in] _dets	Additional details string of the log (optional).
+	*	\param[in] _postCmd	Additional post-log command (optional), usually for return value.
 	*/
-	#define SA_WARN(_pred, _chan, _dets)
+	#define SA_WARN(_pred, _chan, _dets, _postCmd)
 
 	/**
 	*	\def SA_ERROR(_pred, _chan, _dets)
@@ -123,12 +126,13 @@ namespace SA
 	*	\param[in] _pred	predicate of the Log. Output error on false.
 	*	\param[in] _chan	Channel of the log.
 	*	\param[in] _dets	Additional details string of the log (optional).
+	*	\param[in] _postCmd	Additional post-log command (optional), usually for return value.
 	*/
-	#define SA_ERROR(_pred, _chan, _dets)
+	#define SA_ERROR(_pred, _chan, _dets, _postCmd)
 
 #elif SA_DEBUG || SA_LOG_RELEASE_OPT
 
-	#define SA_LOG(...) __SA_SELECT_LOG_MACRO(__VA_ARGS__, __SA_LOG4, __SA_LOG3, __SA_LOG2, __SA_LOG1)(__VA_ARGS__)
+	#define SA_LOG(...) __SA_SELECT_LOG_MACRO(__VA_ARGS__, __SA_LOG5, __SA_LOG4, __SA_LOG3, __SA_LOG2, __SA_LOG1)(__VA_ARGS__)
 
 	#define SA_WARN(_pred, ...) __SA_COND_LOG(_pred, Warning, ##__VA_ARGS__)
 
