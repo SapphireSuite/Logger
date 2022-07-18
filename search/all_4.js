@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['error_0',['Error',['../_log_level_8hpp.html#ada12831f2dfd3b16b30fdf5019ae125ba902b0d55fddef6f8d651fe1035b7d4bd',1,'SA']]],
+  ['error_1',['error',['../struct_s_a_1_1_console_color_theme.html#a0c34e83d384d18b3d7f087be963d32d9',1,'SA::ConsoleColorTheme']]],
+  ['exception_2',['Exception',['../class_s_a_1_1_exception.html#a1f0b022e1d34e2e22de990f6b8736c52',1,'SA::Exception::Exception()'],['../group___logger___exception.html',1,'(Global Namespace)'],['../class_s_a_1_1_exception.html',1,'SA::Exception']]],
+  ['exception_2ehpp_3',['Exception.hpp',['../_exception_8hpp.html',1,'']]],
+  ['exception_5fdefault_4',['Exception_Default',['../_exception_8hpp.html#acc608b26e5db7409df50e78841e4e9f8',1,'SA']]],
+  ['exception_5fequals_5',['Exception_Equals',['../class_s_a_1_1_exception___equals.html#ab3676fce92ea2bdb287da558d4cfa6c4',1,'SA::Exception_Equals::Exception_Equals(BaseInfos &amp;&amp;_infos, double _lhs, double _rhs, std::wstring &amp;&amp;_predStr=L&quot;pred&quot;, std::wstring &amp;&amp;_details=L&quot;&quot;) noexcept'],['../class_s_a_1_1_exception___equals.html#ae30bbc4ee71646a508bef1dbbe6f204c',1,'SA::Exception_Equals::Exception_Equals(BaseInfos &amp;&amp;_infos, float _lhs, float _rhs, std::wstring &amp;&amp;_predStr=L&quot;pred&quot;, std::wstring &amp;&amp;_details=L&quot;&quot;) noexcept'],['../class_s_a_1_1_exception___equals.html#a7965da4363a2e54d73730a85719cb393',1,'SA::Exception_Equals::Exception_Equals(BaseInfos &amp;&amp;_infos, const T &amp;_lhs, const T &amp;_rhs, std::wstring &amp;&amp;_predStr=L&quot;pred&quot;, std::wstring &amp;&amp;_details=L&quot;&quot;) noexcept'],['../class_s_a_1_1_exception___equals.html',1,'SA::Exception_Equals']]],
+  ['exception_5fequals_2ehpp_6',['Exception_Equals.hpp',['../_exception___equals_8hpp.html',1,'']]],
+  ['exception_5fequals0_7',['Exception_Equals0',['../class_s_a_1_1_exception___equals0.html#a8e82eda9a8da2ca33c76d2ea556aee24',1,'SA::Exception_Equals0::Exception_Equals0()'],['../class_s_a_1_1_exception___equals0.html',1,'SA::Exception_Equals0']]],
+  ['exception_5fequals0_2ehpp_8',['Exception_Equals0.hpp',['../_exception___equals0_8hpp.html',1,'']]],
+  ['exception_5fequals1_9',['Exception_Equals1',['../class_s_a_1_1_exception___equals1.html#accea1f06f465f639c504a906d2caba58',1,'SA::Exception_Equals1::Exception_Equals1()'],['../class_s_a_1_1_exception___equals1.html',1,'SA::Exception_Equals1']]],
+  ['exception_5fequals1_2ehpp_10',['Exception_Equals1.hpp',['../_exception___equals1_8hpp.html',1,'']]],
+  ['exception_5fnotequals_11',['Exception_NotEquals',['../class_s_a_1_1_exception___not_equals.html#a6e85e75b544c251384e1e56e437a61ae',1,'SA::Exception_NotEquals::Exception_NotEquals()'],['../class_s_a_1_1_exception___not_equals.html',1,'SA::Exception_NotEquals']]],
+  ['exception_5fnotequals_2ehpp_12',['Exception_NotEquals.hpp',['../_exception___not_equals_8hpp.html',1,'']]],
+  ['exception_5fnotequals0_13',['Exception_NotEquals0',['../class_s_a_1_1_exception___not_equals0.html#af1706b1aac21196c8c76a3d53ee4056e',1,'SA::Exception_NotEquals0::Exception_NotEquals0()'],['../class_s_a_1_1_exception___not_equals0.html',1,'SA::Exception_NotEquals0']]],
+  ['exception_5fnotequals0_2ehpp_14',['Exception_NotEquals0.hpp',['../_exception___not_equals0_8hpp.html',1,'']]],
+  ['exception_5fnotequals1_15',['Exception_NotEquals1',['../class_s_a_1_1_exception___not_equals1.html#a52262915ebb35ccc5a8fef547959c8f7',1,'SA::Exception_NotEquals1::Exception_NotEquals1()'],['../class_s_a_1_1_exception___not_equals1.html',1,'SA::Exception_NotEquals1']]],
+  ['exception_5fnotequals1_2ehpp_16',['Exception_NotEquals1.hpp',['../_exception___not_equals1_8hpp.html',1,'']]],
+  ['exception_5fnullptr_17',['Exception_Nullptr',['../class_s_a_1_1_exception___nullptr.html#aaf277766b6ee5477e88a41c80e7f4327',1,'SA::Exception_Nullptr::Exception_Nullptr()'],['../class_s_a_1_1_exception___nullptr.html',1,'SA::Exception_Nullptr']]],
+  ['exception_5fnullptr_2ehpp_18',['Exception_Nullptr.hpp',['../_exception___nullptr_8hpp.html',1,'']]],
+  ['exception_5foutofarrayrange_19',['Exception_OutOfArrayRange',['../class_s_a_1_1_exception___out_of_array_range.html#a7ddc00d046bb874a4610a6d59d398ce1',1,'SA::Exception_OutOfArrayRange::Exception_OutOfArrayRange()'],['../class_s_a_1_1_exception___out_of_array_range.html',1,'SA::Exception_OutOfArrayRange']]],
+  ['exception_5foutofarrayrange_2ehpp_20',['Exception_OutOfArrayRange.hpp',['../_exception___out_of_array_range_8hpp.html',1,'']]],
+  ['exception_5foutofrange_21',['Exception_OutOfRange',['../class_s_a_1_1_exception___out_of_range.html#a31b92731eda41ba91d122ba6e9fb4a10',1,'SA::Exception_OutOfRange::Exception_OutOfRange()'],['../class_s_a_1_1_exception___out_of_range.html',1,'SA::Exception_OutOfRange']]],
+  ['exception_5foutofrange_2ehpp_22',['Exception_OutOfRange.hpp',['../_exception___out_of_range_8hpp.html',1,'']]]
+];
