@@ -2,54 +2,26 @@
 
 cmake_minimum_required(VERSION 3.16)
 
+# Sapphire Suite's CMake tools.
+add_subdirectory(CMake)
+
 
 
 # Project
 
 project(SA_Logger)
-
-message("SA_Logger Main directory: ${CMAKE_CURRENT_SOURCE_DIR}")
-
-
-
-# Outputs
-
-### Setup output directory
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)		# .exe
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)		# .lib / .a
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)		# .dll / .so
-
-
-
-# Input
-
-file(GLOB_RECURSE SA_LOGGER_SOURCES "Source/*")
+SA_ConfigureProject(SA_Logger)
 
 
 
 # Library
 
-## Static library.
-add_library(SA_Logger STATIC ${SA_LOGGER_SOURCES})
+add_library(SA_Logger STATIC)
+SA_ConfigureTarget(TARGET SA_Logger)
+SA_TargetSources(TARGET SA_Logger)
 
-
-## Link dependencies.
+### Link dependencies.
 target_link_libraries(SA_Logger PUBLIC SA_Support SA_Flags)
-
-
-## Include directories
-target_include_directories(SA_Logger PUBLIC Include)
-target_include_directories(SA_Logger PRIVATE Include/SA/Logger)
-
-
-## Compile features
-
-### Standard
-target_compile_features(SA_Logger PUBLIC c_std_11)
-target_compile_features(SA_Logger PUBLIC cxx_std_20)
-
-### SA_Logger module implementation preprocessor.
-target_compile_definitions(SA_Logger PUBLIC SA_LOGGER_IMPL)
 
 ### Thread
 set(THREADS_PREFER_PTHREAD_FLAG ON)
