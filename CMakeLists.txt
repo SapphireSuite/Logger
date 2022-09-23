@@ -17,8 +17,8 @@ SA_ConfigureProject(SA_Logger)
 # Library
 
 add_library(SA_Logger STATIC)
-SA_ConfigureTarget(TARGET SA_Logger)
-SA_TargetSources(TARGET SA_Logger)
+SA_ConfigureTarget(SA_Logger)
+SA_TargetSources(SA_Logger)
 
 ### Link dependencies.
 target_link_libraries(SA_Logger PUBLIC SA_Support SA_Flags)
