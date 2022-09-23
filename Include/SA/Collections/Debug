@@ -10,6 +10,8 @@
 #include <SA/Logger/Logger.hpp>
 #include <SA/Logger/LoggerThread.hpp>
 
+#include <SA/Logger/Misc/DefaultInitHelper.hpp>
+
 #include <SA/Collections/Exceptions>
 #include <SA/Collections/LogStreams>
 

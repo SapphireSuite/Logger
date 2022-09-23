@@ -7,13 +7,13 @@ int main()
 {
 //{ Init
 
+	ConsoleLogStream cslStream;
+	FileLogStream fileStream;
+
 	LoggerThread logger;
 	SA::Debug::logger = &logger;
 
-	ConsoleLogStream cslStream;
 	logger.Register(cslStream);
-
-	FileLogStream fileStream;
 	logger.Register(fileStream);
 
 //}
@@ -52,11 +52,6 @@ int main()
 	}
 
 //}
-
-	/**
-	*	Force flush before destroy because stream as been created after logger.
-	*/
-	logger.Flush();
 
 	return 0;
 }
