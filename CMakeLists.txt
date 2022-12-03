@@ -21,7 +21,7 @@ SA_ConfigureTarget(SA_Logger)
 SA_TargetSources(SA_Logger)
 
 ### Link dependencies.
-target_link_libraries(SA_Logger PUBLIC SA_Support SA_Flags)
+target_link_libraries(SA_Logger PUBLIC SA_Support)
 
 ### Thread
 set(THREADS_PREFER_PTHREAD_FLAG ON)

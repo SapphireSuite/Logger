@@ -38,7 +38,7 @@ namespace SA
 		LogChannelFilter channelFilter;
 
 		/// Level filter used for log in stream.
-		Flags<LogLevel> levelFlags = LogLevel::Default;
+		uint8_t levelFlags = LogLevel::Default;
 
 		/**
 		*	\brief Process a log to output in stream.

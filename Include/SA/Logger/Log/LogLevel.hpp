@@ -7,8 +7,6 @@
 
 #include <string>
 
-#include <SA/Flags/Flags.hpp>
-
 /**
 *	\file LogLevel.hpp
 *
@@ -22,7 +20,7 @@
 namespace SA
 {
 	/// \brief All levels of logging.
-	enum class LogLevel : uint8_t
+	enum LogLevel : uint8_t
 	{
 		/// Normal level
 		Normal = (1 << 0),
@@ -50,9 +48,6 @@ namespace SA
 
 	/// Shortcut alias.
 	using LogLvl = LogLevel;
-
-	SA_DEFINE_ENUM_FLAGS(LogLevel)
-
 
 	/**
 	*	\brief ToString implementation for LogLevel

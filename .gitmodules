@@ -4,6 +4,3 @@
 [submodule "ThirdParty/SA/Support"]
 	path = ThirdParty/SA/Support
 	url = https://github.com/SapphireSuite/Support.git
-[submodule "ThirdParty/SA/Flags"]
-	path = ThirdParty/SA/Flags
-	url = https://github.com/SapphireSuite/Flags.git
