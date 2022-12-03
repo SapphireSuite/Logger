@@ -49,7 +49,7 @@ namespace SA
 		// Log file already exists? Create backup.
 		if (std::filesystem::exists(_fileFullPath))
 		{
-			// Query old file time infos.
+			// Query old file time info.
 			DateTime backupStat = DateTime::FileStats(_fileFullPath);
 
 			std::rename(_fileFullPath.c_str(), (filePath + fileName + "_backup-" + ToString(backupStat) + fileExt).c_str());

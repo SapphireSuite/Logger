@@ -28,13 +28,13 @@ namespace SA
 		/**
 		*	\e Value move Constructor.
 		*
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _pred		Evaluated pointer predicate.
 		*	\param[in] _predStr		Predicate as a string.
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Nullptr(
-			BaseInfos&& _infos,
+			BaseInfo&& _info,
 			bool _pred,
 			std::wstring&& _predStr = L"ptr",
 			std::wstring&& _details = L""
@@ -46,8 +46,8 @@ namespace SA
 	/// \cond Internal
 
 	/// Define Nullptr Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Nullptr(_baseInfos, _pred, ...) SA::Exception_Nullptr(\
-		_baseInfos,\
+	#define __SA_CREATE_EXCEPTION_Nullptr(_baseInfo, _pred, ...) SA::Exception_Nullptr(\
+		_baseInfo,\
 		_pred,\
 		SA_WSTR(_pred),\
 		##__VA_ARGS__\

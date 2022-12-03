@@ -156,7 +156,7 @@ namespace SA
 	/// \cond Internal
 
 	#define __SA_CREATE_EXCEPTION(_type, _chan, ...) __SA_CREATE_EXCEPTION_##_type(\
-		(SA::Exception::BaseInfos{\
+		(SA::Exception::BaseInfo{\
 			__SA_FILE_NAME,\
 			__LINE__,\
 			__SA_FUNC_NAME,\
@@ -186,7 +186,7 @@ namespace SA
 	*	\def SA_ASSERT_EXEC(_type, _chan, _exec, ...)
 	*
 	*	\brief Sapphire Assertion execution macro.
-	*	_exec will still be executed in non-debug but no debug infos will be generated.
+	*	_exec will still be executed in non-debug but no debug info will be generated.
 	*
 	*	Helper macro to use Debug::Assert.
 	*

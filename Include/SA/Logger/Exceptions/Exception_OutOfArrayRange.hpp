@@ -30,17 +30,17 @@ namespace SA
 		/**
 		*	\e Value move Constructor.
 		* 
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _currIndex	Index used for access.
 		*	\param[in] _array		Array to check bounds with.
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		template <typename U>
-		Exception_OutOfArrayRange(BaseInfos&& _infos,
+		Exception_OutOfArrayRange(BaseInfo&& _info,
 			uint32_t _currIndex,
 			const U& _array,
 			std::wstring&& _details = L"") :
-			Exception_OutOfRange(std::move(_infos), _currIndex, 0u, (uint32_t)_array.size() - 1, std::move(_details))
+			Exception_OutOfRange(std::move(_info), _currIndex, 0u, (uint32_t)_array.size() - 1, std::move(_details))
 		{
 		}
 	};
@@ -49,8 +49,8 @@ namespace SA
 	/// \cond Internal
 
 	/// Define OutOfRange Exception creation method.
-	#define __SA_CREATE_EXCEPTION_OutOfArrayRange(_baseInfos, _currIndex, _array, ...) SA::Exception_OutOfArrayRange(\
-		_baseInfos,\
+	#define __SA_CREATE_EXCEPTION_OutOfArrayRange(_baseInfo, _currIndex, _array, ...) SA::Exception_OutOfArrayRange(\
+		_baseInfo,\
 		_currIndex,\
 		_array,\
 		##__VA_ARGS__\

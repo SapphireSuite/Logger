@@ -34,8 +34,8 @@ namespace SA
 	/// \cond Internal
 
 	/// Define NotEquals Exception creation method.
-	#define __SA_CREATE_EXCEPTION_NotEquals(_baseInfos, _lhs, _rhs, ...) SA::Exception_NotEquals(\
-		__SA_CREATE_EXCEPTION_Equals(_baseInfos, _lhs, _rhs, ##__VA_ARGS__)\
+	#define __SA_CREATE_EXCEPTION_NotEquals(_baseInfo, _lhs, _rhs, ...) SA::Exception_NotEquals(\
+		__SA_CREATE_EXCEPTION_Equals(_baseInfo, _lhs, _rhs, ##__VA_ARGS__)\
 	)
 
 	/// \endcond

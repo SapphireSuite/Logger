@@ -5,18 +5,18 @@
 namespace SA
 {
 	Exception::Exception(
-		BaseInfos&& _infos,
+		BaseInfo&& _info,
 		bool _pred,
 		std::wstring&& _msg,
 		std::wstring&& _details
 	) noexcept :
 		Log(
-			std::move(_infos.file),
-			_infos.line,
-			std::move(_infos.function),
+			std::move(_info.file),
+			_info.line,
+			std::move(_info.function),
 			std::move(_msg),
 			_pred ? LogLevel::AssertSuccess : LogLevel::AssertFailure,
-			std::move(_infos.chanName),
+			std::move(_info.chanName),
 			std::move(_details))
 	{
 	}

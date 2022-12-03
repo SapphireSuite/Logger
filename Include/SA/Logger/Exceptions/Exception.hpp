@@ -23,8 +23,8 @@ namespace SA
 	class Exception : public Log
 	{
 	public:
-		/// Base exception <b>create infos</b>.
-		struct BaseInfos
+		/// Base exception <b>create info</b>.
+		struct BaseInfo
 		{
 			/// File name.
 			std::wstring file;
@@ -42,13 +42,13 @@ namespace SA
 		/**
 		*	\e Value move Constructor.
 		* 
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _pred		Predicate used for assertion.
 		*	\param[in] _msg			Message to display on assertion.
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception(
-			BaseInfos&& _infos,
+			BaseInfo&& _info,
 			bool _pred,
 			std::wstring&& _msg = L"",
 			std::wstring&& _details = L""
@@ -62,8 +62,8 @@ namespace SA
 	/// \cond Internal
 
 	/// Define Default Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Default(_baseInfos, _pred, ...) SA::Exception_Default(\
-		_baseInfos,\
+	#define __SA_CREATE_EXCEPTION_Default(_baseInfo, _pred, ...) SA::Exception_Default(\
+		_baseInfo,\
 		_pred,\
 		##__VA_ARGS__\
 	)

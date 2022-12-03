@@ -30,7 +30,7 @@ namespace SA
 		*
 		*	\tparam T				Operands type.
 		* 
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _lhs			Left hand side operand.
 		*	\param[in] _rhs			Left hand side operand.
 		*	\param[in] _predStr		Predicate as a string.
@@ -38,7 +38,7 @@ namespace SA
 		*/
 		template <typename T>
 		Exception_Equals(
-			BaseInfos&& _infos,
+			BaseInfo&& _info,
 			const T& _lhs,
 			const T& _rhs,
 			std::wstring&& _predStr = L"pred",
@@ -51,14 +51,14 @@ namespace SA
 		* 
 		*	Perform NearlyEquals (epsilon).
 		*
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _lhs			Left hand side float operand.
 		*	\param[in] _rhs			Left hand side float operand.
 		*	\param[in] _predStr		Predicate as a string.
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Equals(
-			BaseInfos&& _infos,
+			BaseInfo&& _info,
 			float _lhs,
 			float _rhs,
 			std::wstring&& _predStr = L"pred",
@@ -71,14 +71,14 @@ namespace SA
 		* 
 		*	Perform NearlyEquals (epsilon).
 		*
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _lhs			Left hand side double operand.
 		*	\param[in] _rhs			Left hand side double operand.
 		*	\param[in] _predStr		Predicate as a string.
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Equals(
-			BaseInfos&& _infos,
+			BaseInfo&& _info,
 			double _lhs,
 			double _rhs,
 			std::wstring&& _predStr = L"pred",
@@ -90,8 +90,8 @@ namespace SA
 	/// \cond Internal
 
 	/// Define Equals Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Equals(_baseInfos, _lhs, _rhs, ...) SA::Exception_Equals(\
-		_baseInfos,\
+	#define __SA_CREATE_EXCEPTION_Equals(_baseInfo, _lhs, _rhs, ...) SA::Exception_Equals(\
+		_baseInfo,\
 		_lhs,\
 		_rhs,\
 		SA_WSTR(_lhs) L" == " SA_WSTR(_rhs),\

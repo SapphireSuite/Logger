@@ -5,13 +5,13 @@
 namespace SA
 {
 	Exception_OutOfRange::Exception_OutOfRange(
-		BaseInfos&& _infos,
+		BaseInfo&& _info,
 		uint32_t _currIndex,
 		uint32_t _minBound,
 		uint32_t _maxBound,
 		std::wstring&& _details
 	) noexcept :
-		Exception(std::move(_infos),
+		Exception(std::move(_info),
 			_minBound <= _currIndex && _currIndex <= _maxBound,
 			L"Index [" + ToWString(_currIndex) + L"] is out of range [" + ToWString(_minBound) + L',' + ToWString(_maxBound) + L']',
 			std::move(_details)),

@@ -39,14 +39,14 @@ namespace SA
 		/**
 		*	\e Value move Constructor.
 		* 
-		*	\param[in] _infos		Base create infos.
+		*	\param[in] _info		Base create info.
 		*	\param[in] _currIndex	Index used for access.
 		*	\param[in] _minBound	Minimum bound allowed.
 		*	\param[in] _maxBound	Maximum bound allowed.
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_OutOfRange(
-			BaseInfos&& _infos,
+			BaseInfo&& _info,
 			uint32_t _currIndex,
 			uint32_t _minBound,
 			uint32_t _maxBound,
@@ -58,8 +58,8 @@ namespace SA
 	/// \cond Internal
 
 	/// Define OutOfRange Exception creation method.
-	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfos, _currIndex, _minBound, _maxBound, ...) SA::Exception_OutOfRange(\
-		_baseInfos,\
+	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfo, _currIndex, _minBound, _maxBound, ...) SA::Exception_OutOfRange(\
+		_baseInfo,\
 		_currIndex,\
 		_minBound,\
 		_maxBound,\
