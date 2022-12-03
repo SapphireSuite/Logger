@@ -54,9 +54,9 @@ SA_LOG(_str, _lvl = Normal, _channel = Default, _details = "");
 Examples:
 ```cpp
 SA_LOG("Hello");									// Log with 'Normal' level in 'Default' channel.
-SA_LOG("Hello", Infos);								// Log with 'Infos' level in 'Default' channel.
-SA_LOG("Hello", Infos, MyChannel);					// Log with 'Infos' level in 'MyChannel' channel.
-SA_LOG("Hello", Infos, MyChannel, "My details");	// Log with 'Infos' level in 'MyChannel' channel with details "My details".
+SA_LOG("Hello", Info);								// Log with 'Info' level in 'Default' channel.
+SA_LOG("Hello", Info, MyChannel);					// Log with 'Info' level in 'MyChannel' channel.
+SA_LOG("Hello", Info, MyChannel, "My details");		// Log with 'Info' level in 'MyChannel' channel with details "My details".
 ```
 
 

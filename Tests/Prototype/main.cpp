@@ -39,7 +39,7 @@ int main()
 //{ Test Data Race
 
 	for(int i = 0; i < 10; ++i)
-		SA_LOG("Hello, World!", Infos, SA/TestChan, "Some Details!");
+		SA_LOG("Hello, World!", Info, SA/TestChan, "Some Details!");
 
 	try
 	{

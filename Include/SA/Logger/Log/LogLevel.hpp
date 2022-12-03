@@ -26,7 +26,7 @@ namespace SA
 		Normal = (1 << 0),
 
 		/// Info level
-		Infos = (1 << 1),
+		Info = (1 << 1),
 
 		/// Warning level
 		Warning = (1 << 2),
@@ -41,7 +41,7 @@ namespace SA
 		AssertFailure = (1 << 5),
 
 		/// Default log level (no assert success).
-		Default = Normal | Infos | Warning | Error | AssertFailure,
+		Default = Normal | Info | Warning | Error | AssertFailure,
 
 		Max = uint8_t(-1)
 	};

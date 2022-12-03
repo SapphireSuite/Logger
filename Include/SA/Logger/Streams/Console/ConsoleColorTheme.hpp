@@ -27,8 +27,8 @@ namespace SA
 		/// Normal level color.
 		uint8_t normal = CslColor::Bright_FG;
 
-		/// Infos level color.
-		uint8_t infos = CslColor::Blue_FG | CslColor::Bright_FG;
+		/// Info level color.
+		uint8_t info = CslColor::Blue_FG | CslColor::Bright_FG;
 
 		/// Warning level color.
 		uint8_t warning = CslColor::Yellow_FG;
