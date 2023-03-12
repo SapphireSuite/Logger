@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire development team. All Rights Reserved.
+// Copyright (c) 2023 Sapphire development team. All Rights Reserved.
 
 #include <gtest/gtest.h>
 
@@ -9,11 +9,11 @@ namespace SA::UT::Exc_Nullptr
 	TEST(Exception, Nullptr_Success)
 	{
 		int i = 5;
-		EXPECT_NO_THROW(SA_ASSERT(Nullptr, SA/UnitTests/Exception, &i));
+		EXPECT_NO_THROW(SA_ASSERT((Nullptr, &i), SA/UnitTests/Exception));
 	}
 
 	TEST(Exception, Nullptr_Failure)
 	{
-		EXPECT_THROW(SA_ASSERT(Nullptr, SA/UnitTests/Exception, (int*)nullptr), Exception_Nullptr);
+		EXPECT_THROW(SA_ASSERT((Nullptr, (int*)nullptr), SA/UnitTests/Exception), Exception_Nullptr);
 	}
 }

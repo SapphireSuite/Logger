@@ -1,6 +1,8 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <cstring>
+#include <codecvt>
+#include <locale>
 
 #include <Misc/ToString.hpp>
 
@@ -50,6 +52,11 @@ namespace SA
 		return _str;
 	}
 
+	std::string ToString(std::string&& _str) noexcept
+	{
+		return std::move(_str);
+	}
+
 //}
 
 
@@ -62,13 +69,7 @@ namespace SA
 
 	std::wstring ToWString(const char* _cstr)
 	{
-		const size_t length = strlen(_cstr);
-
-		std::wstring res(length, L' ');
-
-		std::mbstowcs(res.data(), _cstr, length);
-
-		return res;
+		return std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(_cstr);
 	}
 
 	std::wstring ToWString(const wchar_t& _char)
@@ -83,16 +84,17 @@ namespace SA
 
 	std::wstring ToWString(const std::string& _str)
 	{
-		std::wstring res(_str.length(), L' ');
-
-		std::mbstowcs(res.data(), _str.c_str(), _str.length());
-
-		return res;
+		return std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(_str);
 	}
 
 	std::wstring ToWString(const std::wstring& _str) noexcept
 	{
 		return _str;
+	}
+
+	std::wstring ToWString(std::wstring&& _str) noexcept
+	{
+		return std::move(_str);
 	}
 
 //}

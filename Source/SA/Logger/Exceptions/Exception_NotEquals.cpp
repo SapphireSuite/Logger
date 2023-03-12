@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <Exceptions/Exception_NotEquals.hpp>
 
@@ -13,16 +13,17 @@ namespace SA
 
 			while (index != std::wstring::npos)
 			{
-				msg.replace(msg.find(L"=="), 2, L"!=");
+				msg.replace(index, 2, L"!=");
 				index = msg.find(L"==");
 			}
+
+			msg.replace(msg.rfind(L"Values must be equal."), 21, L"Values must be NOT equal.");
 		}
 
-
 		// Reverse predicate.
-		if (level == LogLevel::AssertFailure)
-			level = LogLevel::AssertSuccess;
-		else if (level == LogLevel::AssertSuccess)
+		if(level == LogLevel::AssertSuccess)
 			level = LogLevel::AssertFailure;
+		else if(level == LogLevel::AssertFailure)
+			level = LogLevel::AssertSuccess;
 	}
 }

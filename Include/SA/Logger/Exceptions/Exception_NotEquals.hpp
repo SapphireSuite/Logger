@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -24,12 +24,13 @@ namespace SA
 	{
 	public:
 		/**
-		*	\e Value move Constructor.
+		*	\e Value Constructor.
 		*
 		*	\param[in] _exc		Equals exception to be reversed.
 		*/
 		Exception_NotEquals(Exception_Equals&& _exc) noexcept;
 	};
+
 
 	/// \cond Internal
 

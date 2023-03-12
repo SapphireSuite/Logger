@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -40,7 +40,7 @@ namespace SA
 		};
 
 		/**
-		*	\e Value move Constructor.
+		*	\e Value Constructor.
 		* 
 		*	\param[in] _info		Base create info.
 		*	\param[in] _pred		Predicate used for assertion.
@@ -48,23 +48,24 @@ namespace SA
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception(
-			BaseInfo&& _info,
+			BaseInfo _info,
 			bool _pred,
-			std::wstring&& _msg = L"",
-			std::wstring&& _details = L""
+			std::wstring _msg = L"",
+			std::wstring _details = L""
 		) noexcept;
 	};
 
 	/// Default type of exception.
 	using Exception_Default = Exception;
 
-
+	
 	/// \cond Internal
 
 	/// Define Default Exception creation method.
 	#define __SA_CREATE_EXCEPTION_Default(_baseInfo, _pred, ...) SA::Exception_Default(\
 		_baseInfo,\
 		_pred,\
+		SA_WSTR(_pred) L"\tevaluated to false!",\
 		##__VA_ARGS__\
 	)
 

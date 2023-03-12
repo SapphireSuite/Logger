@@ -1,14 +1,14 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <Exceptions/Exception.hpp>
 
 namespace SA
 {
 	Exception::Exception(
-		BaseInfo&& _info,
+		BaseInfo _info,
 		bool _pred,
-		std::wstring&& _msg,
-		std::wstring&& _details
+		std::wstring _msg,
+		std::wstring _details
 	) noexcept :
 		Log(
 			std::move(_info.file),

@@ -1,13 +1,14 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
 #ifndef SAPPHIRE_LOGGER_LOGGER_GUARD
 #define SAPPHIRE_LOGGER_LOGGER_GUARD
 
-#include <vector>
+#include <list>
 
 #include <SA/Logger/Streams/ALogStream.hpp>
+#include <SA/Logger/Exceptions/Exception.hpp>
 
 /**
 *	\file Logger.hpp
@@ -29,26 +30,9 @@ namespace SA
 	class Logger
 	{
 	protected:
-		/// Should duplicate logs on push.
-		const bool bDuplicateLogs = false;
+		std::list<ALogStream*> mStreams;
 
-		/// Registered output streams.
-		std::vector<ALogStream*> mStreams;
-
-
-		/**
-		*	\brief Child-implementation constructor.
-		* 
-		*	\param[in] _bDuplicateLogs	bDuplicateLogs value.
-		*/
-		Logger(bool _bDuplicateLogs) noexcept;
-
-		/**
-		*	\brief Push a new \b abstract log in logger.
-		* 
-		*	\param[in] _log		Log to push.
-		*/
-		virtual void Push_Internal(const Log* _log);
+//{ Streams
 
 		/**
 		*	\brief Process log to output.
@@ -56,18 +40,14 @@ namespace SA
 		*	\param[in] _log		Log to process.
 		*	\param[in] _bForce	Should force log process. Default is false.
 		*/
-		virtual void ProcessLog(const Log* _log, bool _bForce = false);
-
-	public:
-		/// Default constructor.
-		Logger() = default;
+		virtual void ProcessLog(const SA::Log& _log, bool _bForce = false);
 
 		/**
 		*	\brief Register a stream to output.
 		* 
 		*	\param[in] _stream	Stream to register.
 		*/
-		virtual void Register(ALogStream& _stream);
+		virtual void RegisterStream(ALogStream* _stream);
 
 		/**
 		*	\brief Unregister a stream from output.
@@ -76,21 +56,17 @@ namespace SA
 		*
 		*	\return true on success.
 		*/
-		virtual bool Unregister(ALogStream& _stream);
+		virtual bool UnregisterStream(ALogStream* _stream);
 
-		/**
-		*	\brief Force logger to flush all streams.
-		*/
-		virtual void Flush();
+//}
 
+	public:
 		/**
-		*	\brief Push a new \b typped log in logger.
+		*	\brief Push a new log in logger.
 		* 
-		*	\tparam LogT		Log type.
 		*	\param[in] _log		Log to push.
 		*/
-		template <typename LogT>
-		void Push(LogT&& _log);
+		virtual void Log(SA::Log _log);
 
 		/**
 		*	\brief Process exception.
@@ -102,7 +78,39 @@ namespace SA
 		*	\param[in] _exc		exception to process.
 		*/
 		template <typename ExcepT>
-		void Assert(ExcepT&& _exc);
+		void Assert(ExcepT _exc);
+
+//{ Streams
+
+		/**
+		*	\brief Create a new stream to output in.
+		* 
+		*	\tparam StreamT 	Type of stream to create.
+		*	\tparam Args...		Argument variadic types to construct stream.
+		*	\param[in] _args	Arguments to construct stream.
+		*
+		*	\return Newly created stream.
+		*/
+		template <typename StreamT, typename... Args>
+		StreamT& CreateSteam(Args&&... _args);
+
+		/**
+		 * \brief Destroy a previously created stream.
+		 * 
+		 * \tparam StreamT 	Type of stream to destroy.
+		 * \param _stream 	Stream variable to destroy.
+		 * 
+		 * \return true on destroy success.
+		 */
+		template <typename StreamT>
+		bool DestroyStream(StreamT& _stream);
+
+		/**
+		*	\brief Force logger to flush all streams.
+		*/
+		virtual void Flush();
+
+//}
 	};
 
 	/// Global Debug namespace
@@ -114,7 +122,6 @@ namespace SA
 }
 
 #include <SA/Logger/Logger.inl>
-
 
 /** \} */
 

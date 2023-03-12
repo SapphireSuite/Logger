@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -9,7 +9,6 @@
 
 #include <string>
 #include <vector>
-#include <type_traits>
 
 /**
 *	\file ToString.hpp
@@ -20,9 +19,9 @@
 *	\{
 */
 
-
 namespace SA
 {
+
 //{ ToString
 
 	/**
@@ -108,7 +107,6 @@ namespace SA
 
 	/// \cond Internal
 
-
 	/// ToString spec for single char.
 	std::string ToString(const char& _char);
 
@@ -118,6 +116,8 @@ namespace SA
 	/// ToString spec for c++ str.
 	std::string ToString(const std::string& _str) noexcept;
 
+	/// ToString spec for c++ moved str.
+	std::string ToString(std::string&& _str) noexcept;
 
 	/// \endcond
 
@@ -125,20 +125,6 @@ namespace SA
 
 
 //{ ToWString
-
-	/**
-	*	\brief Binary ToWString implementation.
-	*
-	*	Convert elem into bit array and print as hex values.
-	* 
-	*	\tparam T			Type of element.
-	*	\param[in] _elem	Element to convert to wstring.
-	* 
-	*	\return	std::wstring from element converted in binary.
-	*/
-	template <typename T>
-	std::wstring ToWStringBinary(const T& _elem) noexcept;
-
 
 	/**
 	*	\brief ToWString default implementation used to print elem.
@@ -190,7 +176,6 @@ namespace SA
 	
 	/// \cond Internal
 
-
 	/// ToWString spec for single char.
 	std::wstring ToWString(const char& _char);
 
@@ -209,15 +194,16 @@ namespace SA
 	/// ToWString spec for c++ wstr.
 	std::wstring ToWString(const std::wstring& _str) noexcept;
 
+	/// ToWString spec for c++ moved wstr.
+	std::wstring ToWString(std::wstring&& _str) noexcept;
 
 	/// \endcond
 
 //}
-}
 
+} // namespace SA
 
 #include <SA/Logger/Misc/ToString.inl>
-
 
 /** \} */
 

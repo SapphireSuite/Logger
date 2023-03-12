@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <Streams/ALogStream.hpp>
 
@@ -6,16 +6,10 @@ namespace SA
 {
 	void ALogStream::ProcessLog(const Log& _log, bool _bForce)
 	{
-		if (_bForce)
-		{
-			Output(_log);
-			return;
-		}
-
 		const bool bLevelEnabled = levelFlags & _log.level;
 		const bool bChannelEnabled = channelFilter.IsChannelEnabled(_log.chanName);
 
-		if (bLevelEnabled && bChannelEnabled)
+		if (_bForce || (bLevelEnabled && bChannelEnabled))
 			Output(_log);
 	}
 

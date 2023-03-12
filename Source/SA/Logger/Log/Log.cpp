@@ -1,17 +1,18 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <Log/Log.hpp>
 
 namespace SA
 {
 	Log::Log(
-		std::wstring&& _file,
+		std::wstring _file,
 		uint32_t _line,
-		std::string&& _function,
-		std::wstring&& _msg,
+		std::string _function,
+		std::wstring _msg,
 		LogLevel _level,
-		std::wstring&& _chanName,
-		std::wstring&& _details
+		std::wstring _chanName,
+		std::wstring _details,
+		std::string _backtrace
 	) noexcept :
 		file{ std::move(_file) },
 		line{ _line },
@@ -20,6 +21,7 @@ namespace SA
 		level{_level },
 		chanName{ std::move(_chanName) },
 		details{ std::move(_details) },
+		backtrace{ std::move(_backtrace) },
 		date{ DateTime::Now() }
 	{
 	}
@@ -44,6 +46,9 @@ namespace SA
 
 		if (!_log.details.empty())
 			str += L"Dets:\t" + _log.details + L'\n';
+
+		if(!_log.backtrace.empty())
+			str += L"Backtrace:\t" + SA::ToWString(_log.backtrace) + L'\n';
 
 		return str;
 	}

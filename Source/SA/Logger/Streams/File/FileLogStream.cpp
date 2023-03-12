@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <filesystem>
 
@@ -52,7 +52,7 @@ namespace SA
 			// Query old file time info.
 			DateTime backupStat = DateTime::FileStats(_fileFullPath);
 
-			std::rename(_fileFullPath.c_str(), (filePath + fileName + "_backup-" + ToString(backupStat) + fileExt).c_str());
+			std::filesystem::rename(_fileFullPath.c_str(), (filePath + fileName + "_backup-" + ToString(backupStat) + fileExt).c_str());
 		}
 
 		mHandle.open(_fileFullPath, std::ios::out);

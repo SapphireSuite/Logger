@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -22,7 +22,6 @@
 *	\{
 */
 
-
 namespace SA
 {
 	/**
@@ -33,16 +32,13 @@ namespace SA
 	*/
 	class LoggerThread : public Logger
 	{
-		/// Output stream mutex operations.
-		std::mutex mStreamMutex;
-
+	//{ Thread
 
 		/// Logger thread.
 		std::thread mThread;
 
 		/// Current running state.
 		std::atomic<bool> mIsRunning = true;
-
 
 		/// Log queue mutex operations.
 		std::mutex mLogQueueMutex;
@@ -51,17 +47,26 @@ namespace SA
 		std::condition_variable mLogConditionVar;
 
 		/// Log saved queue.
-		std::queue<const Log*> mLogQueue;
+		std::queue<SA::Log> mLogQueue;
 
 		/// Atomic queue size.
 		std::atomic<size_t> mQueueSize = 0;
 
-
-		void Push_Internal(const Log* _log) override final;
-
-		void ProcessLog(const Log* _log, bool _bForce = false) override final;
-
 		void ThreadLoop();
+
+	//}
+
+	//{ Streams
+	
+		/// Output stream mutex operations.
+		std::mutex mStreamMutex;
+
+		void ProcessLog(const SA::Log& _log, bool _bForce = false) override final;
+
+		void RegisterStream(ALogStream* _stream) override final;
+		bool UnregisterStream(ALogStream* _stream) override final;
+
+	//}
 
 	public:
 		/// Default Constructor.
@@ -73,12 +78,7 @@ namespace SA
 		*/
 		~LoggerThread();
 
-
-		using Logger::Push;
-		using Logger::Assert;
-
-		void Register(ALogStream& _stream) override final;
-		bool Unregister(ALogStream& _stream) override final;
+		void Log(SA::Log _log) override final;
 
 		void Flush() override final;
 	};

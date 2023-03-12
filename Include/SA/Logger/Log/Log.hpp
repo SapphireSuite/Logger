@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -6,9 +6,8 @@
 #define SAPPHIRE_LOGGER_LOG_GUARD
 
 #include <SA/Logger/Log/LogLevel.hpp>
+#include <SA/Logger/Misc/DateTime.hpp>
 #include <SA/Logger/Misc/ToString.hpp>
-
-#include <SA/Support/Algorithms/DateTime.hpp>
 
 /**
 *	\file Log.hpp
@@ -46,6 +45,9 @@ namespace SA
 		/// Additional details string.
 		std::wstring details;
 
+		/// backtracing of logging call.
+		std::string backtrace;
+
 		/// Date time.
 		DateTime date;
 
@@ -59,18 +61,18 @@ namespace SA
 		*	\param[in] _level		Level of the Log.
 		*	\param[in] _chanName	Channel's name of the Log.
 		*	\param[in] _details		Additional details to display.
+		*	\param[in] _backtrace	backtracing of logging call.
 		*/
 		Log(
-			std::wstring&& _file,
+			std::wstring _file,
 			uint32_t _line,
-			std::string&& _function,
-			std::wstring&& _msg = L"Hello, World!",
+			std::string _function,
+			std::wstring _msg = L"Hello, World!",
 			LogLevel _level = LogLevel::Normal,
-			std::wstring&& _chanName = L"Default",
-			std::wstring&& _details = L""
+			std::wstring _chanName = L"Default",
+			std::wstring _details = L"",
+			std::string _backtrace = ""
 		) noexcept;
-
-		virtual ~Log() = default;
 	};
 
 	/**

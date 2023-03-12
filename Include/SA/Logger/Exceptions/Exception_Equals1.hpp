@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -6,8 +6,6 @@
 #define SAPPHIRE_LOGGER_EXCEPTION_EQUALS_1_GUARD
 
 #include <SA/Logger/Exceptions/Exception_Equals.hpp>
-
-#include <SA/Logger/Misc/ClassName.hpp>
 
 /**
 *	\file Exception_Equals1.hpp
@@ -37,12 +35,17 @@ namespace SA
 		*/
 		template <typename T>
 		Exception_Equals1(
-			BaseInfo&& _info,
+			BaseInfo _info,
 			const T& _lhs,
-			std::wstring&& _predStr = L"pred",
-			std::wstring&& _details = L""
+			std::wstring _predStr = L"pred",
+			std::wstring _details = L""
 		) noexcept :
-			Exception_Equals(std::move(_info), _lhs, T(1), std::move(_predStr), std::move(_details))
+			Exception_Equals(
+				std::move(_info),
+				_lhs,
+				T(1),
+				std::move(_predStr),
+				std::move(_details))
 		{
 		}
 	};
@@ -53,7 +56,7 @@ namespace SA
 	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfo, _lhs, ...) SA::Exception_Equals1(\
 		_baseInfo,\
 		_lhs,\
-		SA_WSTR(_lhs) L" == " + SA::ToWString(SA::Intl::GetClassName(_lhs)) + L"{ 1 }",\
+		SA_WSTR(_lhs) L" == " + SA::ToWString(typeid(_lhs).name()) + L"(1)",\
 		##__VA_ARGS__\
 	)
 

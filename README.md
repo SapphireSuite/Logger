@@ -10,94 +10,90 @@ Links to the **official** [documentation](https://SapphireSuite.github.io/Logger
 
 
 # Quick Use
-
-### Collection Header
 ```cpp
 #include <SA/Collections/Debug>
 ```
-
-
-## CMake
-Add the subdirectory to the build tree and link the library to your taget:
-```cmake
-add_subdirectory(Logger)
-target_link_libraries(<target> <link> SA_Logger)
+## Initialization
+See [_Initialization_](https://github.com/SapphireSuite/Logger/wiki/Initialization) for advanced implementation.
+```cpp
+// Single-thread (thread-unsafe) logger.
+// Console Color and file logging.
+SA::Debug::InitDefaultLogger();
 ```
 
+## Macros
+See [_Macros_](https://github.com/SapphireSuite/Logger/wiki/Macros) for advanced implementation.
 
-## Quick Init
-Create the Logger variable and register it to the static instance:
+### SA_LOG
+Log **anything** converted as a string with default LogLevel, channel, and details.\
+See [_SA_LOG_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_log) for examples and advanced use.
 ```cpp
-Logger myLogger;
-
-// Register logger to static instance.
-Sa::Debug::logger = &myLogger;
+SA_LOG(_str, _level = Normal, _channel = Default, _details = "");
 ```
-Add _LogStream_ output to the logger:
+Example:
 ```cpp
-// Output to console.
-ConsoleLogStream cslStream;
-logger.Register(cslStream);
-
-// Output to file (default Log/Log.txt).
-FileLogStream fileStream;
-logger.Register(fileStream);
+SA_LOG("Hello, World!");
 ```
-Now the log macros can be used anywhere in the code.
-
-
-## SA_LOG
-The *SA_LOG* macro is used to log a string with an optionnal level, channel and details:
-```cpp
-SA_LOG(_str, _lvl = Normal, _channel = Default, _details = "");
 ```
-Examples:
-```cpp
-SA_LOG("Hello");									// Log with 'Normal' level in 'Default' channel.
-SA_LOG("Hello", Info);								// Log with 'Info' level in 'Default' channel.
-SA_LOG("Hello", Info, MyChannel);					// Log with 'Info' level in 'MyChannel' channel.
-SA_LOG("Hello", Info, MyChannel, "My details");		// Log with 'Info' level in 'MyChannel' channel with details "My details".
+[18:44:14] {Normal - Default}   main.cpp:50 - int main()
+Msg:    Hello, World!
 ```
 
-
-## SA_WARN
-The *SA_WARN* macro is used to conditionnally (on false predicate) log a **warning** in an optionnal channel with details.
-The predicate as a string is automatically logged:
+### SA_WARN
+Log a **warning** on false predicate with default channel and details.\
+See [_SA_WARN_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_warn) for examples and advanced use.
 ```cpp
-SA_WARN(_predicate, _channel = Default, _details = "");
+SA_WARN(_pred, _channel = Default, _details = "");
 ```
-Examples:
+Example:
 ```cpp
-SA_WARN(myValue == 1)							// Log "myValue == 1" if myValue != 1 in 'Default' channel.
-SA_WARN(myValue == 1, MyChannel)				// Log "myValue == 1" if myValue != 1 in 'MyChannel' channel.
-SA_WARN(myValue == 1, MyChannel, "My details")	// Log "myValue == 1" if myValue != 1 in 'MyChannel' channel with details "My details".
+int myInt = 2;
+SA_WARN(myInt == 1, MyChannel, "myInt invalid: might cause issues");
 ```
-
-
-## SA_ERROR
-The *SA_ERROR* macro is used to conditionnally (on false predicate) log an **error** in an optionnal channel with details.
-The predicate as a string is automatically logged:
-```cpp
-SA_ERROR(_predicate, _channel = Default, _details = "");
 ```
-Examples:
-```cpp
-SA_ERROR(myValue == 1)							// Log "myValue == 1" if myValue != 1 in 'Default' channel.
-SA_ERROR(myValue == 1, MyChannel)				// Log "myValue == 1" if myValue != 1 in 'MyChannel' channel.
-SA_ERROR(myValue == 1, MyChannel, "My details")	// Log "myValue == 1" if myValue != 1 in 'MyChannel' channel with details "My details".
+[18:46:20] {Warning - MyChannel}        main.cpp:53 - int main()
+Msg:    { myInt == 1 }  evaluated to false!
+Dets:   myInt invalid: might cause issues
 ```
 
-
-## SA_ASSERT
-the *SA_ASSERT* macro is used to conditionnally (on false exception predicate) throw an **execption** in a channel.
-Arguments to build the exception must be provided:
+### SA_ERROR
+Log an **error** on false predicate with default channel and details.\
+See [_SA_ERROR_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_error) for examples and advanced use.
 ```cpp
-SA_ASSERT(_exceptionType, _channel = Default, _exceptionArgs...);
+SA_ERROR(_pred, _channel = Default, _details = "");
 ```
-Examples:
+Example:
 ```cpp
-SA_ASSERT(OutOfBound, Default, 2, 0, 10)	// Doesn't throw Exception_OutOfBound because 2 is in range [0, 10].
-SA_ASSERT(OutOfBound, Default, 2, 5, 10)	// Throw Exception_OutOfBound because 2 is not in range [5, 10].
+int myInt = 2;
+SA_ERROR(myInt == 1, MyChannel, "myInt invalid: possible crash");
+```
+```
+[18:47:25] {Error - MyChannel}        main.cpp:53 - int main()
+Msg:    { myInt == 1 }  evaluated to false!
+Dets:   myInt invalid: possible crash
+```
+
+### SA_ASSERT
+Assert an **exception** built from **type and parameters** with default channel and details.\
+See [_SA_ASSERT_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_assert) for examples and advanced use.
+```cpp
+SA_ASSERT((_excType, params...), _channel = Default, _details = "")
+```
+Example:
+```cpp
+int myIndex = 7;
+int minBound = 2;
+int maxBound = 6;
+
+// Throw SA::Exception_OutOfRange.
+SA_ASSERT((OutOfRange, myIndex, minBound, maxBound), MyTestChannel, "Access index out of bound!")
+```
+```
+[18:49:22] {AssertFailure - MyTestChannel}      main.cpp:53 - int main()
+Msg:    Index 'myIndex' [7] is out of range ['minBound';'maxBound'] => [2;6]
+Dets:   Access index out of bound!
+
+terminate called after throwing an instance of 'SA::Exception_OutOfRange'
 ```
 
 

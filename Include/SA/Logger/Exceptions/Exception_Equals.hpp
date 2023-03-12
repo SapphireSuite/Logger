@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -6,8 +6,6 @@
 #define SAPPHIRE_LOGGER_EXCEPTION_EQUALS_GUARD
 
 #include <SA/Logger/Exceptions/Exception.hpp>
-
-#include <SA/Support/Stringify.hpp>
 
 /**
 *	\file Exception_Equals.hpp
@@ -21,12 +19,14 @@
 
 namespace SA
 {
-	/// Equals exception base type.
+/// Equals exception base type.
 	class Exception_Equals : public Exception
 	{
 	public:
 		/**
-		*	\e Template value move Constructor.
+		*	\e Template value Constructor.
+		*
+		*	Use default operator==
 		*
 		*	\tparam T				Operands type.
 		* 
@@ -38,16 +38,22 @@ namespace SA
 		*/
 		template <typename T>
 		Exception_Equals(
-			BaseInfo&& _info,
+			BaseInfo _info,
 			const T& _lhs,
 			const T& _rhs,
-			std::wstring&& _predStr = L"pred",
-			std::wstring&& _details = L""
-		) noexcept;
+			std::wstring _predStr = L"pred",
+			std::wstring _details = L""
+		) noexcept :
+			Exception(std::move(_info),
+			_lhs == _rhs,
+			std::move(_predStr) + L" => { " + ToWString(_lhs) + L" == " + ToWString(_rhs)+ L" }: Values must be equal.",
+			std::move(_details))
+		{
+		}
 
 
 		/**
-		*	\e Float value move Constructor.
+		*	\e Float value Constructor.
 		* 
 		*	Perform NearlyEquals (epsilon).
 		*
@@ -58,11 +64,11 @@ namespace SA
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Equals(
-			BaseInfo&& _info,
+			BaseInfo _info,
 			float _lhs,
 			float _rhs,
-			std::wstring&& _predStr = L"pred",
-			std::wstring&& _details = L""
+			std::wstring _predStr = L"pred",
+			std::wstring _details = L""
 		) noexcept;
 
 
@@ -78,11 +84,11 @@ namespace SA
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Equals(
-			BaseInfo&& _info,
+			BaseInfo _info,
 			double _lhs,
 			double _rhs,
-			std::wstring&& _predStr = L"pred",
-			std::wstring&& _details = L""
+			std::wstring _predStr = L"pred",
+			std::wstring _details = L""
 		) noexcept;
 	};
 
@@ -94,14 +100,12 @@ namespace SA
 		_baseInfo,\
 		_lhs,\
 		_rhs,\
-		SA_WSTR(_lhs) L" == " SA_WSTR(_rhs),\
+		L"\'" SA_WSTR(_lhs) L"\' == \'" SA_WSTR(_rhs) L"\'",\
 		##__VA_ARGS__\
 	)
 
 	/// \endcond
 }
-
-#include <SA/Logger/Exceptions/Exception_Equals.inl>
 
 /**
 *	\example Exception_EqualsTests.cpp

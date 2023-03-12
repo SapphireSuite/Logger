@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -18,6 +18,13 @@
 /**
 *	\defgroup Logger Logger
 *	Sapphire Suite's Logger Module.
+*/
+
+
+/**
+*	\defgroup Logger_Misc Misc
+*	Sapphire Suite's Logger Misc.
+*	\ingroup Logger
 */
 
 
@@ -44,13 +51,6 @@
 *	\defgroup Logger_File File
 *	Sapphire Suite's Logger File Stream.
 *	\ingroup Logger_Stream
-*/
-
-
-/**
-*	\defgroup Logger_Misc Misc
-*	Sapphire Suite's Logger Misc.
-*	\ingroup Logger
 */
 
 

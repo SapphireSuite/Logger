@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -26,7 +26,7 @@ namespace SA
 	{
 	public:
 		/**
-		*	\e Value move Constructor.
+		*	\e Value Constructor.
 		*
 		*	\param[in] _info		Base create info.
 		*	\param[in] _pred		Evaluated pointer predicate.
@@ -34,10 +34,10 @@ namespace SA
 		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Nullptr(
-			BaseInfo&& _info,
+			BaseInfo _info,
 			bool _pred,
-			std::wstring&& _predStr = L"ptr",
-			std::wstring&& _details = L""
+			std::wstring _predStr = L"ptr",
+			std::wstring _details = L""
 		) noexcept;
 	};
 

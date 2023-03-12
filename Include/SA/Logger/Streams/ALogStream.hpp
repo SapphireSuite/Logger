@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -39,6 +39,9 @@ namespace SA
 
 		/// Level filter used for log in stream.
 		uint8_t levelFlags = LogLevel::Default;
+
+		/// \e Default virtual destructor.
+		virtual ~ALogStream() = default;
 
 		/**
 		*	\brief Process a log to output in stream.

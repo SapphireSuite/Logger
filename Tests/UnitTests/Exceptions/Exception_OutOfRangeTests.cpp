@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire development team. All Rights Reserved.
+// Copyright (c) 2023 Sapphire development team. All Rights Reserved.
 
 #include <gtest/gtest.h>
 
@@ -8,17 +8,19 @@ namespace SA::UT::Exc_OOR
 {
 	TEST(Exception, OutOfRange_Success)
 	{
-		EXPECT_NO_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 4, 0, 6));
-		EXPECT_NO_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 6, 0, 6));
+		SA_ASSERT((OutOfRange, 4, 0, 6), SA/UnitTests/Exception);
+
+		EXPECT_NO_THROW(SA_ASSERT((OutOfRange, 4, 0, 6), SA/UnitTests/Exception));
+		EXPECT_NO_THROW(SA_ASSERT((OutOfRange, 6, 0, 6), SA/UnitTests/Exception));
 	}
 
 	TEST(Exception, OutOfRange_Failure)
 	{
-		EXPECT_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 2, 4, 6), Exception_OutOfRange);
+		EXPECT_THROW(SA_ASSERT((OutOfRange, 2, 4, 6), SA/UnitTests/Exception), Exception_OutOfRange);
 
 		try
 		{
-			SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 2, 4, 6);
+			SA_ASSERT((OutOfRange, 2, 4, 6), SA/UnitTests/Exception);
 		}
 		catch (Exception_OutOfRange& _exc)
 		{
@@ -28,11 +30,11 @@ namespace SA::UT::Exc_OOR
 		}
 
 
-		EXPECT_THROW(SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 10, 0, 6), Exception_OutOfRange);
+		EXPECT_THROW(SA_ASSERT((OutOfRange, 10, 0, 6), SA/UnitTests/Exception), Exception_OutOfRange);
 
 		try
 		{
-			SA_ASSERT(OutOfRange, SA/UnitTests/Exception, 10, 0, 6);
+			SA_ASSERT((OutOfRange, 10, 0, 6), SA/UnitTests/Exception);
 		}
 		catch (Exception_OutOfRange& _exc)
 		{

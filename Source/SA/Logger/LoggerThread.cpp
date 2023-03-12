@@ -1,10 +1,10 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <LoggerThread.hpp>
 
 namespace SA
 {
-	LoggerThread::LoggerThread() noexcept : Logger(true)
+	LoggerThread::LoggerThread() noexcept
 	{
 		mThread = std::thread(&LoggerThread::ThreadLoop, this);
 	}
@@ -22,70 +22,79 @@ namespace SA
 			mThread.join();
 	}
 
-
-	void LoggerThread::Push_Internal(const Log* _log)
+	void LoggerThread::Log(SA::Log _log)
 	{
-		std::lock_guard lk(mLogQueueMutex);
+		mLogQueueMutex.lock();
 
-		mLogQueue.push(_log);
+		mLogQueue.push(std::move(_log));
 		++mQueueSize;
+
+		mLogQueueMutex.unlock();
 
 		mLogConditionVar.notify_one();
 	}
 
-	void LoggerThread::ProcessLog(const Log* _log, bool _bForce)
+//{ Thread
+
+	void LoggerThread::ThreadLoop()
+	{
+		std::unique_lock locker(mLogQueueMutex);
+
+		// Wait for first push.
+		if (mLogQueue.empty())
+			mLogConditionVar.wait(locker);
+		
+
+		while (mIsRunning)
+		{
+			// Pop Log.
+			SA::Log log = std::move(mLogQueue.front());
+			mLogQueue.pop();
+
+			// Allow queue.push() while outputing in streams.
+			locker.unlock();
+
+
+			ProcessLog(log);
+
+			// Decrease queue size after process: ensure correct flush.
+			--mQueueSize;
+
+
+			// re-lock before accessing size.
+			locker.lock();
+
+			// Queue empty: wait for push.
+			if (mLogQueue.empty())
+				mLogConditionVar.wait(locker); // Wait and aquire locker for next loop.
+
+			// Check running state after wait.
+		}
+	}
+
+//}
+
+//{ Streams
+
+	void LoggerThread::ProcessLog(const SA::Log& _log, bool _bForce)
 	{
 		std::lock_guard lk(mStreamMutex);
 
 		Logger::ProcessLog(_log, _bForce);
 	}
 
-	void LoggerThread::ThreadLoop()
-	{
-		while (mIsRunning)
-		{
-			const Log* log = nullptr;
-
-			{
-				std::unique_lock lock(mLogQueueMutex);
-
-				// Queue empty: wait for push.
-				if (mLogQueue.empty())
-				{
-					mLogConditionVar.wait(lock);
-
-					// Not running anymore after wait: stop thread.
-					if (!mIsRunning)
-						return;
-				}
-
-				// Pop Log.
-				log = mLogQueue.front();
-				mLogQueue.pop();
-
-				// Destroy lock: Allow push operations while outputing in streams.
-			}
-
-			ProcessLog(log);
-
-			// Decrease queue size after process: ensure correct flush.
-			--mQueueSize;
-		}
-	}
-
-
-	void LoggerThread::Register(ALogStream& _stream)
+	void LoggerThread::RegisterStream(ALogStream* _stream)
 	{
 		std::lock_guard lk(mStreamMutex);
 
-		Logger::Register(_stream);
+		Logger::RegisterStream(_stream);
 	}
 
-	bool LoggerThread::Unregister(ALogStream& _stream)
+	bool LoggerThread::UnregisterStream(ALogStream* _stream)
 	{
 		std::lock_guard lk(mStreamMutex);
 
-		return Logger::Unregister(_stream);
+		return Logger::UnregisterStream(_stream);
 	}
 
 	void LoggerThread::Flush()
@@ -99,4 +108,6 @@ namespace SA
 
 		Logger::Flush();
 	}
+
+//}
 }

@@ -1,8 +1,8 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #include <cwchar>
 
-#include <Misc/FileNameFromPath.hpp>
+#include <Preprocessors/FileName.hpp>
 
 namespace SA::Intl
 {

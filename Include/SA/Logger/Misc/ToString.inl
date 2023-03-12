@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 namespace SA
 {
@@ -32,7 +32,7 @@ namespace SA
 		std::string res = "{ ";
 
 		for (uint32_t i = 0; i < _size; ++i)
-			res += ToString(_elems[i]) + ", ";
+			res += ToString(_elems[i]) + " | ";
 
 		res[res.size() - 2] = ' ';
 		res[res.size() - 1] = '}';
@@ -52,19 +52,12 @@ namespace SA
 //{ ToWString
 
 	template <typename T>
-	std::wstring ToWStringBinary(const T& _elem) noexcept
-	{
-		return ToWString(ToStringBinary(_elem));
-	}
-
-
-	template <typename T>
 	std::wstring ToWString(const T& _elem) noexcept
 	{
 		if constexpr (std::is_arithmetic<T>::value)
 			return std::to_wstring(_elem);
 		else
-			return std::wstring();
+			return ToWString(ToString(_elem));
 	}
 
 	template <typename T>

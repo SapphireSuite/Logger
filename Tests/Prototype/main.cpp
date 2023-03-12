@@ -1,22 +1,80 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
+
+#include <iostream>
 
 #include <SA/Collections/Debug>
-using namespace SA;
+
+void LogCallback(SA::Log _log)
+{
+	// Filter: discard Info level.
+	if(_log.level == SA::LogLevel::Info)
+		return;
+
+	std::wcout << SA::ToWString(_log) << std::endl;
+}	
+
+class MyClass
+{
+public:
+	int i = 0;
+};
+
+namespace SA
+{
+	template <>
+	std::string ToString(const MyClass& _m)
+	{
+		return "MyClass: " + std::to_string(_m.i);
+	}
+}
 
 int main()
 {
 //{ Init
 
-	ConsoleLogStream cslStream;
-	FileLogStream fileStream;
+	// SA::Debug::logCB = LogCallback;
+	// SA::Debug::InitDefaultLoggerThread;
 
-	LoggerThread logger;
+	//SA::Logger logger;
+	SA::LoggerThread logger;
+
+	SA::ConsoleLogStream& cslStream = logger.CreateSteam<SA::ConsoleLogStream>();
+	logger.CreateSteam<SA::FileLogStream>();
+
 	SA::Debug::logger = &logger;
 
-	logger.Register(cslStream);
-	logger.Register(fileStream);
+	cslStream.levelFlags |= SA::LogLevel::AssertSuccess;
 
 //}
+
+	int i = 8614;
+
+	MyClass m1;
+	m1.i = 72;
+
+	SA_LOG("efsegseg");
+	SA_LOG(i, Error);
+	SA_LOG(m1, Info);
+	SA_LOG("efsegseg", Error, PP.SuperChan);
+	SA_LOG("efsegseg", Error, PP.SuperChan, L"super dets");
+	SA_LOG(L"AAAAAAAAAA", Normal, SA.TestChan, L"");
+	SA_LOG(("%1 Hello %1 %2", 8, m1), Normal, SA.TestChan, L"");
+
+	SA_LOG("Discarded message", Info);
+
+	SA_ERROR(3 < 1, NewChan, ("Some Details! %1 is > %2", 3, 1))
+	SA_WARN(3 < 1, NewChan, ("Some Details! %1 is > %2", 3, 1))
+
+
+	int i2 = 4;
+	int j2 = 0;
+	int k2 = 6;
+
+	std::vector<int> v = {8, 9, 3, 1};
+
+	SA_ASSERT((OutOfRange, i2, j2, k2), SA.SuperAssertChan, L"SomeDetails!?");
+	SA_ASSERT((OutOfRange, i2, j2, k2), SA.SuperAssertChan);
+	SA_ASSERT((OutOfArrayRange, 1, v), SA.SuperAssertChan, ("SomeDetails %1 %2!?", i2, j2));
 
 //{ Test LogLevel Flags
 
@@ -24,13 +82,13 @@ int main()
 
 	logger.Flush();
 
-	cslStream.levelFlags &= ~LogLevel::Warning;
+	cslStream.levelFlags &= ~SA::LogLevel::Warning;
 
 	SA_LOG("This log level is NOT enabled in console!", Warning, SA/TestChan);
 
 	logger.Flush();
 
-	cslStream.levelFlags |= LogLevel::Warning;
+	cslStream.levelFlags |= SA::LogLevel::Warning;
 
 	SA_LOG("This log level is enabled AGAIN in console!", Warning, SA/TestChan);
 
@@ -43,9 +101,9 @@ int main()
 
 	try
 	{
-		SA_ASSERT(OutOfRange, SA/OtherChan, 4u, 1u, 3u);
+		SA_ASSERT((OutOfRange, 4u, 1u, 3u), SA/OtherChan);
 	}
-	catch (Exception& _exc)
+	catch (SA::Exception& _exc)
 	{
 		(void)_exc;
 		SA_LOG("CATCH");

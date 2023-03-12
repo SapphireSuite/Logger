@@ -1,4 +1,4 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
@@ -28,19 +28,64 @@ namespace SA
 	{
 	public:
 		/**
-		*	\e Value move Constructor.
+		*	\e Value with bound Constructor.
 		* 
-		*	\param[in] _info		Base create info.
-		*	\param[in] _currIndex	Index used for access.
-		*	\param[in] _array		Array to check bounds with.
-		*	\param[in] _details		Additional details to display on assertion.
+		*	\param[in] _info			Base create info.
+		*	\param[in] _currIndex		Index used for access.
+		*	\param[in] _currIndexStr	Index variable used for access, as a wstring.
+		*	\param[in] _array			Array to check bounds with.
+		*	\param[in] _arrayName		Array variable to access, as a wstring.
+		*	\param[in] _minBound		Optionnal array min bound
+		*	\param[in] _maxBound		optionnal array max bound
+		*	\param[in] _details			Additional details to display on assertion.
 		*/
 		template <typename U>
-		Exception_OutOfArrayRange(BaseInfo&& _info,
+		Exception_OutOfArrayRange(BaseInfo _info,
 			uint32_t _currIndex,
+			std::wstring _currIndexStr,
 			const U& _array,
-			std::wstring&& _details = L"") :
-			Exception_OutOfRange(std::move(_info), _currIndex, 0u, (uint32_t)_array.size() - 1, std::move(_details))
+			std::wstring _arrayName = L"",
+			uint32_t _minBound = 0,
+			uint32_t _maxBound = uint32_t(-1),
+			std::wstring _details = L""
+		) noexcept :
+			Exception_OutOfRange(std::move(_info),
+				_currIndex,
+				_minBound,
+				_maxBound <= _array.size() - 1 ? _maxBound : _array.size() - 1,
+				L"",
+				std::move(_details))
+		{
+			// Post initialization to use min/max bounds variables.
+			msg = L"Index \'" + _currIndexStr + L"\' [" + ToWString(_currIndex) + L"] is out of array \'" + _arrayName +
+				L"\' range [" + ToWString(minBound) + L';' + ToWString(maxBound) + L']';
+		}
+
+		/**
+		*	\e Value Constructor.
+		* 
+		*	\param[in] _info			Base create info.
+		*	\param[in] _currIndex		Index used for access.
+		*	\param[in] _currIndexStr	Index variable used for access, as a wstring.
+		*	\param[in] _array			Array to check bounds with.
+		*	\param[in] _arrayName		Array variable used to access, as a wstring.
+		*	\param[in] _details			Additional details to display on assertion.
+		*/
+		template <typename U>
+		Exception_OutOfArrayRange(BaseInfo _info,
+			uint32_t _currIndex,
+			std::wstring _currIndexStr,
+			const U& _array,
+			std::wstring _arrayName,
+			std::wstring _details
+		) noexcept :
+			Exception_OutOfArrayRange(std::move(_info),
+				_currIndex,
+				std::move(_currIndexStr),
+				_array,
+				std::move(_arrayName),
+				0, uint32_t(-1),
+				std::move(_details))
 		{
 		}
 	};
@@ -52,7 +97,9 @@ namespace SA
 	#define __SA_CREATE_EXCEPTION_OutOfArrayRange(_baseInfo, _currIndex, _array, ...) SA::Exception_OutOfArrayRange(\
 		_baseInfo,\
 		_currIndex,\
+		SA_WSTR(_currIndex),\
 		_array,\
+		SA_WSTR(_array),\
 		##__VA_ARGS__\
 	)
 

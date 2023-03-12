@@ -1,18 +1,9 @@
-// Copyright (c) 2022 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
 #pragma once
 
-#ifndef SAPPHIRE_LOGGER_FILE_NAME_FROM_PATH_GUARD
-#define SAPPHIRE_LOGGER_FILE_NAME_FROM_PATH_GUARD
-
-/**
-*	\file FileNameFromPath.hpp
-* 
-*	\brief Retreive file name from full path algorithm implementation.
-* 
-*	\ingroup Logger_Misc
-*	\{
-*/
+#ifndef SAPPHIRE_LOGGER_FILE_NAME_GUARD
+#define SAPPHIRE_LOGGER_FILE_NAME_GUARD
 
 namespace SA
 {
@@ -30,10 +21,9 @@ namespace SA
 		const wchar_t* FileNameFromPath(const wchar_t* _filePath) noexcept;
 	}
 
+	#define __SA_FILE_NAME SA::Intl::FileNameFromPath(SA_WIDE(__FILE__))
+
 	/// \endcond
 }
-
-
-/** \} */
 
 #endif // GUARD
