@@ -57,7 +57,7 @@ namespace SA
 				std::move(_details))
 		{
 			// Post initialization to use min/max bounds variables.
-			msg = L"Index \'" + _currIndexStr + L"\' [" + ToWString(_currIndex) + L"] is out of array \'" + _arrayName +
+			msg = L"Index \'" + _currIndexStr + L"\' [" + ToWString(_currIndex) + L"] must be in array \'" + _arrayName +
 				L"\' range [" + ToWString(minBound) + L';' + ToWString(maxBound) + L']';
 		}
 
