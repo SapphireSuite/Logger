@@ -1,10 +1,13 @@
 // Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
 
+#include <Misc/ToString.hpp>
+
 #include <cstring>
 #include <codecvt>
 #include <locale>
 
-#include <Misc/ToString.hpp>
+#include <SA/Support/Debug.hpp>
+#include <SA/Support/API/Windows.hpp>
 
 namespace SA
 {
@@ -69,7 +72,40 @@ namespace SA
 
 	std::wstring ToWString(const char* _cstr)
 	{
+#if SA_WIN
+
+		// strlen does not count '\0'
+		const int srcByteSize = static_cast<int>(strlen(_cstr)) * sizeof(char);
+
+		if(srcByteSize == 0)
+			return std::wstring();
+
+		// Compute converted size.
+		const int wsize = MultiByteToWideChar(CP_UTF8, MB_PRECOMPOSED, _cstr, srcByteSize, nullptr, 0);
+
+		std::wstring out;
+		out.resize(wsize);
+
+		// Convert.
+		const int res = MultiByteToWideChar(CP_UTF8, MB_PRECOMPOSED, _cstr, srcByteSize, out.data(), wsize);
+
+		(void)res;
+
+#if SA_DEBUG
+
+		// Function failed.
+		if (res == 0)
+			return std::wstring(L"Invalid ToWString conversion. Error code [" + std::to_wstring(GetLastError()) + L"]");
+
+#endif
+
+		return out;
+
+#else
+		
 		return std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(_cstr);
+
+#endif
 	}
 
 	std::wstring ToWString(const wchar_t& _char)
@@ -84,7 +120,40 @@ namespace SA
 
 	std::wstring ToWString(const std::string& _str)
 	{
+#if SA_WIN
+
+		if (_str.empty())
+			return std::wstring();
+
+		const int srcByteSize = static_cast<int>(_str.size() * sizeof(std::string::value_type));
+
+		// Compute converted size.
+		const int wsize = MultiByteToWideChar(CP_UTF8, MB_PRECOMPOSED, _str.data(), srcByteSize, nullptr, 0);
+
+		std::wstring out;
+		out.resize(wsize);
+
+		// Convert.
+		const int res = MultiByteToWideChar(CP_UTF8, MB_PRECOMPOSED, _str.data(), srcByteSize, out.data(), wsize);
+
+		(void)res;
+
+#if SA_DEBUG
+
+		// Function failed.
+		if (res == 0)
+			return std::wstring(L"Invalid ToWString conversion. Error code [" + std::to_wstring(GetLastError()) + L"]");
+
+#endif
+
+		return out;
+
+#else
+
 		return std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(_str);
+
+#endif
+
 	}
 
 	std::wstring ToWString(const std::wstring& _str) noexcept
