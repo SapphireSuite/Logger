@@ -20,4 +20,6 @@
 #include <SA/Logger/Exceptions/Exception_OutOfRange.hpp>
 #include <SA/Logger/Exceptions/Exception_OutOfArrayRange.hpp>
 
+#include <SA/Logger/Exceptions/Exception_IsValid.hpp>
+
 #endif // GUARD

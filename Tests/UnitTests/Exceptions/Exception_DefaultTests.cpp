@@ -9,14 +9,14 @@ namespace SA::UT::Exc_Default
 	bool SuccessFunction() { return true; }
 	bool FailureFunction() { return false; }
 
-	TEST(Exception, EqualsDefault_Success)
+	TEST(Exception, Default_Success)
 	{
 		EXPECT_NO_THROW(SA_ASSERT((Default, SuccessFunction()), SA/UnitTests/Exception));
 		EXPECT_NO_THROW(SA_ASSERT((Default, SuccessFunction()), SA/UnitTests/Exception,
 		("Details about Function %1", "SuccessFunction")));
 	}
 
-	TEST(Exception, EqualsDefault_Failure)
+	TEST(Exception, Default_Failure)
 	{
 		EXPECT_THROW(SA_ASSERT((Default, FailureFunction()), SA/UnitTests/Exception), Exception_Default);
 		EXPECT_THROW(SA_ASSERT((Default, FailureFunction()), SA/UnitTests/Exception,
