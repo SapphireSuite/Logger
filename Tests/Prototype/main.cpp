@@ -76,6 +76,22 @@ int main()
 	SA_ASSERT((OutOfRange, i2, j2, k2), SA.SuperAssertChan);
 	SA_ASSERT((OutOfArrayRange, 1, v), SA.SuperAssertChan, ("SomeDetails %1 %2!?", i2, j2));
 
+//{ Log RAII
+
+	{
+		SA_LOG_RAII(L"RAII 1!", Info, SA.RAIIChan);
+
+		SA_LOG(L"Normal log!", Error);
+
+		{
+			SA_LOG_RAII("RAII 2!", Warning, SA.RAIIChan, L"After Normal and Before RAII 1");
+		}
+
+		logger.Flush(); // ensure correct order with LoggerThread.
+	}
+
+//}
+
 //{ Test LogLevel Flags
 
 	SA_LOG("This log level is enabled in console!", Warning, SA/TestChan);

@@ -11,6 +11,8 @@
 #include <SA/Logger/Preprocessors/LogMacro.hpp>
 #include <SA/Logger/Preprocessors/AssertMacro.hpp>
 
+#include <SA/Logger/Log/LogRAII.hpp>
+
 #include <SA/Collections/Exceptions>
 #include <SA/Collections/LogStreams>
 
