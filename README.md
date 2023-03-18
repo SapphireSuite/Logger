@@ -43,7 +43,7 @@ Msg:    Hello, World!
 Log a **warning** on false predicate with default channel and details.\
 See [_SA_WARN_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_warn) for examples and advanced use.
 ```cpp
-SA_WARN(_pred, _channel = Default, _details = "");
+SA_WARN(_pred, _channel = Default, _details = "", _postCmd);
 ```
 Example:
 ```cpp
@@ -60,7 +60,7 @@ Dets:   myInt invalid: might cause issues
 Log an **error** on false predicate with default channel and details.\
 See [_SA_ERROR_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_error) for examples and advanced use.
 ```cpp
-SA_ERROR(_pred, _channel = Default, _details = "");
+SA_ERROR(_pred, _channel = Default, _details = "", _postCmd);
 ```
 Example:
 ```cpp

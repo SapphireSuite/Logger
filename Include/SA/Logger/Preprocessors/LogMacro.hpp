@@ -97,7 +97,7 @@ namespace SA
 	*	\param[in] _args	Arguments to insert in string using %<num>. Must add parentheses surrounding: (_str, _args). 
 	*	\param[in] _lvl		Level of the log (optional).
 	*	\param[in] _chan	Channel of the log (optional).
-	*	\param[in] _dets	Additional details string of the log (optional).
+	*	\param[in] _dets	Details string of the log (optional).
 	*/
 	#define SA_LOG((_str, _args), _lvl, _chan, _dets)
 
@@ -110,9 +110,10 @@ namespace SA
 	*
 	*	\param[in] _pred	predicate of the Log. Output warnings on false.
 	*	\param[in] _chan	Channel of the log.
-	*	\param[in] _dets	Additional details string of the log (optional).
+	*	\param[in] _dets	Details string of the log (optional).
+	*	\param[in] _postCmd	Post-log command on true predicate, usually for return value (optional).
 	*/
-	#define SA_WARN(_pred, _chan, _dets)
+	#define SA_WARN(_pred, _chan, _dets, _postCmd)
 
 	/**
 	*	\def SA_ERROR(_pred, _chan, _dets)
@@ -122,10 +123,11 @@ namespace SA
 	*	Helper macro to use conditionnal Debug::Log error.
 	*
 	*	\param[in] _pred	predicate of the Log. Output error on false.
-	*	\param[in] _chan	Channel of the log.
-	*	\param[in] _dets	Additional details string of the log (optional).
+	*	\param[in] _chan	Channel of the log (optional).
+	*	\param[in] _dets	Details string of the log (optional).
+	*	\param[in] _postCmd	Post-log command on true predicate, usually for return value (optional).
 	*/
-	#define SA_ERROR(_pred, _chan, _dets)
+	#define SA_ERROR(_pred, _chan, _dets, _postCmd)
 
 #elif SA_DEBUG || SA_LOG_RELEASE_OPT
 
