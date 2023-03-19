@@ -14,8 +14,13 @@ Links to the **official** [documentation](https://SapphireSuite.github.io/Logger
 #include <SA/Collections/Debug>
 ```
 ## Initialization
-See [_Initialization_](https://github.com/SapphireSuite/Logger/wiki/Initialization) for advanced implementation.
+See [_Initialization_](https://github.com/SapphireSuite/Logger/wiki/Initialization) for advanced implementation.\
+No initialization is required to have **simple** console logging, however, a **one-line** initialization will provide **advanced** console (colors) and file logging.
 ```cpp
+// No initialization
+
+// OR
+
 // Single-thread (thread-unsafe) logger.
 // Console Color and file logging.
 SA::Debug::InitDefaultLogger();
@@ -95,6 +100,10 @@ Dets:   Access index out of bound!
 
 terminate called after throwing an instance of 'SA::Exception_OutOfRange'
 ```
+
+
+## Exceptions
+The _SA_ASSERT_ macro uses its **own exception system**. See [exceptions](https://github.com/SapphireSuite/Logger/wiki/Exceptions) for a **list** of all exceptions, how to use them, and how to **extend** the system (custom exception type).
 
 
 
