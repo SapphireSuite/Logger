@@ -24,13 +24,11 @@ namespace SA
 		BaseInfo _info,
 		float _lhs,
 		float _rhs,
-		std::wstring _predStr,
-		std::wstring _details
+		std::wstring _predStr
 	) noexcept :
 		Exception(std::move(_info),
 			Intl::NearlyEquals(_lhs, _rhs),
-			std::move(_predStr) + L" => { " + ToWString(_lhs) + L"f == " + ToWString(_rhs)+ L"f }: Values must be equal.",
-			std::move(_details))
+			std::move(_predStr) + L" => { " + ToWString(_lhs) + L"f == " + ToWString(_rhs)+ L"f }: Values must be equal.")
 	{
 	}
 
@@ -38,13 +36,11 @@ namespace SA
 		BaseInfo _info,
 		double _lhs,
 		double _rhs,
-		std::wstring _predStr,
-		std::wstring _details
+		std::wstring _predStr
 	) noexcept :
 		Exception(std::move(_info),
 			Intl::NearlyEquals(_lhs, _rhs),
-			std::move(_predStr) + L" => { " + ToWString(_lhs) + L"d == " + ToWString(_rhs)+ L"d }: Values must be equal.",
-			std::move(_details))
+			std::move(_predStr) + L" => { " + ToWString(_lhs) + L"d == " + ToWString(_rhs)+ L"d }: Values must be equal.")
 	{
 	}
 }

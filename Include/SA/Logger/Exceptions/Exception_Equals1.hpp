@@ -31,21 +31,18 @@ namespace SA
 		*	\param[in] _info		Base create info.
 		*	\param[in] _lhs			Left hand side operand to compare to T(1).
 		*	\param[in] _predStr		Predicate as a string.
-		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		template <typename T>
 		Exception_Equals1(
 			BaseInfo _info,
 			const T& _lhs,
-			std::wstring _predStr = L"pred",
-			std::wstring _details = L""
+			std::wstring _predStr = L"pred"
 		) noexcept :
 			Exception_Equals(
 				std::move(_info),
 				_lhs,
 				T(1),
-				std::move(_predStr),
-				std::move(_details))
+				std::move(_predStr))
 		{
 		}
 	};
@@ -53,11 +50,10 @@ namespace SA
 	/// \cond Internal
 
 	/// Define Equals1 Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfo, _lhs, ...) SA::Exception_Equals1(\
+	#define __SA_CREATE_EXCEPTION_Equals1(_baseInfo, _lhs) SA::Exception_Equals1(\
 		_baseInfo,\
 		_lhs,\
-		SA_WSTR(_lhs) L" == " + SA::ToWString(typeid(_lhs).name()) + L"(1)",\
-		##__VA_ARGS__\
+		SA_WSTR(_lhs) L" == " + SA::ToWString(typeid(_lhs).name()) + L"(1)"\
 	)
 
 	/// \endcond

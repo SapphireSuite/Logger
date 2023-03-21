@@ -37,6 +37,9 @@ namespace SA
 
 			/// LogChannel name.
 			std::wstring chanName;
+
+			/// Additional details string.
+			std::wstring details;
 		};
 
 		/**
@@ -45,13 +48,11 @@ namespace SA
 		*	\param[in] _info		Base create info.
 		*	\param[in] _pred		Predicate used for assertion.
 		*	\param[in] _msg			Message to display on assertion.
-		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception(
 			BaseInfo _info,
 			bool _pred,
-			std::wstring _msg = L"",
-			std::wstring _details = L""
+			std::wstring _msg = L""
 		) noexcept;
 	};
 
@@ -65,8 +66,7 @@ namespace SA
 	#define __SA_CREATE_EXCEPTION_Default(_baseInfo, _pred, ...) SA::Exception_Default(\
 		_baseInfo,\
 		_pred,\
-		SA_WSTR(_pred) L"\tevaluated to false!",\
-		##__VA_ARGS__\
+		SA_WSTR(_pred) L"\tevaluated to false!"\
 	)
 
 	/// \endcond

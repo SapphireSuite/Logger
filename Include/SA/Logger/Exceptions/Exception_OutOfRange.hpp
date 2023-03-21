@@ -44,15 +44,13 @@ namespace SA
 		*	\param[in] _minBound	Minimum bound allowed.
 		*	\param[in] _maxBound	Maximum bound allowed.
 		*	\param[in] _msg			Message to display on assertion.
-		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_OutOfRange(
 			BaseInfo _info,
 			uint32_t _currIndex,
 			uint32_t _minBound,
 			uint32_t _maxBound,
-			std::wstring _msg,
-			std::wstring _details = L""
+			std::wstring _msg
 		) noexcept;
 
 
@@ -66,7 +64,6 @@ namespace SA
 		*	\param[in] _minBoundStr		Min bound variable used for access, as a wstring.
 		*	\param[in] _maxBound		Maximum bound allowed.
 		*	\param[in] _maxBoundStr		Max bound variable used for access, as a wstring.
-		*	\param[in] _details			Additional details to display on assertion.
 		*/
 		Exception_OutOfRange(
 			BaseInfo _info,
@@ -75,8 +72,7 @@ namespace SA
 			uint32_t _minBound,
 			std::wstring _minBoundStr,
 			uint32_t _maxBound,
-			std::wstring _maxBoundStr,
-			std::wstring _details = L""
+			std::wstring _maxBoundStr
 		) noexcept;
 	};
 	
@@ -84,15 +80,14 @@ namespace SA
 	/// \cond Internal
 
 	/// Define OutOfRange Exception creation method.
-	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfo, _currIndex, _minBound, _maxBound, ...) SA::Exception_OutOfRange(\
+	#define __SA_CREATE_EXCEPTION_OutOfRange(_baseInfo, _currIndex, _minBound, _maxBound) SA::Exception_OutOfRange(\
 		_baseInfo,\
 		_currIndex,\
 		SA_WSTR(_currIndex),\
 		_minBound,\
 		SA_WSTR(_minBound),\
 		_maxBound,\
-		SA_WSTR(_maxBound),\
-		##__VA_ARGS__\
+		SA_WSTR(_maxBound)\
 	)
 
 	/// \endcond

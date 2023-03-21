@@ -7,8 +7,7 @@ namespace SA
 	Exception::Exception(
 		BaseInfo _info,
 		bool _pred,
-		std::wstring _msg,
-		std::wstring _details
+		std::wstring _msg
 	) noexcept :
 		Log(
 			std::move(_info.file),
@@ -17,7 +16,7 @@ namespace SA
 			std::move(_msg),
 			_pred ? LogLevel::AssertSuccess : LogLevel::AssertFailure,
 			std::move(_info.chanName),
-			std::move(_details))
+			std::move(_info.details))
 	{
 	}
 }

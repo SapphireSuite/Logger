@@ -27,18 +27,19 @@ namespace SA
 
 	/// \cond Internal
 
-	#define __SA_CREATE_EXCEPTION_TYPE(_chan, _type, ...) __SA_CREATE_EXCEPTION_##_type(\
+	#define __SA_CREATE_EXCEPTION_TYPE(_chan, _dets, _type, ...) __SA_CREATE_EXCEPTION_##_type(\
 		(SA::Exception::BaseInfo{\
 			__SA_FILE_NAME,\
 			__LINE__,\
 			__SA_FUNC_NAME,\
-			__SA_CHAN_NAME(_chan)\
+			__SA_CHAN_NAME(_chan),\
+			_dets\
 		}),\
 		##__VA_ARGS__\
 	)
 
 	#define __SA_CREATE_EXCEPTION(_type_params, _chan, _dets)\
-		__SA_EVAL_PASTE(__SA_CREATE_, EXCEPTION_TYPE(_chan, __SA_UNPARENT(_type_params), _dets))
+		__SA_EVAL_PASTE(__SA_CREATE_, EXCEPTION_TYPE(_chan, _dets, __SA_UNPARENT(_type_params)))
 
 
 	#define __SA_SELECT_ASSERT_MACRO(_1, _2, _3, _name, ...) _name

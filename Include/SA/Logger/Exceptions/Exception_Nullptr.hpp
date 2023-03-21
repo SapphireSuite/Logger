@@ -31,13 +31,11 @@ namespace SA
 		*	\param[in] _info		Base create info.
 		*	\param[in] _pred		Evaluated pointer predicate.
 		*	\param[in] _predStr		Predicate as a string.
-		*	\param[in] _details		Additional details to display on assertion.
 		*/
 		Exception_Nullptr(
 			BaseInfo _info,
 			bool _pred,
-			std::wstring _predStr = L"ptr",
-			std::wstring _details = L""
+			std::wstring _predStr = L"ptr"
 		) noexcept;
 	};
 
@@ -46,11 +44,10 @@ namespace SA
 	/// \cond Internal
 
 	/// Define Nullptr Exception creation method.
-	#define __SA_CREATE_EXCEPTION_Nullptr(_baseInfo, _pred, ...) SA::Exception_Nullptr(\
+	#define __SA_CREATE_EXCEPTION_Nullptr(_baseInfo, _pred) SA::Exception_Nullptr(\
 		_baseInfo,\
 		_pred,\
-		SA_WSTR(_pred),\
-		##__VA_ARGS__\
+		SA_WSTR(_pred)\
 	)
 
 	/// \endcond
