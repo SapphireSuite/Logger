@@ -13,18 +13,21 @@ void LogCallback(SA::Log _log)
 	std::wcout << SA::ToWString(_log) << std::endl;
 }	
 
-class MyClass
+namespace MyNamespace
 {
-public:
-	int i = 0;
-};
+	class MyClass
+	{
+	public:
+		int i = 0;
+	};
+}
 
 namespace SA
 {
 	template <>
-	std::string ToString(const MyClass& _m)
+	std::string ToString(const MyNamespace::MyClass& _m)
 	{
-		return "MyClass: " + std::to_string(_m.i);
+		return "MyNamespace::MyClass: " + std::to_string(_m.i);
 	}
 }
 
@@ -49,7 +52,7 @@ int main()
 
 	int i = 8614;
 
-	MyClass m1;
+	MyNamespace::MyClass m1;
 	m1.i = 72;
 
 	SA_LOG("efsegseg");
