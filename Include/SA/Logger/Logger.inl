@@ -34,14 +34,19 @@ namespace SA
 	}
 
 	template <typename StreamT>
-	bool Logger::DestroyStream(StreamT& _stream)
+	bool Logger::DestroyStream(StreamT& _stream, bool _bFlush)
 	{
 		StreamT* const streamPtr = &_stream;
 
 		const bool bUnregister = UnregisterSteam(streamPtr);
 
-		if(bUnregister)
+		if (bUnregister)
+		{
+			if (_bFlush)
+				streamPtr->Flush();
+
 			delete streamPtr;
+		}
 
 		return bUnregister;
 	}

@@ -99,11 +99,12 @@ namespace SA
 		 * 
 		 * \tparam StreamT 	Type of stream to destroy.
 		 * \param _stream 	Stream variable to destroy.
+		 * \param _bFlush 	Should flush stream before destroy.
 		 * 
 		 * \return true on destroy success.
 		 */
 		template <typename StreamT>
-		bool DestroyStream(StreamT& _stream);
+		bool DestroyStream(StreamT& _stream, bool _bFlush = true);
 
 		/**
 		*	\brief Force logger to flush all streams.
