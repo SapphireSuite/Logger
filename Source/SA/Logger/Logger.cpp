@@ -4,6 +4,11 @@
 
 namespace SA
 {
+	Logger::~Logger()
+	{
+		ClearStreams();
+	}
+
 	void Logger::Log(SA::Log _log)
 	{
 		ProcessLog(_log);
@@ -34,6 +39,19 @@ namespace SA
 		}
 
 		return false;
+	}
+
+	void Logger::ClearStreams(bool _bFlush)
+	{
+		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
+		{
+			if (_bFlush)
+				(*it)->Flush();
+			
+			delete *it;
+		}
+
+		mStreams.clear();
 	}
 
 	void Logger::Flush()

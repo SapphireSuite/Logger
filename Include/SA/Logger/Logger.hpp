@@ -62,6 +62,12 @@ namespace SA
 
 	public:
 		/**
+		*	\brief Destructor
+		*	Destroy all created log streams.
+		*/
+		virtual ~Logger();
+
+		/**
 		*	\brief Push a new log in logger.
 		* 
 		*	\param[in] _log		Log to push.
@@ -105,6 +111,13 @@ namespace SA
 		 */
 		template <typename StreamT>
 		bool DestroyStream(StreamT& _stream, bool _bFlush = true);
+
+		/**
+		*	Destroy all streams.
+		* 
+		*	\param _bFlush 	Should flush stream before destroy.
+		*/
+		void ClearStreams(bool _bFlush = true);
 
 		/**
 		*	\brief Force logger to flush all streams.
