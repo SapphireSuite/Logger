@@ -32,7 +32,7 @@ namespace SA
 			/// line number.
 			uint32_t line;
 
-			/// Funciton name.
+			/// Function name.
 			std::string function;
 
 			/// LogChannel name.

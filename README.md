@@ -101,9 +101,28 @@ Dets:   Access index out of bound!
 terminate called after throwing an instance of 'SA::Exception_OutOfRange'
 ```
 
+### SA_THROW
+Throw an **exception** built from **type and parameters** with default channel and details.\
+See [_SA_ASSERT_](https://github.com/SapphireSuite/Logger/wiki/Macros#sa_throw) for examples and advanced use.
+```cpp
+SA_THROW((_excType, params...), _channel = Default, _details = "")
+```
+Example:
+```cpp
+// Throw SA::Exception_ReachBadAPI.
+SA_THROW((ReachBadAPI, Vulkan), Renderer.Vulkan, "Vulkan API reach with invalid object.")
+```
+```
+[18:49:22] {AssertFailure - Renderer.Vulkan}      main.cpp:53 - int main()
+Msg:    Reach bad [Vulkan] API call!
+Dets:   Vulkan API reach with invalid object.
+
+terminate called after throwing an instance of 'SA::Exception_ReachBadAPI'
+```
+
 
 ## Exceptions
-The _SA_ASSERT_ macro uses its **own exception system**. See [exceptions](https://github.com/SapphireSuite/Logger/wiki/Exceptions) for a **list** of all exceptions, how to use them, and how to **extend** the system (custom exception type).
+The _SA_ASSERT_ and _SA_THROW_ macros use their **own exception system**. See [exceptions](https://github.com/SapphireSuite/Logger/wiki/Exceptions) for a **list** of all exceptions, how to use them, and how to **extend** the system (custom exception type).
 
 
 

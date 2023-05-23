@@ -22,4 +22,6 @@
 
 #include <SA/Logger/Exceptions/Exception_IsValid.hpp>
 
+#include <SA/Logger/Exceptions/Exception_ReachBadAPI.hpp>
+
 #endif // GUARD

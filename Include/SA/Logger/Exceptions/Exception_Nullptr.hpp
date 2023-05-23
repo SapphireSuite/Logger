@@ -7,8 +7,6 @@
 
 #include <SA/Logger/Exceptions/Exception.hpp>
 
-#include <SA/Support/Stringify.hpp>
-
 /**
 *	\file Exception_Nullptr.hpp
 *
