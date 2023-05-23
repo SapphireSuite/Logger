@@ -50,7 +50,7 @@ namespace SA
 			Exception_OutOfRange(std::move(_info),
 				_currIndex,
 				_minBound,
-				_maxBound <= _array.size() - 1 ? _maxBound : _array.size() - 1,
+				_maxBound <= static_cast<uint32_t>(_array.size()) - 1 ? _maxBound : static_cast<uint32_t>(_array.size()) - 1,
 				L"")
 		{
 			// Post initialization to use min/max bounds variables.
