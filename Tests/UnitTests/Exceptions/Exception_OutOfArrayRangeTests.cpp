@@ -67,5 +67,8 @@ namespace SA::UT::Exc_OOAR
 			EXPECT_EQ(_exc.minBound, 0u);
 			EXPECT_EQ(_exc.maxBound, 5u);
 		}
+
+		const std::vector<float> v1;
+		EXPECT_THROW(SA_ASSERT((OutOfArrayRange, 0, v1), SA/UnitTests/Exception), Exception_OutOfRange);
 	}
 }
