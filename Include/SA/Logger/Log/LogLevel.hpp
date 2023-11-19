@@ -6,6 +6,7 @@
 #define SAPPHIRE_LOGGER_LOG_LEVEL_GUARD
 
 #include <string>
+#include <cstdint>
 
 /**
 *	\file LogLevel.hpp
