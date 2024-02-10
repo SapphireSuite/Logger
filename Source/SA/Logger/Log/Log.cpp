@@ -12,6 +12,7 @@ namespace SA
 		LogLevel _level,
 		std::wstring _chanName,
 		std::wstring _details,
+		uint32_t _frameNum,
 		std::string _backtrace
 	) noexcept :
 		file{ std::move(_file) },
@@ -21,6 +22,7 @@ namespace SA
 		level{_level },
 		chanName{ std::move(_chanName) },
 		details{ std::move(_details) },
+		frameNum{ _frameNum },
 		backtrace{ std::move(_backtrace) },
 		date{ DateTime::Now() }
 	{
@@ -33,7 +35,10 @@ namespace SA
 		// Output date.
 		str += L'[' + SA::ToWString(_log.date.hour) +
 			L':' + SA::ToWString(_log.date.minute) +
-			L':' + SA::ToWString(_log.date.second) + L"] ";
+			L':' + SA::ToWString(_log.date.second) + L']';
+
+		// Output FrameNum.
+		str += L'[' + SA::ToWString(_log.frameNum) + L"] ";
 
 		// Output level and channel.
 		str += L'{' + SA::ToWString(_log.level) + L" - " + _log.chanName + L'}';

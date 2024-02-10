@@ -115,8 +115,12 @@ int main()
 
 //{ Test Data Race
 
-	for(int i = 0; i < 10; ++i)
+	for (int i = 0; i < 10; ++i)
+	{
 		SA_LOG("Hello, World!", Info, SA/TestChan, "Some Details!");
+
+		SA_LOG_END_OF_FRAME();
+	}
 
 	try
 	{

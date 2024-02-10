@@ -45,6 +45,9 @@ namespace SA
 		/// Additional details string.
 		std::wstring details;
 
+		/// Frame number.
+		uint32_t frameNum = 0u;
+
 		/// backtracing of logging call.
 		std::string backtrace;
 
@@ -61,6 +64,7 @@ namespace SA
 		*	\param[in] _level		Level of the Log.
 		*	\param[in] _chanName	Channel's name of the Log.
 		*	\param[in] _details		Additional details to display.
+		*	\param[in] _frameNum	Frame number of the Log.
 		*	\param[in] _backtrace	backtracing of logging call.
 		*/
 		Log(
@@ -71,6 +75,7 @@ namespace SA
 			LogLevel _level = LogLevel::Normal,
 			std::wstring _chanName = L"Default",
 			std::wstring _details = L"",
+			uint32_t _frameNum = 0u,
 			std::string _backtrace = ""
 		) noexcept;
 	};

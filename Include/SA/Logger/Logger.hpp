@@ -32,6 +32,8 @@ namespace SA
 	protected:
 		std::list<ALogStream*> mStreams;
 
+		uint32_t mFrameNum = 0u;
+
 //{ Streams
 
 		/**
@@ -124,6 +126,13 @@ namespace SA
 		*/
 		virtual void Flush();
 
+//}
+
+//{ Frame Num
+
+		void IncrementFrameNum();
+
+		uint32_t GetFrameNum() const;
 //}
 	};
 

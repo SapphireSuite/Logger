@@ -40,6 +40,9 @@ namespace SA
 
 			/// Additional details string.
 			std::wstring details;
+
+			/// Frame num.
+			uint32_t frameNum;
 		};
 
 		/**

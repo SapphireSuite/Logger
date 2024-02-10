@@ -50,6 +50,9 @@ namespace SA
 		else\
 			std::cerr << "Try logging with invalid logger instance or callback! Initialize SA::Debug::logger or SA::Debug::logCB." << std::endl;
 
+	#define __SA_LOG_FRAME_NUM\
+		SA::Debug::logger ? SA::Debug::logger->GetFrameNum() : 0u
+
 	/// \endcond
 
 //}
@@ -67,6 +70,7 @@ namespace SA
 		SA::LogLevel::_lvl,\
 		__SA_CHAN_NAME(_chan),\
 		SA::StringFormat(__SA_UNPARENT(_dets)),\
+		__SA_LOG_FRAME_NUM,\
 		std::string()\
 	)
 
@@ -130,6 +134,8 @@ namespace SA
 	#define SA_ERROR(_pred, _chan, _dets, _postCmd)
 
 #elif SA_DEBUG || SA_LOG_RELEASE_OPT
+
+	#define SA_LOG_END_OF_FRAME() { if(SA::Debug::logger) SA::Debug::logger->IncrementFrameNum(); }
 
 	#define SA_LOG(...) { __SA_SELECT_LOG_MACRO(__VA_ARGS__, __SA_LOG5, __SA_LOG4, __SA_LOG3, __SA_LOG2, __SA_LOG1)(__VA_ARGS__) }
 
