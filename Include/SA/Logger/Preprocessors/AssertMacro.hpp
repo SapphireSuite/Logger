@@ -33,7 +33,8 @@ namespace SA
 			__LINE__,\
 			__SA_FUNC_NAME,\
 			__SA_CHAN_NAME(_chan),\
-			_dets\
+			_dets,\
+			__SA_LOG_FRAME_NUM\
 		}),\
 		##__VA_ARGS__\
 	)

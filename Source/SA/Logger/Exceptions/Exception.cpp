@@ -16,7 +16,8 @@ namespace SA
 			std::move(_msg),
 			_pred ? LogLevel::AssertSuccess : LogLevel::AssertFailure,
 			std::move(_info.chanName),
-			std::move(_info.details))
+			std::move(_info.details),
+			_info.frameNum)
 	{
 	}
 }
