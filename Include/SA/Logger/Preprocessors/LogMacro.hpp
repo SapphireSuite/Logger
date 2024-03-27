@@ -79,7 +79,7 @@ namespace SA
 	#define __SA_SELECT_LOG_MACRO(_1, _2, _3, _4, _5, _name, ...) _name
 
 	#define __SA_LOG4(_str, _lvl, _chan, _dets)				__SA_LOGGER(__SA_CREATE_LOG(_str, _lvl, _chan, _dets));
-	#define __SA_LOG5(_str, _lvl, _chan, _dets, _postCmd)	{ __SA_LOG4(_str, _lvl, _chan, L"") _postCmd; }
+	#define __SA_LOG5(_str, _lvl, _chan, _dets, _postCmd)	{ __SA_LOG4(_str, _lvl, _chan, _dets) _postCmd; }
 	#define __SA_LOG3(_str, _lvl, _chan)					__SA_LOG4(_str, _lvl, _chan, L"")
 	#define __SA_LOG2(_str, _lvl)							__SA_LOG3(_str, _lvl, Default)
 	#define __SA_LOG1(_str)									__SA_LOG2(_str, Normal)
