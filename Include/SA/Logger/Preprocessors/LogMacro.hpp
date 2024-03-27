@@ -145,6 +145,8 @@ namespace SA
 
 #else
 
+	#define SA_LOG_END_OF_FRAME() {}
+
 	#define SA_LOG(...) {}
 
 	#define SA_WARN(...) {}
