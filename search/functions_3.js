@@ -1,0 +1,16 @@
+var searchData=
+[
+  ['equals_0',['Equals',['../struct_s_a_1_1_date_time.html#ac845d2834e3f3d9aa6013acde4590236',1,'SA::DateTime']]],
+  ['exception_1',['Exception',['../class_s_a_1_1_exception.html#a6b24b4837cd4e7dacb14b0ebbc27d1ba',1,'SA::Exception']]],
+  ['exception_5fequals_2',['Exception_Equals',['../class_s_a_1_1_exception___equals.html#ad8bdd43aafc40529b8977317788e65fa',1,'SA::Exception_Equals::Exception_Equals(BaseInfo _info, const T &amp;_lhs, const T &amp;_rhs, std::wstring _predStr=L&quot;pred&quot;) noexcept'],['../class_s_a_1_1_exception___equals.html#a5f7a8212947a39d7726dfd379a9efb42',1,'SA::Exception_Equals::Exception_Equals(BaseInfo _info, float _lhs, float _rhs, std::wstring _predStr=L&quot;pred&quot;) noexcept'],['../class_s_a_1_1_exception___equals.html#a2374d5f3a22ed86717b4073f07f64862',1,'SA::Exception_Equals::Exception_Equals(BaseInfo _info, double _lhs, double _rhs, std::wstring _predStr=L&quot;pred&quot;) noexcept']]],
+  ['exception_5fequals0_3',['Exception_Equals0',['../class_s_a_1_1_exception___equals0.html#af7b2c15e224fea2413dcfcb5534b0827',1,'SA::Exception_Equals0']]],
+  ['exception_5fequals1_4',['Exception_Equals1',['../class_s_a_1_1_exception___equals1.html#a3385afcb8276b3b4fdce975daa03a218',1,'SA::Exception_Equals1']]],
+  ['exception_5fisvalid_5',['Exception_IsValid',['../class_s_a_1_1_exception___is_valid.html#a816788c83908ed28d178182e7af0f236',1,'SA::Exception_IsValid']]],
+  ['exception_5fnotequals_6',['Exception_NotEquals',['../class_s_a_1_1_exception___not_equals.html#a6e85e75b544c251384e1e56e437a61ae',1,'SA::Exception_NotEquals']]],
+  ['exception_5fnotequals0_7',['Exception_NotEquals0',['../class_s_a_1_1_exception___not_equals0.html#af1706b1aac21196c8c76a3d53ee4056e',1,'SA::Exception_NotEquals0']]],
+  ['exception_5fnotequals1_8',['Exception_NotEquals1',['../class_s_a_1_1_exception___not_equals1.html#a52262915ebb35ccc5a8fef547959c8f7',1,'SA::Exception_NotEquals1']]],
+  ['exception_5fnullptr_9',['Exception_Nullptr',['../class_s_a_1_1_exception___nullptr.html#afab5a9b442b8c6133507013e2b45007b',1,'SA::Exception_Nullptr']]],
+  ['exception_5foutofarrayrange_10',['Exception_OutOfArrayRange',['../class_s_a_1_1_exception___out_of_array_range.html#abaf5eb95b7a18f949bd32fe81df3bf81',1,'SA::Exception_OutOfArrayRange']]],
+  ['exception_5foutofrange_11',['Exception_OutOfRange',['../class_s_a_1_1_exception___out_of_range.html#adc1b7e92e8129b88b7e56bade9e5e683',1,'SA::Exception_OutOfRange::Exception_OutOfRange(BaseInfo _info, uint32_t _currIndex, uint32_t _minBound, uint32_t _maxBound, std::wstring _msg) noexcept'],['../class_s_a_1_1_exception___out_of_range.html#a2b197af8a2bddc875eacd929362f5d68',1,'SA::Exception_OutOfRange::Exception_OutOfRange(BaseInfo _info, uint32_t _currIndex, std::wstring _currIndexStr, uint32_t _minBound, std::wstring _minBoundStr, uint32_t _maxBound, std::wstring _maxBoundStr) noexcept']]],
+  ['exception_5freachbadapi_12',['Exception_ReachBadAPI',['../class_s_a_1_1_exception___reach_bad_a_p_i.html#a8ef7298cb34825559d1951ba58a68459',1,'SA::Exception_ReachBadAPI::Exception_ReachBadAPI()'],['../class_s_a_1_1_exception___query_bad_a_p_i_object.html#a8ef7298cb34825559d1951ba58a68459',1,'SA::Exception_QueryBadAPIObject::Exception_ReachBadAPI()']]]
+];
