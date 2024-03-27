@@ -30,8 +30,13 @@ namespace SA
 	class Logger
 	{
 	protected:
+		/// Registered output streams.
 		std::list<ALogStream*> mStreams;
 
+		/**
+		* \brief Current registered frame number.
+		* Use IncrementFrameNum() or SA_LOG_END_OF_FRAME() at the end of the frame to track frame number.
+		*/
 		uint32_t mFrameNum = 0u;
 
 //{ Streams
@@ -130,8 +135,10 @@ namespace SA
 
 //{ Frame Num
 
+		/// Increment current registered frame number.
 		void IncrementFrameNum();
 
+		/// Get current registered frame number.
 		uint32_t GetFrameNum() const;
 //}
 	};

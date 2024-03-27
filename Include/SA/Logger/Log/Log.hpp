@@ -90,6 +90,7 @@ namespace SA
 	std::wstring ToWString(const Log& _log);
 }
 
+
 /** \} */
 
 #endif // GUARD

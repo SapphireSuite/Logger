@@ -16,6 +16,16 @@
 #include <SA/Logger/Preprocessors/ChannelName.hpp>
 #include <SA/Logger/Preprocessors/Unparenthese.hpp>
 
+/**
+*	\file LogMacro.hpp
+*
+*	\brief \b Log Helper \b Macros implementation.
+*
+*	\ingroup Logger_Macro
+*	\{
+*/
+
+
 namespace SA
 {
 //{ Callback
@@ -31,13 +41,27 @@ namespace SA
 		/// Simple logger callback.
 		extern void (*logCB)(SA::Log);
 
+		/**
+		* \brief Initialize default logger for single-thread use.
+		* Console color and file output.
+		*/
 		void InitDefaultLogger();
+
+		/**
+		* \brief Initialize default logger for multi-thread use.
+		* Console color and file output.
+		*/
 		void InitDefaultLoggerThread();
+
+
+		/// \cond Internal
 
 		namespace Intl
 		{
 			void DefaultLogCallback(SA::Log _log);
 		}
+
+		/// \endcond
 	}
 
 	/// \cond Internal
@@ -91,7 +115,16 @@ namespace SA
 #if defined(DOXYGEN)
 
 	/**
-	*	\def SA_LOG((_str, _args), _lvl, _chan, _dets, _postCmd)
+	*	\def SA_LOG_END_OF_FRAME()
+	* 
+	*	\brief Sapphire Log end of frame macro.
+	* 
+	*	Helper macro to track frame number used for logging.
+	*/
+	#define SA_LOG_END_OF_FRAME()
+
+	/**
+	*	\def SA_LOG((_str, _args), _lvl, _chan, _dets)
 	*
 	*	\brief Sapphire Log macro.
 	*
@@ -106,7 +139,7 @@ namespace SA
 	#define SA_LOG((_str, _args), _lvl, _chan, _dets)
 
 	/**
-	*	\def SA_WARN(_pred, _chan, _dets)
+	*	\def SA_WARN(_pred, _chan, _dets, _postCmd)
 	*
 	*	\brief Sapphire Log "warning if" macro.
 	*
@@ -120,7 +153,7 @@ namespace SA
 	#define SA_WARN(_pred, _chan, _dets, _postCmd)
 
 	/**
-	*	\def SA_ERROR(_pred, _chan, _dets)
+	*	\def SA_ERROR(_pred, _chan, _dets, _postCmd)
 	*
 	*	\brief Sapphire Log "error if" macro.
 	*
@@ -155,5 +188,8 @@ namespace SA
 
 #endif
 }
+
+
+/** \} */
 
 #endif // GUARD

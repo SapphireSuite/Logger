@@ -29,6 +29,13 @@
 
 
 /**
+*	\defgroup Logger_Macro Macro
+*	Sapphire Suite's Logger's Macros.
+*	\ingroup Logger
+*/
+
+
+/**
 *	\defgroup Logger_Exception Exception
 *	Sapphire Suite's Logger Exceptions.
 *	\ingroup Logger
