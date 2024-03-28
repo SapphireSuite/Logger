@@ -7,16 +7,15 @@
 
 #include <SA/Logger/LoggerBase.hpp>
 
-#include <queue>
+#include <SA/Logger/Misc/RingBuffer.hpp>
+
 #include <mutex>
-#include <atomic>
 #include <thread>
-#include <condition_variable>
 
 /**
 *	\file LoggerThread.hpp
 *
-*	\brief \e Multithread <b>Logger</b> class implementation.
+*	\brief \e Multithread <b>Lock-free Logger</b> class implementation.
 *
 *	\ingroup Logger
 *	\{
@@ -40,23 +39,20 @@ namespace SA
 
 	//{ Thread
 
+		struct LogHandle
+		{
+			SA::Log log;
+			std::atomic<bool> bCompleted = false;
+		};
+
 		/// Logger thread.
 		std::thread mThread;
 
 		/// Current running state.
 		std::atomic<bool> mIsRunning = true;
 
-		/// Log queue mutex operations.
-		std::mutex mLogQueueMutex;
-		
-		/// Log queue condition variable.
-		std::condition_variable mLogConditionVar;
-
-		/// Log saved queue.
-		std::queue<SA::Log> mLogQueue;
-
-		/// Atomic queue size.
-		std::atomic<size_t> mQueueSize = 0;
+		/// FIFO Ring buffer
+		RingBuffer<SA::Log> mRingBuffer;
 
 		void ThreadLoop();
 
@@ -76,7 +72,7 @@ namespace SA
 
 	public:
 		/// Default Constructor.
-		LoggerThread() noexcept;
+		LoggerThread(uint32_t _ringBufferSize = 32) noexcept;
 
 		/**
 		*	Thread-safe destructor.
