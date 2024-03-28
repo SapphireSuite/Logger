@@ -80,21 +80,21 @@ namespace SA
 	{
 		std::lock_guard lk(mStreamMutex);
 
-		Logger::ProcessLog(_log, _bForce);
+		LoggerBase::ProcessLog(_log, _bForce);
 	}
 
 	void LoggerThread::RegisterStream(ALogStream* _stream)
 	{
 		std::lock_guard lk(mStreamMutex);
 
-		Logger::RegisterStream(_stream);
+		LoggerBase::RegisterStream(_stream);
 	}
 
 	bool LoggerThread::UnregisterStream(ALogStream* _stream)
 	{
 		std::lock_guard lk(mStreamMutex);
 
-		return Logger::UnregisterStream(_stream);
+		return LoggerBase::UnregisterStream(_stream);
 	}
 
 	void LoggerThread::Flush()
@@ -106,8 +106,23 @@ namespace SA
 		// Flush all.
 		std::lock_guard lkStreams(mStreamMutex);
 
-		Logger::Flush();
+		LoggerBase::Flush();
 	}
 
+//}
+
+//{ Frame Num
+
+	/// Increment current registered frame number.
+	void LoggerThread::IncrementFrameNum()
+	{
+		mFrameNum = (mFrameNum + 1) % 1000;
+	}
+
+	/// Get current registered frame number.
+	uint32_t LoggerThread::GetFrameNum() const
+	{
+		return mFrameNum;
+	}
 //}
 }
