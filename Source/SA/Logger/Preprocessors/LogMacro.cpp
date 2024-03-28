@@ -14,7 +14,7 @@ namespace SA
 {
 	namespace Debug
 	{
-		Logger* logger = nullptr;
+		LoggerBase* logger = nullptr;
 		void (*logCB)(SA::Log) = Intl::DefaultLogCallback;
 		
 		
