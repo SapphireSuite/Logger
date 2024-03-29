@@ -27,8 +27,6 @@ target_link_libraries(SA_Logger PUBLIC SA_Support)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 target_link_libraries(SA_Logger PUBLIC Threads::Threads)
-target_compile_options(SA_Logger PUBLIC -fsanitize=thread)
-target_link_options(SA_Logger PUBLIC -fsanitize=thread)
 
 ### Advanced MSVC preprocessor required for Core::Debug
 ### https://docs.microsoft.com/en-us/cpp/preprocessor/preprocessor-experimental-overview
