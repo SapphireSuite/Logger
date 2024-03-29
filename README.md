@@ -40,7 +40,7 @@ Example:
 SA_LOG("Hello, World!");
 ```
 ```
-[18:44:14] {Normal - Default}   main.cpp:50 - int main()
+[18:44:14][0] {Normal - Default}   main.cpp:50 - int main()
 Msg:    Hello, World!
 ```
 
@@ -56,7 +56,7 @@ int myInt = 2;
 SA_WARN(myInt == 1, MyChannel, "myInt invalid: might cause issues");
 ```
 ```
-[18:46:20] {Warning - MyChannel}        main.cpp:53 - int main()
+[18:46:20][0] {Warning - MyChannel}        main.cpp:53 - int main()
 Msg:    { myInt == 1 }  evaluated to false!
 Dets:   myInt invalid: might cause issues
 ```
@@ -73,7 +73,7 @@ int myInt = 2;
 SA_ERROR(myInt == 1, MyChannel, "myInt invalid: possible crash");
 ```
 ```
-[18:47:25] {Error - MyChannel}        main.cpp:53 - int main()
+[18:47:25][0] {Error - MyChannel}        main.cpp:53 - int main()
 Msg:    { myInt == 1 }  evaluated to false!
 Dets:   myInt invalid: possible crash
 ```
@@ -94,7 +94,7 @@ int maxBound = 6;
 SA_ASSERT((OutOfRange, myIndex, minBound, maxBound), MyTestChannel, "Access index out of bound!")
 ```
 ```
-[18:49:22] {AssertFailure - MyTestChannel}      main.cpp:53 - int main()
+[18:49:22][0] {AssertFailure - MyTestChannel}      main.cpp:53 - int main()
 Msg:    Index 'myIndex' [7] is out of range ['minBound';'maxBound'] => [2;6]
 Dets:   Access index out of bound!
 
@@ -113,7 +113,7 @@ Example:
 SA_THROW((ReachBadAPI, Vulkan), Renderer.Vulkan, "Vulkan API reach with invalid object.")
 ```
 ```
-[18:49:22] {AssertFailure - Renderer.Vulkan}      main.cpp:53 - int main()
+[18:49:22][0] {AssertFailure - Renderer.Vulkan}      main.cpp:53 - int main()
 Msg:    Reach bad [Vulkan] API call!
 Dets:   Vulkan API reach with invalid object.
 
