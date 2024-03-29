@@ -39,11 +39,11 @@ namespace SA
 	}
 
 	template <typename T>
-	bool RingBuffer<T>::Pop(T& _obj, std::atomic<bool>& bIsRunning)
+	bool RingBuffer<T>::Pop(T& _obj, std::atomic<bool>& _bIsRunning)
 	{
 		while(IsEmpty())
 		{
-			if(!bIsRunning)
+			if(!_bIsRunning)
 				return false;
 
 			std::this_thread::yield();
