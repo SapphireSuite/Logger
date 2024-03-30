@@ -12,6 +12,9 @@ namespace SA
 
 	LoggerThread::~LoggerThread()
 	{
+		while(!mRingBuffer.IsEmpty())
+			std::this_thread::yield();
+
 		mIsRunning = false;
 
 		if(mThread.joinable())
@@ -27,16 +30,16 @@ namespace SA
 
 	void LoggerThread::ThreadLoop()
 	{
-		// Wait for first push
-		while (mRingBuffer.IsEmpty() && mIsRunning)
-			std::this_thread::yield();
+		// // Wait for first push
+		// while (mRingBuffer.IsEmpty() && mIsRunning)
+		// 	std::this_thread::yield();
 
 		while (mIsRunning)
 		{
 			ProcessLog(mRingBuffer.Pop());
 
-			while(mRingBuffer.IsEmpty() && mIsRunning)
-				std::this_thread::yield();
+			// while(mRingBuffer.IsEmpty() && mIsRunning)
+			// 	std::this_thread::yield();
 		}
 	}
 

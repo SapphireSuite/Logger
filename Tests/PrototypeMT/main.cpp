@@ -6,13 +6,18 @@
 
 void LoggingThread()
 {
-	for (int i = 0; i < 1000; ++i)
-		SA_LOG(("HELLO %1", i));
+	for (int i = 0; i < 100; ++i)
+	{
+		if(i == 99)
+			SA_LOG(("HELLO %1", i), Warning)
+		else
+			SA_LOG(("HELLO %1", i));
+	}
 }
 
 int main()
 {
-	SA::Debug::InitDefaultLoggerThread;
+	SA::Debug::InitDefaultLoggerThread();
 
 	std::thread t1(LoggingThread);
 	std::thread t2(LoggingThread);
