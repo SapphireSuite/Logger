@@ -4,19 +4,15 @@
 
 namespace SA
 {
-	LoggerThread::LoggerThread() noexcept
+	LoggerThread::LoggerThread(uint32_t _ringBufferSize) noexcept :
+		mRingBuffer(_ringBufferSize)
 	{
 		mThread = std::thread(&LoggerThread::ThreadLoop, this);
 	}
 
 	LoggerThread::~LoggerThread()
 	{
-		// Flush all pending logs.
-		Flush();
-
-		// Stop running thread.
 		mIsRunning = false;
-		mLogConditionVar.notify_one();
 
 		if(mThread.joinable())
 			mThread.join();
@@ -24,51 +20,23 @@ namespace SA
 
 	void LoggerThread::Log(SA::Log _log)
 	{
-		mLogQueueMutex.lock();
-
-		mLogQueue.push(std::move(_log));
-		++mQueueSize;
-
-		mLogQueueMutex.unlock();
-
-		mLogConditionVar.notify_one();
+		mRingBuffer.Push(std::move(_log));
 	}
 
 //{ Thread
 
 	void LoggerThread::ThreadLoop()
 	{
-		std::unique_lock locker(mLogQueueMutex);
-
-		// Wait for first push.
-		if (mLogQueue.empty())
-			mLogConditionVar.wait(locker);
-		
+		// Wait for first push
+		while (mRingBuffer.IsEmpty() && mIsRunning)
+			std::this_thread::yield();
 
 		while (mIsRunning)
 		{
-			// Pop Log.
-			SA::Log log = std::move(mLogQueue.front());
-			mLogQueue.pop();
+			ProcessLog(mRingBuffer.Pop());
 
-			// Allow queue.push() while outputing in streams.
-			locker.unlock();
-
-
-			ProcessLog(log);
-
-			// Decrease queue size after process: ensure correct flush.
-			--mQueueSize;
-
-
-			// re-lock before accessing size.
-			locker.lock();
-
-			// Queue empty: wait for push.
-			if (mLogQueue.empty())
-				mLogConditionVar.wait(locker); // Wait and aquire locker for next loop.
-
-			// Check running state after wait.
+			while(mRingBuffer.IsEmpty() && mIsRunning)
+				std::this_thread::yield();
 		}
 	}
 
@@ -99,9 +67,7 @@ namespace SA
 
 	void LoggerThread::Flush()
 	{
-		// Wait for empty queue.
-		while(mQueueSize)
-			std::this_thread::yield();
+		// TODO: close the queue and wait for all processed
 
 		// Flush all.
 		std::lock_guard lkStreams(mStreamMutex);
