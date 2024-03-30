@@ -54,6 +54,10 @@ namespace SA
 		/// Date time.
 		DateTime date;
 
+
+		/// Default constructor.
+		Log() = default;
+
 		/**
 		*	\brief \e Value Move Constructor.
 		*

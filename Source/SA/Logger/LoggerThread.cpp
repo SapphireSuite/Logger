@@ -29,9 +29,12 @@ namespace SA
 
 	void LoggerThread::ThreadLoop()
 	{
+		SA::Log currLog;
+
 		while (mIsRunning)
 		{
-			ProcessLog(mRingBuffer.Pop());
+			if(mRingBuffer.Pop(currLog, mIsRunning))
+				ProcessLog(currLog);
 		}
 	}
 
