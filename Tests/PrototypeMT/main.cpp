@@ -23,7 +23,7 @@ int main()
 	//{
 	//{ Init
 
-		SA::LoggerThread loggerThread;
+		SA::LoggerThread loggerThread(3000);
 
 		loggerThread.CreateSteam<SA::ConsoleLogStream>();
 		loggerThread.CreateSteam<SA::FileLogStream>();
