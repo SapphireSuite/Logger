@@ -37,8 +37,8 @@ namespace SA
 
 		const uint32_t mCapacity = 0;
 
-		std::atomic<uint32_t> mPushCursor = 0;
-		std::atomic<uint32_t> mPopCursor = 0;
+		std::atomic<uint64_t> mPushCursor = 0u;
+		std::atomic<uint64_t> mPopCursor = 0u;
 
 	public:
 		/**

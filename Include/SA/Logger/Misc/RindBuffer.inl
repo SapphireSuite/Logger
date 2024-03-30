@@ -22,7 +22,7 @@ namespace SA
 	void RingBuffer<T>::Push(T&& _obj)
 	{
 		// Reserve index.
-		uint32_t index = mPushCursor++;
+		uint64_t index = mPushCursor++;
 
 		/**
 		 * Check is full
