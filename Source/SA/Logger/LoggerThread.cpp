@@ -12,8 +12,7 @@ namespace SA
 
 	LoggerThread::~LoggerThread()
 	{
-		while(!mRingBuffer.IsEmpty())
-			std::this_thread::yield();
+		Flush();
 
 		mIsRunning = false;
 
@@ -63,7 +62,8 @@ namespace SA
 
 	void LoggerThread::Flush()
 	{
-		// TODO: close the queue and wait for all processed
+		while(!mRingBuffer.IsEmpty())
+			std::this_thread::yield();
 
 		// Flush all.
 		std::lock_guard lkStreams(mStreamMutex);

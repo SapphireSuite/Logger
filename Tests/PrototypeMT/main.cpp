@@ -7,9 +7,9 @@
 
 void LoggingThread()
 {
-	for (int i = 0; i < 100; ++i)
+	for (int i = 0; i < 1000; ++i)
 	{
-		if(i == 99)
+		if(i == 999)
 			SA_LOG(("HELLO %1", i), Warning)
 		else
 			SA_LOG(("HELLO %1", i));
@@ -20,7 +20,7 @@ int main()
 {
 	std::chrono::time_point<std::chrono::system_clock> start, end;
 
-	{
+	//{
 	//{ Init
 
 		SA::LoggerThread loggerThread;
@@ -50,7 +50,9 @@ int main()
 
 		if (t4.joinable())
 			t4.join();
-	}
+
+		loggerThread.Flush();
+	//}
 
 	end = std::chrono::system_clock::now();
 
