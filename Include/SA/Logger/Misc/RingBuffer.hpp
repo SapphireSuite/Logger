@@ -26,7 +26,7 @@ namespace SA
 		~RingBuffer();
 
 		void Push(T&& _obj);
-		T Pop();
+		bool Pop(T& _obj, std::atomic<bool>& bIsRunning);
 
 		uint32_t Size() const noexcept;
 		uint32_t Capacity() const noexcept;

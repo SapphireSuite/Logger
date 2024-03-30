@@ -39,17 +39,22 @@ namespace SA
 	}
 
 	template <typename T>
-	T RingBuffer<T>::Pop()
+	bool RingBuffer<T>::Pop(T& _obj, std::atomic<bool>& bIsRunning)
 	{
 		while(IsEmpty())
+		{
+			if(!bIsRunning)
+				return false;
+
 			std::this_thread::yield();
+		}
 
 		const uint32_t index = mPopCursor % mCapacity;
 
 		while(!mPushCompleted[index])
 			std::this_thread::yield();
 
-		T output = std::move(mHandleBuffer[index]);
+		_obj = std::move(mHandleBuffer[index]);
 
 		mHandleBuffer[index].~T();
 
@@ -58,7 +63,7 @@ namespace SA
 
 		++mPopCursor;
 
-		return std::move(output);
+		return true;
 	}
 
 
