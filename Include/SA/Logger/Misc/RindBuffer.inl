@@ -22,7 +22,7 @@ namespace SA
 	void RingBuffer<T>::Push(T&& _obj)
 	{
 		// Reserve index.
-		const uint32_t index = mPushCursor++;
+		uint32_t index = mPushCursor++;
 
 		/**
 		 * Check is full
@@ -31,8 +31,11 @@ namespace SA
 		while(index - mPopCursor >= mCapacity)
 			std::this_thread::yield();
 
-		new(&mHandleBuffer[index % mCapacity]) T(std::move(_obj));
-		mPushCompleted[index % mCapacity] = true;
+		// Get actual position in ring buffer.
+		index = index % mCapacity;
+
+		new(&mHandleBuffer[index]) T(std::move(_obj));
+		mPushCompleted[index] = true;
 	}
 
 	template <typename T>
