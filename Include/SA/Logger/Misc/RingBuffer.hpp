@@ -32,7 +32,6 @@ namespace SA
 		uint32_t Capacity() const noexcept;
 
 		bool IsEmpty() const noexcept;
-		bool IsFull() const noexcept;
 	};
 }
 

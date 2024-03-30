@@ -30,16 +30,9 @@ namespace SA
 
 	void LoggerThread::ThreadLoop()
 	{
-		// // Wait for first push
-		// while (mRingBuffer.IsEmpty() && mIsRunning)
-		// 	std::this_thread::yield();
-
 		while (mIsRunning)
 		{
 			ProcessLog(mRingBuffer.Pop());
-
-			// while(mRingBuffer.IsEmpty() && mIsRunning)
-			// 	std::this_thread::yield();
 		}
 	}
 
