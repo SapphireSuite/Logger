@@ -3,4 +3,5 @@
 # Entrypoints
 
 add_subdirectory(Prototype)
+add_subdirectory(PrototypeMT)
 add_subdirectory(UnitTests)

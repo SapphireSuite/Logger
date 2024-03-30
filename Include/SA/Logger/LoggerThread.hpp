@@ -5,18 +5,17 @@
 #ifndef SAPPHIRE_LOGGER_LOGGER_THREAD_GUARD
 #define SAPPHIRE_LOGGER_LOGGER_THREAD_GUARD
 
-#include <SA/Logger/Logger.hpp>
+#include <SA/Logger/LoggerBase.hpp>
 
-#include <queue>
+#include <SA/Logger/Misc/RingBuffer.hpp>
+
 #include <mutex>
-#include <atomic>
 #include <thread>
-#include <condition_variable>
 
 /**
 *	\file LoggerThread.hpp
 *
-*	\brief \e Multithread <b>Logger</b> class implementation.
+*	\brief \e Multithread <b>Lock-free Logger</b> class implementation.
 *
 *	\ingroup Logger
 *	\{
@@ -30,8 +29,14 @@ namespace SA
 	*	Create one thread for log output.
 	*	Push logs in thread-safe queue.
 	*/
-	class LoggerThread : public Logger
+	class LoggerThread : public LoggerBase
 	{
+		/**
+		* \brief Current atomic registered frame number.
+		* Use IncrementFrameNum() or SA_LOG_END_OF_FRAME() at the end of the frame to track frame number.
+		*/
+		std::atomic<uint32_t> mFrameNum = 0u;
+
 	//{ Thread
 
 		/// Logger thread.
@@ -40,17 +45,8 @@ namespace SA
 		/// Current running state.
 		std::atomic<bool> mIsRunning = true;
 
-		/// Log queue mutex operations.
-		std::mutex mLogQueueMutex;
-		
-		/// Log queue condition variable.
-		std::condition_variable mLogConditionVar;
-
-		/// Log saved queue.
-		std::queue<SA::Log> mLogQueue;
-
-		/// Atomic queue size.
-		std::atomic<size_t> mQueueSize = 0;
+		/// FIFO Ring buffer
+		RingBuffer<SA::Log> mRingBuffer;
 
 		void ThreadLoop();
 
@@ -70,7 +66,7 @@ namespace SA
 
 	public:
 		/// Default Constructor.
-		LoggerThread() noexcept;
+		LoggerThread(uint32_t _ringBufferSize = 32) noexcept;
 
 		/**
 		*	Thread-safe destructor.
@@ -81,6 +77,16 @@ namespace SA
 		void Log(SA::Log _log) override final;
 
 		void Flush() override final;
+
+
+	//{ Frame Num
+
+		/// Increment current registered frame number.
+		void IncrementFrameNum() override final;
+
+		/// Get current registered frame number.
+		uint32_t GetFrameNum() const override final;
+	//}
 	};
 }
 

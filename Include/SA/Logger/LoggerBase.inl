@@ -1,9 +1,9 @@
-// Copyright (c) 2023 Sapphire's Suite. All Rights Reserved.
+// Copyright (c) 2024 Sapphire's Suite. All Rights Reserved.
 
 namespace SA
 {
 	template <typename ExcepT>
-	void Logger::Assert(ExcepT _exc)
+	void LoggerBase::Assert(ExcepT _exc)
 	{
 		if(_exc.level == LogLevel::AssertFailure)
 		{
@@ -24,7 +24,7 @@ namespace SA
 //{ Streams
 
 	template <typename StreamT, typename... Args>
-	StreamT& Logger::CreateSteam(Args&&... _args)
+	StreamT& LoggerBase::CreateSteam(Args&&... _args)
 	{
 		StreamT* const stream = new StreamT(std::forward<Args>(_args)...);
 
@@ -34,13 +34,13 @@ namespace SA
 	}
 
 	template <typename StreamT>
-	bool Logger::DestroyStream(StreamT& _stream, bool _bFlush)
+	bool LoggerBase::DestroyStream(StreamT& _stream, bool _bFlush)
 	{
 		StreamT* const streamPtr = &_stream;
 
-		const bool bUnregister = UnregisterSteam(streamPtr);
+		const bool bUnregisted = UnregisterSteam(streamPtr);
 
-		if (bUnregister)
+		if (bUnregisted)
 		{
 			if (_bFlush)
 				streamPtr->Flush();
@@ -48,7 +48,7 @@ namespace SA
 			delete streamPtr;
 		}
 
-		return bUnregister;
+		return bUnregisted;
 	}
 
 //}

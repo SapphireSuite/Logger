@@ -30,13 +30,13 @@ namespace SA
 {
 //{ Callback
 
-	class Logger;
+	class LoggerBase;
 
 	/// Global Debug namespace
 	namespace Debug
 	{
 		/// Logger instance.
-		extern Logger* logger;
+		extern LoggerBase* logger;
 
 		/// Simple logger callback.
 		extern void (*logCB)(SA::Log);
