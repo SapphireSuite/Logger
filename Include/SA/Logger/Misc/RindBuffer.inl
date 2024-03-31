@@ -70,7 +70,7 @@ namespace SA
 	template <typename T>
 	uint32_t RingBuffer<T>::Size() const noexcept
 	{
-		return mPushCursor - mPopCursor;
+		return static_cast<uint32_t>(mPushCursor - mPopCursor);
 	}
 
 	template <typename T>
