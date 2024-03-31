@@ -49,6 +49,7 @@ namespace SA
 		LoggerBase::ProcessLog(_log, _bForce);
 	}
 
+
 	void LoggerThread::RegisterStream(ALogStream* _stream)
 	{
 		std::lock_guard lk(mStreamMutex);
@@ -63,6 +64,15 @@ namespace SA
 		return LoggerBase::UnregisterStream(_stream);
 	}
 
+
+	void LoggerThread::ClearStreams(bool _bFlush)
+	{
+		std::lock_guard lk(mStreamMutex);
+
+		LoggerBase::ClearStreams(_bFlush);
+	}
+
+
 	void LoggerThread::Flush()
 	{
 		while(!mRingBuffer.IsEmpty())
@@ -74,7 +84,38 @@ namespace SA
 		LoggerBase::Flush();
 	}
 
+
+	void LoggerThread::EnableLogLevel(LogLevel _level)
+	{
+		std::lock_guard lk(mStreamMutex);
+
+		LoggerBase::EnableLogLevel(_level);
+	}
+
+	void LoggerThread::DisableLogLevel(LogLevel _level)
+	{
+		std::lock_guard lk(mStreamMutex);
+
+		LoggerBase::DisableLogLevel(_level);
+	}
+
+
+	void LoggerThread::EnableLogChannel(const std::wstring& _channel)
+	{
+		std::lock_guard lk(mStreamMutex);
+
+		LoggerBase::EnableLogChannel(_channel);
+	}
+
+	void LoggerThread::DisableLogChannel(const std::wstring& _channel)
+	{
+		std::lock_guard lk(mStreamMutex);
+
+		LoggerBase::DisableLogChannel(_channel);
+	}
+
 //}
+
 
 //{ Frame Num
 

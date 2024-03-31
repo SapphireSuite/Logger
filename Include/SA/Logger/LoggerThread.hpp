@@ -76,7 +76,24 @@ namespace SA
 
 		void Log(SA::Log _log) override final;
 
+	//{ Streams
+
+		void ClearStreams(bool _bFlush = true) override final;
+
+
 		void Flush() override final;
+
+
+		void EnableLogLevel(LogLevel _level) override final;
+
+		void DisableLogLevel(LogLevel _level) override final;
+
+
+		void EnableLogChannel(const std::wstring& _channel) override final;
+
+		void DisableLogChannel(const std::wstring& _channel) override final;
+
+	//}
 
 
 	//{ Frame Num

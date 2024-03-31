@@ -22,4 +22,9 @@ namespace SA
 
 		return IsSingleChannelEnabled(_chanName.substr(0u, fIndex)) && IsChannelEnabled(_chanName, fIndex + 1);
 	}
+
+	void LogChannelFilter::SetChannelEnabled(const std::wstring& _chanName, bool _bEnabled)
+	{
+		mChannels[_chanName] = _bEnabled;
+	}
 }

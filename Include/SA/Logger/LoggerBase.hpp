@@ -113,19 +113,52 @@ namespace SA
 		template <typename StreamT>
 		bool DestroyStream(StreamT& _stream, bool _bFlush = true);
 
+
 		/**
 		*	Destroy all streams.
 		* 
 		*	\param _bFlush 	Should flush stream before destroy.
 		*/
-		void ClearStreams(bool _bFlush = true);
+		virtual void ClearStreams(bool _bFlush = true);
+
 
 		/**
 		*	\brief Force logger to flush all streams.
 		*/
 		virtual void Flush();
 
+
+		/**
+		*	\brief \e Enable \b LogLevel for all registered streams.
+		* 
+		*	\param[in] _level		Level to enable.
+		*/
+		virtual void EnableLogLevel(LogLevel _level);
+
+		/**
+		*	\brief \e Disable \b LogLevel for all registered streams.
+		*
+		*	\param[in] _level		Level to disable.
+		*/
+		virtual void DisableLogLevel(LogLevel _level);
+
+
+		/**
+		*	\brief \e Enable \b LogChannel for all registered streams.
+		* 
+		*	\param[in] _channel		Channel to enable.
+		*/
+		virtual void EnableLogChannel(const std::wstring& _channel);
+
+		/**
+		*	\brief \e Disable \b LogChannel for all registered streams.
+		*
+		*	\param[in] _channel		Channel to disable.
+		*/
+		virtual void DisableLogChannel(const std::wstring& _channel);
+
 	//}
+
 
 	//{ Frame Num
 
