@@ -11,7 +11,7 @@ namespace SA
 #if SA_WIN
 
 	/// Windows console handle.
-	HANDLE cslHandle = GetStdHandle(STD_OUTPUT_HANDLE);
+	static HANDLE cslHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 
 	void SetConsoleColor(ConsoleColor _cslColor)
 	{
