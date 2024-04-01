@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['level_0',['level',['../class_s_a_1_1_log.html#ae98e0b83ae7e389c2bab8ecba36ca2eb',1,'SA::Log']]],
+  ['levelflags_1',['levelFlags',['../class_s_a_1_1_a_log_stream.html#ad19003a0076ed37dfd612d5e213cea83',1,'SA::ALogStream']]],
+  ['line_2',['line',['../struct_s_a_1_1_exception_1_1_base_info.html#a29e128812f8b14bb42151c2339e3b024',1,'SA::Exception::BaseInfo::line'],['../class_s_a_1_1_log.html#a1baab1832c8ef218e0bdd38eb1c331f0',1,'SA::Log::line']]],
+  ['log_3',['Log',['../class_s_a_1_1_log.html',1,'SA::Log'],['../class_s_a_1_1_log.html#ab588524552215b0214a9fecab553a49a',1,'SA::Log::Log()=default'],['../class_s_a_1_1_log.html#a9d2dd25af31849f7ca8f05a981f7e7e8',1,'SA::Log::Log(std::wstring _file, uint32_t _line, std::string _function, std::wstring _msg=L&quot;Hello, World!&quot;, LogLevel _level=LogLevel::Normal, std::wstring _chanName=L&quot;Default&quot;, std::wstring _details=L&quot;&quot;, uint32_t _frameNum=0u, std::string _backtrace=&quot;&quot;) noexcept'],['../class_s_a_1_1_logger_base.html#a6ce59139316c34b5bca3cc0787980619',1,'SA::LoggerBase::Log()'],['../class_s_a_1_1_logger_thread.html#aa603d4d826de36c6766c95c988986552',1,'SA::LoggerThread::Log()']]],
+  ['log_2ehpp_4',['Log.hpp',['../_log_8hpp.html',1,'']]],
+  ['logcb_5',['logCB',['../namespace_s_a_1_1_debug.html#aa92ebd4664a9c5b9b7e7ecf3cc78b3ca',1,'SA::Debug']]],
+  ['logchannelfilter_6',['LogChannelFilter',['../class_s_a_1_1_log_channel_filter.html',1,'SA']]],
+  ['logchannelfilter_2ehpp_7',['LogChannelFilter.hpp',['../_log_channel_filter_8hpp.html',1,'']]],
+  ['logger_8',['Logger',['../class_s_a_1_1_logger.html',1,'SA']]],
+  ['logger_9',['logger',['../namespace_s_a_1_1_debug.html#a6f5ceb2ac7440c40beaa00828347759f',1,'SA::Debug']]],
+  ['logger_10',['Logger',['../group___logger.html',1,'']]],
+  ['logger_2ehpp_11',['Logger.hpp',['../_logger_8hpp.html',1,'']]],
+  ['loggerbase_12',['LoggerBase',['../class_s_a_1_1_logger_base.html',1,'SA']]],
+  ['loggerbase_2ehpp_13',['LoggerBase.hpp',['../_logger_base_8hpp.html',1,'']]],
+  ['loggerthread_14',['LoggerThread',['../class_s_a_1_1_logger_thread.html',1,'SA::LoggerThread'],['../class_s_a_1_1_logger_thread.html#a37d1747cae7f7a28d349a45bce27f7c6',1,'SA::LoggerThread::LoggerThread()']]],
+  ['loggerthread_2ehpp_15',['LoggerThread.hpp',['../_logger_thread_8hpp.html',1,'']]],
+  ['loglevel_16',['LogLevel',['../_log_level_8hpp.html#ada12831f2dfd3b16b30fdf5019ae125b',1,'SA']]],
+  ['loglevel_2ehpp_17',['LogLevel.hpp',['../_log_level_8hpp.html',1,'']]],
+  ['loglvl_18',['LogLvl',['../_log_level_8hpp.html#a03a7213300ed23e1c8f5adccbce5e558',1,'SA']]],
+  ['logmacro_2ehpp_19',['LogMacro.hpp',['../_log_macro_8hpp.html',1,'']]],
+  ['lograii_20',['LogRAII',['../class_s_a_1_1_log_r_a_i_i.html',1,'SA::LogRAII'],['../class_s_a_1_1_log_r_a_i_i.html#a1f66a197cd23b176425404cdfaf847cb',1,'SA::LogRAII::LogRAII()']]],
+  ['lograii_2ehpp_21',['LogRAII.hpp',['../_log_r_a_i_i_8hpp.html',1,'']]]
+];
