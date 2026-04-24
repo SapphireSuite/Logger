@@ -22,6 +22,7 @@ namespace SA
 			(*it)->ProcessLog(_log, _bForce);
 	}
 
+
 	void LoggerBase::RegisterStream(ALogStream* _stream)
 	{
 		mStreams.push_back(_stream);
@@ -41,6 +42,7 @@ namespace SA
 		return false;
 	}
 
+
 	void LoggerBase::ClearStreams(bool _bFlush)
 	{
 		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
@@ -54,10 +56,37 @@ namespace SA
 		mStreams.clear();
 	}
 
+
 	void LoggerBase::Flush()
 	{
 		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
 			(*it)->Flush();
+	}
+
+
+	void LoggerBase::EnableLogLevel(LogLevel _level)
+	{
+		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
+			(*it)->levelFlags |= _level;
+	}
+
+	void LoggerBase::DisableLogLevel(LogLevel _level)
+	{
+		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
+			(*it)->levelFlags &= ~_level;
+	}
+
+
+	void LoggerBase::EnableLogChannel(const std::wstring& _channel)
+	{
+		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
+			(*it)->channelFilter.SetChannelEnabled(_channel, true);
+	}
+
+	void LoggerBase::DisableLogChannel(const std::wstring& _channel)
+	{
+		for (auto it = mStreams.begin(); it != mStreams.end(); ++it)
+			(*it)->channelFilter.SetChannelEnabled(_channel, false);
 	}
 
 //}

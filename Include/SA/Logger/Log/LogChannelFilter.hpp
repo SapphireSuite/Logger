@@ -44,6 +44,15 @@ namespace SA
 		*	\param[in] _offset		Current offset to check (internal use only).
 		*/
 		bool IsChannelEnabled(const std::wstring& _chanName, size_t _offset = 0u) const;
+
+		/**
+		*	Enable/Disable a channel.
+		*	Only the channel itself is enabled/disabled (not the parent channels).
+		* 
+		*	\param[in] _chanName	Channel name to enable/disable.
+		*	\param[in] _bEnabled	Whether to enable or disable the channel.
+		*/
+		void SetChannelEnabled(const std::wstring& _chanName, bool _bEnabled);
 	};
 }
 
