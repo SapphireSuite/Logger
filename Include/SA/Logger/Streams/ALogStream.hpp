@@ -38,7 +38,7 @@ namespace SA
 		LogChannelFilter channelFilter;
 
 		/// Level filter used for log in stream.
-		uint8_t levelFlags = LogLevel::Default;
+		uint8_t levelFlags = +LogLevel::Default;
 
 		/// \e Default virtual destructor.
 		virtual ~ALogStream() = default;

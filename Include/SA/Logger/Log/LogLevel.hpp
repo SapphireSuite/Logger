@@ -6,7 +6,8 @@
 #define SAPPHIRE_LOGGER_LOG_LEVEL_GUARD
 
 #include <string>
-#include <cstdint>
+
+#include <SA/Support/Flags.hpp>
 
 /**
 *	\file LogLevel.hpp
@@ -21,7 +22,7 @@
 namespace SA
 {
 	/// \brief All levels of logging.
-	enum LogLevel : uint8_t
+	enum class LogLevel : uint8_t
 	{
 		/// Normal level
 		Normal = (1 << 0),
@@ -47,8 +48,11 @@ namespace SA
 		Max = uint8_t(-1)
 	};
 
+	SA_DEFINE_ENUM_CLASS_FLAGS(LogLevel);
+
 	/// Shortcut alias.
 	using LogLvl = LogLevel;
+
 
 	/**
 	*	\brief ToString implementation for LogLevel
