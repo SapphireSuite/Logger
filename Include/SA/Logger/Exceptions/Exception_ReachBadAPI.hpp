@@ -65,4 +65,6 @@ namespace SA
 */
 
 
+/** \} */
+
 #endif // SAPPHIRE_LOGGER_EXCEPTION_REACH_BAD_API_GUARD

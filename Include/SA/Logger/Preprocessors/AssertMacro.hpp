@@ -7,6 +7,16 @@
 
 #include <SA/Logger/Preprocessors/LogMacro.hpp>
 
+/**
+*	\file AssertMacro.hpp
+*
+*	\brief \b Assert Helper \b Macros implementation.
+*
+*	\ingroup Logger_Macro
+*	\{
+*/
+
+
 namespace SA
 {
 //{ Callback
@@ -109,5 +119,8 @@ namespace SA
 #endif
 
 }
+
+
+/** \} */
 
 #endif // GUARD
