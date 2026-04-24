@@ -70,7 +70,7 @@ namespace SA
 
 #elif SA_DEBUG || SA_LOG_RELEASE_OPT
 
-	#define SA_LOG_RAII(...) SA::LogRAII __log_raii(\
+	#define SA_LOG_RAII(...) SA::LogRAII __SA_EVAL_PASTE(__log_raii, __LINE__)(\
 		__SA_SELECT_LOG_RAII_MACRO(__VA_ARGS__, __SA_LOG_RAII4, __SA_LOG_RAII3, __SA_LOG_RAII2, __SA_LOG_RAII1)(__VA_ARGS__)\
 	);
 

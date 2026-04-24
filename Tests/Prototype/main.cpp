@@ -88,6 +88,7 @@ int main()
 
 		{
 			SA_LOG_RAII("RAII 2!", Warning, SA.RAIIChan, L"After Normal and Before RAII 1");
+			SA_LOG_RAII("RAII 3!", Warning, SA.RAIIChan, L"After Normal and Before RAII 1 and Before RAII 2");
 		}
 
 		logger.Flush(); // ensure correct order with LoggerThread.
